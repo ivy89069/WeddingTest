@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
     
+    <!-- LINE Android In-App Browser Auto Redirect Guard -->
+    <script>
+        (function() {
+            var ua = navigator.userAgent || '';
+            var isLine = /Line\//i.test(ua) || /Line/i.test(ua);
+            var isAndroid = /Android/i.test(ua);
+            // Android LINE WebView suppresses long-press save menu on dynamic images.
+            // Redirecting with ?openExternalBrowser=1 opens native Android Chrome where long-press save is 100% supported.
+            if (isAndroid && isLine && !window.location.search.includes('openExternalBrowser=1')) {
+                var currentUrl = window.location.href;
+                var separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
+                window.location.replace(currentUrl + separator + 'openExternalBrowser=1');
+            }
+        })();
+    </script>
+
     <!-- Critical Network Preconnects & High-Priority Preloads -->
     <link rel="preconnect" href="https://i.meee.com.tw" crossorigin>
     <link rel="dns-prefetch" href="https://i.meee.com.tw">
@@ -12,11 +28,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- High-Priority Preload for Hero Banner & Confirmation Card Photo -->
+    <!-- Preload Hero Banner & Confirmation Card Photo -->
     <link rel="preload" as="image" href="https://i.meee.com.tw/sx3BNyg.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="https://i.meee.com.tw/GNBHXkP.jpg" fetchpriority="high">
 
-    <!-- Optimized Google Fonts with font-display: swap -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
@@ -55,7 +71,6 @@
     </script>
 
     <style>
-        /* Mobile Input Auto-Zoom & Touch Area Optimization Guard */
         input, textarea, select, label, button {
             font-size: 16px !important;
             -webkit-text-size-adjust: 100%;
@@ -75,17 +90,16 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* High-Definition Image Rendering */
+        /* High-Definition Banner Styling */
         .high-res-bg {
             background-size: cover;
             background-repeat: no-repeat;
             image-rendering: -webkit-optimize-contrast;
             transform: translateZ(0);
             backface-visibility: hidden;
-            will-change: transform;
         }
 
-        /* Android & iOS Touch Interaction Optimization for Long-Press Save */
+        /* Long-press touch optimization for mobile image saving */
         #previewImage {
             image-rendering: -webkit-optimize-contrast;
             image-rendering: high-quality;
@@ -144,7 +158,7 @@
             animation: spinSlow 8s linear infinite;
         }
 
-        /* Radio Button Heart State Switch */
+        /* Radio Heart State Transitions */
         input[type="radio"] + label .heart-solid,
         .peer + label .heart-solid {
             display: none !important;
@@ -425,7 +439,7 @@
 
             <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
                 
-                <!-- Safe Off-screen Iframe for Form POST -->
+                <!-- Hidden Iframe Target for reliable Form POST without navigation -->
                 <iframe name="hidden_iframe" id="hidden_iframe" style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" onload="if(submitted && !modalShown){onFormSubmitted();}"></iframe>
 
                 <form id="rsvpForm" 
@@ -662,10 +676,10 @@
                             <label for="entry_address" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 紙本喜帖寄件地址（記得加上郵遞區號喔） <span class="font-en font-normal text-morandi-muted text-xs">/ MAILING ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text"
-                                   id="entry_address"
-                                   name="entry.707135055"
-                                   placeholder="請輸入喜帖寄送地址"
+                            <input type="text" 
+                                   id="entry_address" 
+                                   name="entry.707135055" 
+                                   placeholder="請輸入喜帖寄送地址" 
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
 
@@ -674,12 +688,10 @@
                             <label for="entry_email" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 電子喜帖寄件信箱 <span class="font-en font-normal text-morandi-muted text-xs">/ EMAIL ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="email"
-                                   id="entry_email"
-                                   name="entry.1040384663"
-                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）"
-                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                   title="請填寫格式正確的 Email 信箱"
+                            <input type="email" 
+                                   id="entry_email" 
+                                   name="entry.1040384663" 
+                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）" 
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
                     </div>
@@ -711,7 +723,7 @@
         </div>
     </section>
 
-    <!-- Direct Image Preview Modal -->
+    <!-- Direct Image Preview Modal (No download buttons, pure long-press saving) -->
     <div id="imagePreviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-center space-y-4 shadow-2xl transform scale-90 transition-transform duration-300 max-h-[90vh] flex flex-col" id="previewModalCard">
             <div class="flex items-center justify-between pb-3 border-b border-morandi-border/60">
@@ -719,19 +731,19 @@
                     <h3 class="text-base sm:text-lg font-serifTC font-bold text-morandi-dark flex items-center gap-2">
                         <i class="fa-solid fa-circle-check text-morandi-sage"></i> 回函已成功送出！
                     </h3>
-                    <p class="text-xs text-morandi-muted mt-0.5">感謝您的祝福！可點擊下方按鈕儲存、長按圖片或直接截圖留念喔！</p>
+                    <p class="text-xs text-morandi-muted mt-0.5">感謝您的祝福！請「長按下方卡片」即可儲存到手機相簿喔！</p>
                 </div>
                 <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-1.5 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <!-- Card Display Area: Canvas Rendered Image or DOM Fallback -->
+            <!-- Card Display Area -->
             <div class="overflow-y-auto flex-1 my-1 rounded-2xl border border-morandi-border/50 bg-morandi-sand/20 p-2 text-left">
-                <!-- 1. Canvas Rendered Image -->
+                <!-- 1. Canvas Rendered Image (Long-press save supported) -->
                 <img id="previewImage" src="" alt="回函確認卡" class="w-full h-auto rounded-xl shadow-sm block mx-auto pointer-events-auto">
 
-                <!-- 2. High-Definition DOM Fallback Card -->
+                <!-- 2. High-Definition DOM Fallback Card (in case of device canvas security lock) -->
                 <div id="fallbackCard" class="hidden bg-[#fcfaf7] rounded-2xl p-4 border-2 border-morandi-gold/60 shadow-sm space-y-4">
                     <div class="w-full h-56 rounded-xl overflow-hidden shadow-sm relative bg-morandi-sand">
                         <img src="https://i.meee.com.tw/GNBHXkP.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
@@ -746,13 +758,9 @@
                 </div>
             </div>
 
-            <!-- Modal Action Buttons -->
-            <div class="pt-2 flex flex-col sm:flex-row gap-2">
-                <button id="downloadCardBtn" onclick="downloadOrShareCard()" class="w-full sm:flex-1 py-3 rounded-full bg-morandi-gold text-white text-xs font-semibold tracking-widest hover:bg-[#c29263] transition shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95">
-                    <i class="fa-solid fa-arrow-down-to-bracket text-xs"></i>
-                    <span>儲存卡片 SAVE</span>
-                </button>
-                <button onclick="closePreviewModal()" class="w-full sm:flex-1 py-3 rounded-full bg-morandi-sand text-morandi-dark text-xs font-medium tracking-widest hover:bg-morandi-border/60 transition shadow-sm cursor-pointer">
+            <!-- Single Clean Close Button -->
+            <div class="pt-2 flex justify-center">
+                <button onclick="closePreviewModal()" class="w-full py-3.5 rounded-full bg-morandi-gold text-white text-xs font-semibold tracking-widest hover:bg-[#c29263] transition shadow-md cursor-pointer active:scale-98">
                     關閉視窗 CLOSE
                 </button>
             </div>
@@ -770,19 +778,15 @@
         var submitted = false;
         var modalShown = false;
         var lastSubmittedData = null;
-        var currentCardBlob = null;
-        var currentCardUrl = '';
 
-        /* Confirmation Card Photo Loader with High-Res Cache */
-        const RAW_PHOTO_URL = 'https://i.meee.com.tw/GNBHXkP.jpg';
-        const CORS_SAFE_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('i.meee.com.tw/GNBHXkP.jpg') + '&output=jpg&q=100';
-        
+        /* Confirmation Card Photo Preloader */
+        const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('i.meee.com.tw/GNBHXkP.jpg') + '&output=jpg&q=100';
         let cardPhoto = null;
         function getCardPhoto() {
             if (!cardPhoto) {
                 cardPhoto = new Image();
                 cardPhoto.crossOrigin = 'anonymous';
-                cardPhoto.src = CORS_SAFE_PHOTO_URL;
+                cardPhoto.src = CORS_PHOTO_URL;
             }
             return cardPhoto;
         }
@@ -995,44 +999,36 @@
             });
         });
 
-        /* 5. Form Submission Handler */
+        /* 5. Bulletproof Form Submission Handler: Guaranteeing POST Dispatch & Card Popup */
         function handleFormSubmit(event) {
             captureFormData();
             submitted = true;
             modalShown = false;
 
-            const submitBtn = document.getElementById('submitBtn');
+            // Give user immediate visual response without disabling button (disabling button synchronously aborts form POST)
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnIcon = document.getElementById('submitBtnIcon');
             if (submitBtnText) submitBtnText.innerText = '處理中，請稍候...';
             if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
-            if (submitBtn) submitBtn.disabled = true;
 
-            // Guaranteed Trigger: Display modal quickly without waiting endlessly for iframe
+            // Guaranteed Fallback Trigger: If iframe cross-domain onload is blocked by browser, trigger modal reliably
             setTimeout(() => {
-                if (!modalShown) {
+                if (submitted && !modalShown) {
                     onFormSubmitted();
                 }
-            }, 400);
+            }, 600);
         }
 
         function onFormSubmitted() {
             if (modalShown) return;
             modalShown = true;
 
-            const submitBtn = document.getElementById('submitBtn');
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnIcon = document.getElementById('submitBtnIcon');
             if (submitBtnText) submitBtnText.innerText = '送出回函 SUBMIT';
             if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-paper-plane text-xs';
-            if (submitBtn) submitBtn.disabled = false;
 
             renderAndPreviewCard();
-            
-            const form = document.getElementById('rsvpForm');
-            if (form) form.reset();
-            handleAttendanceChange();
-            submitted = false;
         }
 
         function closePreviewModal() {
@@ -1049,6 +1045,13 @@
                     modal.classList.add('hidden');
                 }, 300);
             }
+            
+            // Cleanly reset form after guest closes confirmation card
+            const form = document.getElementById('rsvpForm');
+            if (form) form.reset();
+            handleAttendanceChange();
+            submitted = false;
+            modalShown = false;
         }
 
         function showImagePreviewModal(jpgDataUrl) {
@@ -1323,29 +1326,11 @@
                     ctx.font = '15px "Cormorant Garamond", serif';
                     ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
 
-                    // Export Blob or Data URL for Android compatibility
-                    if (canvas.toBlob) {
-                        canvas.toBlob(blob => {
-                            if (blob) {
-                                currentCardBlob = blob;
-                                if (currentCardUrl && currentCardUrl.startsWith('blob:')) {
-                                    URL.revokeObjectURL(currentCardUrl);
-                                }
-                                currentCardUrl = URL.createObjectURL(blob);
-                                showImagePreviewModal(currentCardUrl);
-                            } else {
-                                const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
-                                currentCardUrl = jpgDataUrl;
-                                showImagePreviewModal(jpgDataUrl);
-                            }
-                        }, 'image/jpeg', 1.0);
-                    } else {
-                        const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
-                        currentCardUrl = jpgDataUrl;
-                        showImagePreviewModal(jpgDataUrl);
-                    }
+                    // High-quality JPEG output (data URL)
+                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
+                    showImagePreviewModal(jpgDataUrl);
                 } catch (err) {
-                    console.warn('Canvas export failed, using DOM card fallback:', err);
+                    console.warn('Canvas render or export failed, triggering DOM fallback:', err);
                     showFallbackDOMCard();
                 }
             };
@@ -1354,47 +1339,9 @@
                 renderCanvasContent();
             } else {
                 photoImg.onload = renderCanvasContent;
-                photoImg.onerror = () => {
-                    renderCanvasContent();
-                };
-                setTimeout(() => {
-                    if (!modalShown) {
-                        renderCanvasContent();
-                    }
-                }, 800);
+                photoImg.onerror = () => { renderCanvasContent(); };
+                setTimeout(renderCanvasContent, 500);
             }
-        }
-
-        /* 6.1 Android & Cross-Device Card Download / Share Handler */
-        async function downloadOrShareCard() {
-            if (!currentCardUrl && !currentCardBlob) return;
-
-            // Method 1: Web Share API (Saves directly or shares to LINE / Photo Album on Android & iOS)
-            if (currentCardBlob && navigator.canShare) {
-                try {
-                    const file = new File([currentCardBlob], '婚禮出席回函確認卡.jpg', { type: 'image/jpeg' });
-                    if (navigator.canShare({ files: [file] })) {
-                        await navigator.share({
-                            files: [file],
-                            title: '婚禮出席回函確認卡',
-                            text: '昇廷 & 瑋伶 婚禮出席回函確認'
-                        });
-                        return;
-                    }
-                } catch (e) {
-                    if (e.name === 'AbortError') return;
-                }
-            }
-
-            // Method 2: Standard anchor download fallback
-            const link = document.createElement('a');
-            link.download = '昇廷_瑋伶_婚禮出席回函確認卡.jpg';
-            link.href = currentCardUrl || (document.getElementById('previewImage') ? document.getElementById('previewImage').src : '');
-            document.body.appendChild(link);
-            link.click();
-            setTimeout(() => {
-                if (link.parentNode) link.parentNode.removeChild(link);
-            }, 150);
         }
 
         /* 7. Background Music Controller (YouTube IFrame API) */
