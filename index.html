@@ -2,24 +2,19 @@
 <html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- Strict Mobile Viewport Guard: Prevents auto-zoom coordinate shift on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <!-- Prevent image hotlinking blocks from free image hosts like postimg -->
     <meta name="referrer" content="no-referrer">
     <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
     
-    <!-- Critical Network Preconnects & High-Priority Preloads -->
-    <link rel="preconnect" href="https://i.postimg.cc">
-    <link rel="dns-prefetch" href="https://i.postimg.cc">
+    <!-- Critical Network Preconnects -->
+    <link rel="preconnect" href="https://i.meee.com.tw" crossorigin>
+    <link rel="preconnect" href="https://wsrv.nl" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="image" href="https://i.meee.com.tw/sx3BNyg.jpg" fetchpriority="high">
 
-    <!-- High-Priority Preload for Hero Banner & Confirmation Card Photo -->
-    <link rel="preload" as="image" href="https://i.postimg.cc/hhFqrq7Y/JUN00091.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://i.postimg.cc/QdWk7XJK/JUN00139.jpg">
-
-    <!-- Optimized Google Fonts with font-display: swap -->
+    <!-- Google Fonts with font-display: swap -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
@@ -80,7 +75,7 @@
         }
 
         .glass-nav {
-            background: rgba(252, 250, 247, 0.88);
+            background: rgba(252, 250, 247, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
@@ -126,12 +121,11 @@
             animation: spinSlow 8s linear infinite;
         }
 
-        /* Prevent iOS drag & drop while preserving native image touch behavior */
         #previewImage {
             -webkit-touch-callout: default !important;
             -webkit-user-select: auto !important;
             user-select: auto !important;
-            -webkit-drag: none !important;
+            -webkit-user-drag: none !important;
         }
 
         /* Radio Button Heart State Switch */
@@ -176,6 +170,7 @@
         <i id="musicIcon" class="fa-solid fa-music text-base sm:text-lg"></i>
     </button>
 
+    <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-morandi-gold/20 transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
@@ -202,29 +197,26 @@
         </div>
     </nav>
 
-    <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
-        <!-- Hero Loading Skeleton (Displayed while image loads) -->
-        <div id="heroSkeleton" class="absolute inset-0 bg-[#322e2b] flex flex-col items-center justify-center transition-opacity duration-700 z-0">
-            <div class="w-10 h-10 border-2 border-morandi-gold/30 border-t-morandi-gold rounded-full animate-spin"></div>
-            <p class="font-en text-xs tracking-widest text-morandi-sand/60 mt-3 uppercase">Loading photo...</p>
-        </div>
-
-        <!-- High Priority Native Img with Smooth Fade-in -->
+    <section id="hero-container" class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
+        <!-- High Priority Native Img with Multi-Mirror Fallback Handler -->
         <img id="heroCoverImg"
-             src="https://i.postimg.cc/hhFqrq7Y/JUN00091.jpg"
+             src="https://i.meee.com.tw/sx3BNyg.jpg"
              alt="昇廷 & 瑋伶 婚紗照"
              fetchpriority="high"
              decoding="async"
              referrerpolicy="no-referrer"
-             onload="this.classList.remove('opacity-0'); document.getElementById('heroSkeleton').classList.add('opacity-0', 'pointer-events-none');"
-             onerror="this.onerror=null; console.warn('Hero image failed to load');"
-             class="absolute inset-0 w-full h-full object-cover object-[center_30%] scale-105 transition-all duration-1000 opacity-0 z-0 select-none pointer-events-none">
+             class="absolute inset-0 w-full h-full object-cover object-[center_30%] scale-105 transition-opacity duration-1000 opacity-0 z-0 select-none pointer-events-none">
 
-        <!-- Elegant Romantic Dark Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-morandi-dark/85 z-[1] pointer-events-none"></div>
+        <!-- Natural Light Vignette (Preserves true photo colors & brightness, only gently contrasts text) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent via-50% to-black/55 z-[1] pointer-events-none"></div>
 
-        <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8">
-            <p class="font-en text-lg sm:text-2xl md:text-3xl italic tracking-widest font-light text-morandi-sand/90">
+        <!-- Lightweight Hero Loading Spinner -->
+        <div id="heroSkeleton" class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 z-[2] pointer-events-none">
+            <div class="w-8 h-8 border-2 border-morandi-gold/30 border-t-morandi-gold rounded-full animate-spin"></div>
+        </div>
+
+        <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            <p class="font-en text-lg sm:text-2xl md:text-3xl italic tracking-widest font-light text-morandi-sand/95">
                 I wanna be your light
             </p>
             
@@ -239,17 +231,18 @@
             </p>
 
             <div class="pt-3 sm:pt-5">
-                <a href="#rsvp" class="inline-block px-7 py-3 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-white font-light tracking-widest text-xs sm:text-sm hover:bg-white hover:text-morandi-dark transition duration-300 shadow-lg">
+                <a href="#rsvp" class="inline-block px-7 py-3 rounded-full bg-white/20 backdrop-blur-md border border-white/50 text-white font-light tracking-widest text-xs sm:text-sm hover:bg-white hover:text-morandi-dark transition duration-300 shadow-lg">
                     填寫出席回函
                 </a>
             </div>
         </div>
 
-        <a href="#countdown-section" class="absolute bottom-3 sm:bottom-5 left-1/2 transform -translate-x-1/2 z-10 text-white/70 hover:text-white transition animate-bounce">
+        <a href="#countdown-section" class="absolute bottom-3 sm:bottom-5 left-1/2 transform -translate-x-1/2 z-10 text-white/80 hover:text-white transition animate-bounce drop-shadow">
             <i class="fa-solid fa-chevron-down text-base"></i>
         </a>
     </section>
 
+    <!-- Countdown Section -->
     <section id="countdown-section" class="py-20 px-4 bg-morandi-cream border-b border-morandi-border/50 relative">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest mb-2">COUNTDOWN</h2>
@@ -283,6 +276,7 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
         <div class="max-w-3xl mx-auto text-center space-y-8 reveal">
             <span class="font-en text-sm tracking-[0.3em] text-morandi-sage uppercase">Our Story</span>
@@ -400,7 +394,7 @@
                             </div>
 
                             <div class="pt-2">
-                                <a href="https://www.g-skyview.com/traffic.php" 
+                                <a href="https://www.g-skyview.com/traffic.php?gad_source=1&amp;gad_campaignid=22295553759&amp;gbraid=0AAAAA9t9ej6KAha-mgkKFwPFjv1AP4s2o&amp;gclid=Cj0KCQjwp9vTBhCWARIsANaUrjvfmqf0OOJKw_TwR1ac9tXwKmtDVsaCIJ6ggNsYh5dqTpvNy0GpnLAaArgDEALw_wcB" 
                                    target="_blank" 
                                    rel="noopener noreferrer" 
                                    class="inline-flex items-center gap-1.5 text-xs text-morandi-gold font-medium hover:underline">
@@ -430,7 +424,7 @@
                       action="https://docs.google.com/forms/d/e/1FAIpQLSd7n5Nb2WA-le41Y4iJV-tQyYJBa047lWtEi7lPsF9y0icP0A/formResponse" 
                       method="POST" 
                       target="hidden_iframe" 
-                      onsubmit="captureFormData(); submitted=true;" 
+                      onsubmit="onFormSubmitStart()" 
                       class="space-y-6">
 
                     <!-- Field 1: Name -->
@@ -537,7 +531,7 @@
                         </div>
                     </div>
 
-                    <!-- Field 5: Guests Count Pills -->
+                    <!-- Field 5: Guests Count -->
                     <div id="guestCountGroup" class="hidden transition-all duration-300">
                         <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
                             參加午宴人數（含本人） <span class="font-en font-normal text-morandi-muted text-xs">/ GUESTS</span> <span class="text-rose-400">*</span>
@@ -568,7 +562,7 @@
 
                     <!-- Dynamic Fields Section -->
                     <div id="dynamicFields" class="space-y-6 hidden border-t border-b border-morandi-border/60 py-6 my-2 transition-all duration-300">
-                        <!-- Field 6: Vegetarian Meals -->
+                        <!-- Vegetarian Meals -->
                         <div>
                             <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
                                 若需準備素食需要幾份？ <span class="font-en font-normal text-morandi-muted text-xs">/ VEGETARIAN MEALS</span>
@@ -601,7 +595,7 @@
                             </div>
                         </div>
 
-                        <!-- Field 7: Invitation Preferences -->
+                        <!-- Invitation Preferences -->
                         <div>
                             <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
                                 喜帖索取 <span class="font-en font-normal text-morandi-muted text-xs">/ INVITATION</span>
@@ -655,34 +649,32 @@
                             </div>
                         </div>
 
-                        <!-- Field 8: Paper Address -->
+                        <!-- Paper Address -->
                         <div id="addressGroup" class="hidden transition-all duration-300">
                             <label for="entry_address" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 紙本喜帖寄件地址（記得加上郵遞區號喔） <span class="font-en font-normal text-morandi-muted text-xs">/ MAILING ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text" 
-                                   id="entry_address" 
-                                   name="entry.707135055" 
-                                   placeholder="請輸入喜帖寄送地址" 
+                            <input type="text"
+                                   id="entry_address"
+                                   name="entry.707135055"
+                                   placeholder="請輸入喜帖寄送地址"
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
 
-                        <!-- Field 9: Electronic Email -->
+                        <!-- Electronic Email -->
                         <div id="emailGroup" class="hidden transition-all duration-300">
                             <label for="entry_email" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 電子喜帖寄件信箱 <span class="font-en font-normal text-morandi-muted text-xs">/ EMAIL ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="email" 
-                                   id="entry_email" 
-                                   name="entry.1040384663" 
-                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）" 
-                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
-                                   title="請填寫格式正確的 Email 信箱" 
+                            <input type="email"
+                                   id="entry_email"
+                                   name="entry.1040384663"
+                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）"
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
                     </div>
 
-                    <!-- Field 10: Blessings -->
+                    <!-- Blessings -->
                     <div>
                         <label for="entry_blessings" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                             對新人的祝福 <span class="font-en font-normal text-morandi-muted text-xs">/ BLESSINGS</span>
@@ -736,6 +728,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="py-12 bg-morandi-dark text-white/80 text-center text-xs tracking-widest space-y-3">
         <p class="font-en text-lg text-morandi-sand font-light">Sheng-Ting &amp; Wei-Ling</p>
         <p class="text-morandi-muted">I WANNA BE YOUR LIGHT . 2027</p>
@@ -746,14 +739,90 @@
         var submitted = false;
         var lastSubmittedData = null;
 
-        // Lazy-loaded Card Photo Preloader
+        // Multi-Mirror URL Configuration
+        const HERO_MIRRORS = [
+            'https://i.meee.com.tw/sx3BNyg.jpg',
+            'https://wsrv.nl/?url=https://i.meee.com.tw/sx3BNyg.jpg&w=1600&q=85&output=webp',
+            'https://images.weserv.nl/?url=i.meee.com.tw/sx3BNyg.jpg&w=1600&q=85'
+        ];
+
+        const CARD_MIRRORS = [
+            'https://wsrv.nl/?url=https://i.postimg.cc/QdWk7XJK/JUN00139.jpg&w=900&q=85&output=webp',
+            'https://images.weserv.nl/?url=i.postimg.cc/QdWk7XJK/JUN00139.jpg&w=900&q=85',
+            'https://i.postimages.org/QdWk7XJK/JUN00139.jpg',
+            'https://i.postimg.cc/QdWk7XJK/JUN00139.jpg'
+        ];
+
+        // 0. High-Reliability Hero Image Loader with Failover & Watchdog
+        let heroMirrorIndex = 0;
+        let heroLoaded = false;
+
+        function initHeroLoader() {
+            const heroImg = document.getElementById('heroCoverImg');
+            const skeleton = document.getElementById('heroSkeleton');
+            if (!heroImg) return;
+
+            function onHeroSuccess() {
+                if (heroLoaded) return;
+                heroLoaded = true;
+                heroImg.classList.remove('opacity-0');
+                heroImg.classList.add('opacity-100');
+                if (skeleton) {
+                    skeleton.classList.add('opacity-0');
+                    setTimeout(() => skeleton.remove(), 700);
+                }
+            }
+
+            function tryNextHeroMirror() {
+                if (heroLoaded) return;
+                heroMirrorIndex++;
+                if (heroMirrorIndex < HERO_MIRRORS.length) {
+                    heroImg.src = HERO_MIRRORS[heroMirrorIndex];
+                } else {
+                    // All mirrors tried: gracefully reveal elegant background
+                    if (skeleton) skeleton.classList.add('opacity-0');
+                }
+            }
+
+            heroImg.onload = onHeroSuccess;
+            heroImg.onerror = tryNextHeroMirror;
+
+            if (heroImg.complete && heroImg.naturalWidth > 0) {
+                onHeroSuccess();
+            }
+
+            // Watchdog: If image hasn't loaded within 3s, trigger next mirror
+            setTimeout(() => {
+                if (!heroLoaded) {
+                    tryNextHeroMirror();
+                }
+            }, 3000);
+
+            // Hard watchdog ceiling: Never show spinner past 4.5s
+            setTimeout(() => {
+                if (skeleton) skeleton.classList.add('opacity-0');
+            }, 4500);
+        }
+
+        initHeroLoader();
+
+        // High-Reliability Card Photo Preloader with Mirror Chain
         let cardPhoto = null;
+        let cardMirrorIndex = 0;
+
         function getCardPhoto() {
             if (!cardPhoto) {
                 cardPhoto = new Image();
                 cardPhoto.crossOrigin = 'anonymous';
                 cardPhoto.referrerPolicy = 'no-referrer';
-                cardPhoto.src = 'https://i.postimg.cc/QdWk7XJK/JUN00139.jpg';
+                cardPhoto.src = CARD_MIRRORS[cardMirrorIndex];
+
+                cardPhoto.onerror = function() {
+                    cardMirrorIndex++;
+                    if (cardMirrorIndex < CARD_MIRRORS.length) {
+                        this.src = CARD_MIRRORS[cardMirrorIndex];
+                    }
+                };
             }
             return cardPhoto;
         }
@@ -771,15 +840,25 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById('days').innerText = String(days).padStart(2, '0');
-                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+                const dEl = document.getElementById('days');
+                const hEl = document.getElementById('hours');
+                const mEl = document.getElementById('minutes');
+                const sEl = document.getElementById('seconds');
+
+                if (dEl) dEl.innerText = String(days).padStart(2, '0');
+                if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+                if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+                if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
             } else {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
+                const dEl = document.getElementById('days');
+                const hEl = document.getElementById('hours');
+                const mEl = document.getElementById('minutes');
+                const sEl = document.getElementById('seconds');
+
+                if (dEl) dEl.innerText = '00';
+                if (hEl) hEl.innerText = '00';
+                if (mEl) mEl.innerText = '00';
+                if (sEl) sEl.innerText = '00';
             }
         }
 
@@ -796,23 +875,23 @@
                 const invEl = document.querySelector('input[name="entry.1164108255"]:checked');
 
                 lastSubmittedData = {
-                    name: document.getElementById('entry_name').value || '',
-                    phone: document.getElementById('entry_phone').value || '',
+                    name: document.getElementById('entry_name') ? document.getElementById('entry_name').value : '',
+                    phone: document.getElementById('entry_phone') ? document.getElementById('entry_phone').value : '',
                     relationship: relEl ? relEl.value : '',
                     attendance: attEl ? attEl.value : '',
                     guests: gstEl ? gstEl.value : '1',
                     special: vegEl ? vegEl.value : '0',
                     invitation: invEl ? invEl.value : '',
-                    address: document.getElementById('entry_address').value || '',
-                    email: document.getElementById('entry_email').value || '',
-                    blessings: document.getElementById('entry_blessings').value || ''
+                    address: document.getElementById('entry_address') ? document.getElementById('entry_address').value : '',
+                    email: document.getElementById('entry_email') ? document.getElementById('entry_email').value : '',
+                    blessings: document.getElementById('entry_blessings') ? document.getElementById('entry_blessings').value : ''
                 };
             } catch (e) {
                 console.log('Capture form data error:', e);
             }
         }
 
-        // 3. Form Interactivity & Dynamic Field Logic
+        // 3. Form Dynamic Field Logic
         function handleInvitationChange() {
             try {
                 const invRadio = document.querySelector('input[name="entry.1164108255"]:checked');
@@ -827,7 +906,6 @@
                 if (!isAttending) {
                     if (addressGroup) addressGroup.classList.add('hidden');
                     if (addressInput) { addressInput.disabled = true; addressInput.required = false; }
-
                     if (emailGroup) emailGroup.classList.add('hidden');
                     if (emailInput) { emailInput.disabled = true; emailInput.required = false; }
                     return;
@@ -838,19 +916,16 @@
                 if (val === '我要紙本喜帖！') {
                     if (addressGroup) addressGroup.classList.remove('hidden');
                     if (addressInput) { addressInput.disabled = false; addressInput.required = true; }
-
                     if (emailGroup) emailGroup.classList.add('hidden');
                     if (emailInput) { emailInput.disabled = true; emailInput.required = false; }
                 } else if (val === '我要電子喜帖！') {
                     if (emailGroup) emailGroup.classList.remove('hidden');
                     if (emailInput) { emailInput.disabled = false; emailInput.required = true; }
-
                     if (addressGroup) addressGroup.classList.add('hidden');
                     if (addressInput) { addressInput.disabled = true; addressInput.required = false; }
                 } else {
                     if (addressGroup) addressGroup.classList.add('hidden');
                     if (addressInput) { addressInput.disabled = true; addressInput.required = false; }
-
                     if (emailGroup) emailGroup.classList.add('hidden');
                     if (emailInput) { emailInput.disabled = true; emailInput.required = false; }
                 }
@@ -903,6 +978,7 @@
 
         // 4. DOM Ready & Event Setup
         document.addEventListener('DOMContentLoaded', function() {
+            // IntersectionObserver for Reveal Animations
             const revealElements = document.querySelectorAll('.reveal');
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
@@ -955,7 +1031,7 @@
             });
         });
 
-        // 5. Form submission handling & modal controls
+        // 5. Form submission triggers card preview
         function onFormSubmitted() {
             renderAndPreviewCard();
             
@@ -1009,11 +1085,9 @@
             ctx.imageSmoothingQuality = 'high';
 
             const renderCanvasContent = () => {
-                // Background Fill
                 ctx.fillStyle = '#fcfaf7';
                 ctx.fillRect(0, 0, width, height);
 
-                // Double Border Frame
                 ctx.strokeStyle = '#d4a373';
                 ctx.lineWidth = 2;
                 ctx.strokeRect(20, 20, width - 40, height - 40);
@@ -1022,7 +1096,6 @@
                 ctx.lineWidth = 1;
                 ctx.strokeRect(28, 28, width - 56, height - 56);
 
-                // Photo Header
                 const photoX = 45;
                 const photoY = 45;
                 const photoW = width - 90;
@@ -1060,7 +1133,6 @@
                 }
                 ctx.restore();
 
-                // Subtle Border around Photo
                 ctx.strokeStyle = '#e8ded5';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
@@ -1071,7 +1143,6 @@
                 }
                 ctx.stroke();
 
-                // Header Card Box
                 const headerY = photoY + photoH + 20;
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
@@ -1084,7 +1155,6 @@
                 ctx.strokeStyle = '#e8ded5';
                 ctx.stroke();
 
-                // Title Section: Chinese "昇廷 & 瑋伶"
                 ctx.textAlign = 'center';
                 ctx.fillStyle = '#d4a373';
                 ctx.font = '600 24px "Noto Serif TC", serif';
@@ -1098,7 +1168,6 @@
                 ctx.font = '15px "Noto Serif TC", serif';
                 ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 104);
 
-                // Data Card Container
                 const dataY = headerY + 145;
                 const dataH = height - dataY - 65;
                 ctx.fillStyle = '#ffffff';
@@ -1112,7 +1181,6 @@
                 ctx.strokeStyle = '#e8ded5';
                 ctx.stroke();
 
-                // Data List Construction
                 const isAttending = lastSubmittedData.attendance.includes('出席！');
                 const dataRows = [
                     { label: '姓名 / Name', value: lastSubmittedData.name },
@@ -1133,7 +1201,6 @@
                     }
                 }
 
-                // Render Data Rows
                 ctx.textAlign = 'left';
                 let currentY = dataY + 48;
                 const labelX = 80;
@@ -1158,7 +1225,6 @@
                     currentY += rowGap;
                 });
 
-                // Blessings Render
                 if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
                     ctx.fillStyle = '#7a726d';
                     ctx.font = '600 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
@@ -1186,13 +1252,11 @@
                     ctx.fillText(line, labelX, textY);
                 }
 
-                // Footer Watermark
                 ctx.textAlign = 'center';
                 ctx.fillStyle = '#8da399';
                 ctx.font = '15px "Cormorant Garamond", serif';
                 ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
 
-                // Export JPG Data URL for Preview Modal
                 const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
                 showImagePreviewModal(jpgDataUrl);
             };
@@ -1213,7 +1277,7 @@
             }
         }
 
-        // 7. Background Music Controller (YouTube Iframe API)
+        // 7. Background Music Controller (YouTube API)
         var player;
         var isPlaying = false;
         var playerReady = false;
@@ -1247,7 +1311,6 @@
                 event.target.playVideo(); 
             } catch (e) {}
 
-            // Passive user interaction audio unlock
             const audioEvents = ['click', 'touchstart', 'pointerdown'];
             const unlockAudio = () => {
                 if (player && typeof player.playVideo === 'function') {
@@ -1261,7 +1324,6 @@
             });
         }
 
-        // Asynchronously load YouTube Iframe API
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
