@@ -2,14 +2,14 @@
 <html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- Critical Referrer Policy: Prevents Postimg CDN from blocking images with 403 Forbidden -->
-    <meta name="referrer" content="no-referrer">
     <!-- Strict Mobile Viewport Guard: Prevents auto-zoom coordinate shift on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <!-- Prevent image hotlinking blocks from free image hosts like postimg -->
+    <meta name="referrer" content="no-referrer">
     <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
     
     <!-- Critical Network Preconnects & High-Priority Preloads -->
-    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="preconnect" href="https://i.postimg.cc">
     <link rel="dns-prefetch" href="https://i.postimg.cc">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,11 +126,12 @@
             animation: spinSlow 8s linear infinite;
         }
 
+        /* Prevent iOS drag & drop while preserving native image touch behavior */
         #previewImage {
             -webkit-touch-callout: default !important;
             -webkit-user-select: auto !important;
             user-select: auto !important;
-            -webkit-user-drag: none !important;
+            -webkit-drag: none !important;
         }
 
         /* Radio Button Heart State Switch */
@@ -175,7 +176,6 @@
         <i id="musicIcon" class="fa-solid fa-music text-base sm:text-lg"></i>
     </button>
 
-    <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-morandi-gold/20 transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20">
@@ -202,16 +202,26 @@
         </div>
     </nav>
 
-    <!-- Hero Banner with Direct Image Tag for 100% Reliable Loading on iOS -->
-    <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20">
-        <div class="absolute inset-0 overflow-hidden bg-morandi-sand">
-            <img src="https://i.postimg.cc/hhFqrq7Y/JUN00091.jpg" 
-                 alt="昇廷 & 瑋伶 婚紗照" 
-                 referrerpolicy="no-referrer"
-                 fetchpriority="high"
-                 class="w-full h-full object-cover object-[center_30%] transform scale-105 transition-transform duration-7000 ease-out">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85"></div>
+    <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
+        <!-- Hero Loading Skeleton (Displayed while image loads) -->
+        <div id="heroSkeleton" class="absolute inset-0 bg-[#322e2b] flex flex-col items-center justify-center transition-opacity duration-700 z-0">
+            <div class="w-10 h-10 border-2 border-morandi-gold/30 border-t-morandi-gold rounded-full animate-spin"></div>
+            <p class="font-en text-xs tracking-widest text-morandi-sand/60 mt-3 uppercase">Loading photo...</p>
         </div>
+
+        <!-- High Priority Native Img with Smooth Fade-in -->
+        <img id="heroCoverImg"
+             src="https://i.postimg.cc/hhFqrq7Y/JUN00091.jpg"
+             alt="昇廷 & 瑋伶 婚紗照"
+             fetchpriority="high"
+             decoding="async"
+             referrerpolicy="no-referrer"
+             onload="this.classList.remove('opacity-0'); document.getElementById('heroSkeleton').classList.add('opacity-0', 'pointer-events-none');"
+             onerror="this.onerror=null; console.warn('Hero image failed to load');"
+             class="absolute inset-0 w-full h-full object-cover object-[center_30%] scale-105 transition-all duration-1000 opacity-0 z-0 select-none pointer-events-none">
+
+        <!-- Elegant Romantic Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-morandi-dark/85 z-[1] pointer-events-none"></div>
 
         <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8">
             <p class="font-en text-lg sm:text-2xl md:text-3xl italic tracking-widest font-light text-morandi-sand/90">
@@ -240,7 +250,6 @@
         </a>
     </section>
 
-    <!-- Countdown Section -->
     <section id="countdown-section" class="py-20 px-4 bg-morandi-cream border-b border-morandi-border/50 relative">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest mb-2">COUNTDOWN</h2>
@@ -274,7 +283,6 @@
         </div>
     </section>
 
-    <!-- Our Story Section -->
     <section id="about" class="py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
         <div class="max-w-3xl mx-auto text-center space-y-8 reveal">
             <span class="font-en text-sm tracking-[0.3em] text-morandi-sage uppercase">Our Story</span>
@@ -304,7 +312,6 @@
         </div>
     </section>
 
-    <!-- Details Section -->
     <section id="details" class="py-24 px-4 bg-morandi-sand/40 relative">
         <div class="max-w-3xl mx-auto reveal">
             <div class="text-center mb-12">
@@ -408,7 +415,6 @@
         </div>
     </section>
 
-    <!-- RSVP Section -->
     <section id="rsvp" class="py-24 px-4 bg-morandi-cream relative z-10">
         <div class="max-w-2xl mx-auto reveal">
             <div class="text-center mb-12">
@@ -418,16 +424,13 @@
 
             <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
                 
-                <!-- Active Iframe for secondary submission guarantee -->
-                <iframe name="hidden_iframe" 
-                        id="hidden_iframe" 
-                        class="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none -z-50"></iframe>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onFormSubmitted();}"></iframe>
 
                 <form id="rsvpForm" 
                       action="https://docs.google.com/forms/d/e/1FAIpQLSd7n5Nb2WA-le41Y4iJV-tQyYJBa047lWtEi7lPsF9y0icP0A/formResponse" 
                       method="POST" 
                       target="hidden_iframe" 
-                      onsubmit="handleFormSubmission(event)" 
+                      onsubmit="captureFormData(); submitted=true;" 
                       class="space-y-6">
 
                     <!-- Field 1: Name -->
@@ -534,7 +537,7 @@
                         </div>
                     </div>
 
-                    <!-- Field 5: Guests Count -->
+                    <!-- Field 5: Guests Count Pills -->
                     <div id="guestCountGroup" class="hidden transition-all duration-300">
                         <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
                             參加午宴人數（含本人） <span class="font-en font-normal text-morandi-muted text-xs">/ GUESTS</span> <span class="text-rose-400">*</span>
@@ -657,10 +660,10 @@
                             <label for="entry_address" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 紙本喜帖寄件地址（記得加上郵遞區號喔） <span class="font-en font-normal text-morandi-muted text-xs">/ MAILING ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text"
-                                   id="entry_address"
-                                   name="entry.707135055"
-                                   placeholder="請輸入喜帖寄送地址"
+                            <input type="text" 
+                                   id="entry_address" 
+                                   name="entry.707135055" 
+                                   placeholder="請輸入喜帖寄送地址" 
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
 
@@ -669,12 +672,12 @@
                             <label for="entry_email" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
                                 電子喜帖寄件信箱 <span class="font-en font-normal text-morandi-muted text-xs">/ EMAIL ADDRESS</span> <span class="text-rose-400">*</span>
                             </label>
-                            <input type="email"
-                                   id="entry_email"
-                                   name="entry.1040384663"
-                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）"
-                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                   title="請填寫格式正確的 Email 信箱"
+                            <input type="email" 
+                                   id="entry_email" 
+                                   name="entry.1040384663" 
+                                   placeholder="請輸入您的 Email 信箱（例：name@example.com）" 
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                                   title="請填寫格式正確的 Email 信箱" 
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
                     </div>
@@ -691,13 +694,13 @@
                                   class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark resize-none"></textarea>
                     </div>
 
-                    <!-- Submit Button with Dynamic Status -->
+                    <!-- Submit Button -->
                     <div class="pt-4">
                         <button type="submit" 
                                 id="submitBtn" 
                                 class="w-full py-4 rounded-full bg-morandi-gold text-white font-medium text-sm tracking-widest hover:bg-[#c29263] transition duration-300 shadow-md focus:outline-none flex items-center justify-center space-x-2 cursor-pointer min-h-[50px]">
-                            <span id="submitBtnText">送出回函 SUBMIT</span>
-                            <i id="submitBtnIcon" class="fa-solid fa-paper-plane text-xs"></i>
+                            <span>送出回函 SUBMIT</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
                         </button>
                     </div>
 
@@ -706,60 +709,26 @@
         </div>
     </section>
 
-    <!-- Direct Preview Modal (Guaranteed to pop up on every iOS Safari version) -->
-    <div id="imagePreviewModal" class="hidden fixed inset-0 -z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white rounded-3xl p-4 sm:p-6 max-w-md w-full text-center space-y-3 sm:space-y-4 shadow-2xl transform scale-90 transition-transform duration-300 max-h-[92vh] flex flex-col" id="previewModalCard">
-            
-            <div class="flex items-center justify-between pb-2 sm:pb-3 border-b border-morandi-border/60 flex-shrink-0">
+    <!-- Direct Image Preview Modal -->
+    <div id="imagePreviewModal" class="hidden fixed inset-0 -z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-center space-y-4 shadow-2xl transform scale-90 transition-transform duration-300 max-h-[90vh] flex flex-col" id="previewModalCard">
+            <div class="flex items-center justify-between pb-3 border-b border-morandi-border/60">
                 <div class="text-left">
-                    <h3 class="text-base sm:text-lg font-serifTC font-bold text-morandi-dark flex items-center gap-1.5">
+                    <h3 class="text-base sm:text-lg font-serifTC font-bold text-morandi-dark flex items-center gap-2">
                         <i class="fa-solid fa-circle-check text-morandi-sage"></i> 回函已成功送出！
                     </h3>
-                    <p class="text-[11px] sm:text-xs text-morandi-muted mt-0.5">感謝您的祝福，以下為您的回函確認卡片</p>
+                    <p class="text-xs text-morandi-muted mt-0.5">感謝您的祝福，以下為您的回函確認卡片，可以長按下載圖片喔！</p>
                 </div>
-                <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-2 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer">
+                <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-1.5 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <!-- Scrollable Content Area: Supports both Canvas Generated Image & Native High-Res DOM Card -->
-            <div class="overflow-y-auto flex-1 my-1 rounded-2xl border border-morandi-border/50 bg-morandi-sand/20 p-1 sm:p-2">
-                
-                <!-- 1. Canvas Image Output (Visible when Canvas toDataURL succeeds) -->
-                <img id="previewImage" src="" alt="回函確認卡" class="w-full h-auto rounded-xl shadow-sm block mx-auto pointer-events-auto hidden">
-
-                <!-- 2. Native High-Res Morandi DOM Card (100% Safe Fallback that NEVER fails on iOS Safari) -->
-                <div id="domCardContainer" class="bg-[#fcfaf7] border-2 border-morandi-gold p-4 sm:p-5 rounded-2xl text-left space-y-4 shadow-sm">
-                    <div class="w-full h-44 sm:h-52 rounded-xl overflow-hidden relative shadow-inner bg-morandi-sand">
-                        <img src="https://i.postimg.cc/QdWk7XJK/JUN00139.jpg" 
-                             alt="昇廷 & 瑋伶" 
-                             referrerpolicy="no-referrer"
-                             class="w-full h-full object-cover object-[center_35%]">
-                        <div class="absolute inset-0 bg-gradient-to-t from-morandi-dark/50 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-2 left-3 text-white font-en text-xs tracking-widest uppercase">
-                            I WANNA BE YOUR LIGHT
-                        </div>
-                    </div>
-
-                    <div class="text-center py-1 border-b border-morandi-border">
-                        <h4 class="font-serifTC font-semibold text-lg text-morandi-dark">昇廷 <span class="text-morandi-gold font-en font-light">&amp;</span> 瑋伶</h4>
-                        <p class="text-xs text-morandi-gold font-medium mt-0.5">婚禮出席回函確認</p>
-                        <p class="text-[11px] text-morandi-muted font-serifTC mt-0.5">2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳</p>
-                    </div>
-
-                    <div id="domCardDetails" class="space-y-2 text-xs sm:text-sm text-morandi-dark">
-                        <!-- Filled dynamically -->
-                    </div>
-
-                    <div class="pt-2 text-center text-[10px] sm:text-xs font-en text-morandi-sage tracking-widest border-t border-morandi-border">
-                        S &amp; W • 2027 WEDDING INVITATION
-                    </div>
-                </div>
-
+            <div class="overflow-y-auto flex-1 my-1 rounded-2xl border border-morandi-border/50 bg-morandi-sand/20 p-1">
+                <img id="previewImage" src="" alt="回函確認卡" class="w-full h-auto rounded-xl shadow-sm block mx-auto pointer-events-auto">
             </div>
 
-            <div class="pt-2 flex flex-col gap-2 flex-shrink-0">
-                <p id="cardSaveTip" class="text-[11px] text-morandi-muted">提示：長按上方卡片可儲存到手機相簿</p>
+            <div class="pt-2 flex justify-center">
                 <button onclick="closePreviewModal()" class="w-full py-3 rounded-full bg-morandi-gold text-white text-xs font-medium tracking-widest hover:bg-[#c29263] transition shadow-md cursor-pointer">
                     關閉視窗 CLOSE
                 </button>
@@ -767,7 +736,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="py-12 bg-morandi-dark text-white/80 text-center text-xs tracking-widest space-y-3">
         <p class="font-en text-lg text-morandi-sand font-light">Sheng-Ting &amp; Wei-Ling</p>
         <p class="text-morandi-muted">I WANNA BE YOUR LIGHT . 2027</p>
@@ -775,12 +743,15 @@
     </footer>
 
     <script>
+        var submitted = false;
         var lastSubmittedData = null;
-        let cardPhoto = null;
 
+        // Lazy-loaded Card Photo Preloader
+        let cardPhoto = null;
         function getCardPhoto() {
             if (!cardPhoto) {
                 cardPhoto = new Image();
+                cardPhoto.crossOrigin = 'anonymous';
                 cardPhoto.referrerPolicy = 'no-referrer';
                 cardPhoto.src = 'https://i.postimg.cc/QdWk7XJK/JUN00139.jpg';
             }
@@ -825,59 +796,23 @@
                 const invEl = document.querySelector('input[name="entry.1164108255"]:checked');
 
                 lastSubmittedData = {
-                    name: (document.getElementById('entry_name').value || '').trim(),
-                    phone: (document.getElementById('entry_phone').value || '').trim(),
+                    name: document.getElementById('entry_name').value || '',
+                    phone: document.getElementById('entry_phone').value || '',
                     relationship: relEl ? relEl.value : '',
                     attendance: attEl ? attEl.value : '',
                     guests: gstEl ? gstEl.value : '1',
                     special: vegEl ? vegEl.value : '0',
                     invitation: invEl ? invEl.value : '',
-                    address: (document.getElementById('entry_address').value || '').trim(),
-                    email: (document.getElementById('entry_email').value || '').trim(),
-                    blessings: (document.getElementById('entry_blessings').value || '').trim()
+                    address: document.getElementById('entry_address').value || '',
+                    email: document.getElementById('entry_email').value || '',
+                    blessings: document.getElementById('entry_blessings').value || ''
                 };
             } catch (e) {
-                console.warn('Capture form data error:', e);
+                console.log('Capture form data error:', e);
             }
         }
 
-        function handleFormSubmission(event) {
-            // 1. Capture current values immediately
-            captureFormData();
-
-            // 2. Dual Submission Guarantee:
-            // WebKit Safari 18+ restricts cross-domain iframe onload/post events under ITP.
-            // Using fetch with mode: 'no-cors' sends data reliably in the background without depending on iframe lifecycle.
-            const form = event.target || document.getElementById('rsvpForm');
-            if (form && window.FormData) {
-                try {
-                    const formData = new FormData(form);
-                    fetch(form.action, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        body: formData
-                    }).catch(err => {
-                        console.info('Background fetch dispatch:', err);
-                    });
-                } catch (e) {
-                    console.warn('FormData fetch fallback triggered:', e);
-                }
-            }
-
-            // 3. Update button status gracefully without disabling synchronously
-            const submitBtn = document.getElementById('submitBtn');
-            const submitBtnText = document.getElementById('submitBtnText');
-            const submitBtnIcon = document.getElementById('submitBtnIcon');
-
-            if (submitBtnText) submitBtnText.innerText = '回函已送出！';
-            if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-check text-xs';
-
-            // 4. Pop up the confirmation card IMMEDIATELY (Zero delay, immune to network timeout)
-            setTimeout(() => {
-                showConfirmationCard();
-            }, 100);
-        }
-
+        // 3. Form Interactivity & Dynamic Field Logic
         function handleInvitationChange() {
             try {
                 const invRadio = document.querySelector('input[name="entry.1164108255"]:checked');
@@ -920,7 +855,7 @@
                     if (emailInput) { emailInput.disabled = true; emailInput.required = false; }
                 }
             } catch (e) {
-                console.warn('Handle invitation change error:', e);
+                console.log('Handle invitation change error:', e);
             }
         }
 
@@ -962,10 +897,11 @@
                     handleInvitationChange();
                 }
             } catch (e) {
-                console.warn('Handle attendance change error:', e);
+                console.log('Handle attendance change error:', e);
             }
         }
 
+        // 4. DOM Ready & Event Setup
         document.addEventListener('DOMContentLoaded', function() {
             const revealElements = document.querySelectorAll('.reveal');
             if ('IntersectionObserver' in window) {
@@ -1014,105 +950,25 @@
 
             handleAttendanceChange();
 
-            // Prefetch photo with referrerepolicy flag
             window.addEventListener('load', () => {
-                setTimeout(getCardPhoto, 600);
+                setTimeout(getCardPhoto, 1000);
             });
         });
 
-        function showConfirmationCard() {
-            if (!lastSubmittedData) return;
-
-            // Fill Native DOM Card (Always succeeds 100%, perfectly formatted)
-            const detailsEl = document.getElementById('domCardDetails');
-            const isAttending = lastSubmittedData.attendance.includes('出席！');
-
-            let html = `
-                <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                    <span class="text-morandi-muted font-medium">姓名</span>
-                    <span class="font-semibold text-morandi-dark">${lastSubmittedData.name || '-'}</span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                    <span class="text-morandi-muted font-medium">電話</span>
-                    <span class="font-semibold text-morandi-dark">${lastSubmittedData.phone || '-'}</span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                    <span class="text-morandi-muted font-medium">親友關係</span>
-                    <span class="font-semibold text-morandi-dark">${lastSubmittedData.relationship || '-'}</span>
-                </div>
-                <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                    <span class="text-morandi-muted font-medium">出席意願</span>
-                    <span class="font-semibold text-morandi-dark">${lastSubmittedData.attendance || '-'}</span>
-                </div>
-            `;
-
-            if (isAttending) {
-                html += `
-                    <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                        <span class="text-morandi-muted font-medium">參加人數</span>
-                        <span class="font-semibold text-morandi-dark">${lastSubmittedData.guests} 人</span>
-                    </div>
-                    <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                        <span class="text-morandi-muted font-medium">素食需求</span>
-                        <span class="font-semibold text-morandi-dark">${lastSubmittedData.special} 份</span>
-                    </div>
-                    <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                        <span class="text-morandi-muted font-medium">喜帖索取</span>
-                        <span class="font-semibold text-morandi-dark">${lastSubmittedData.invitation}</span>
-                    </div>
-                `;
-
-                if (lastSubmittedData.invitation === '我要紙本喜帖！' && lastSubmittedData.address) {
-                    html += `
-                        <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                            <span class="text-morandi-muted font-medium">寄件地址</span>
-                            <span class="font-semibold text-morandi-dark text-right text-xs max-w-[65%]">${lastSubmittedData.address}</span>
-                        </div>
-                    `;
-                } else if (lastSubmittedData.invitation === '我要電子喜帖！' && lastSubmittedData.email) {
-                    html += `
-                        <div class="flex justify-between py-1 border-b border-morandi-border/60">
-                            <span class="text-morandi-muted font-medium">寄件信箱</span>
-                            <span class="font-semibold text-morandi-dark text-right text-xs max-w-[65%]">${lastSubmittedData.email}</span>
-                        </div>
-                    `;
-                }
-            }
-
-            if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
-                html += `
-                    <div class="pt-2">
-                        <span class="text-morandi-muted font-medium block text-xs mb-1">對新人的祝福：</span>
-                        <p class="italic text-morandi-dark bg-morandi-sand/30 p-2.5 rounded-xl border border-morandi-border/60 text-xs leading-relaxed">
-                            "${lastSubmittedData.blessings}"
-                        </p>
-                    </div>
-                `;
-            }
-
-            if (detailsEl) detailsEl.innerHTML = html;
-
-            // Open Modal Immediately
-            const modal = document.getElementById('imagePreviewModal');
-            const modalCard = document.getElementById('previewModalCard');
-            if (modal && modalCard) {
-                modal.classList.remove('hidden', '-z-50', 'opacity-0', 'pointer-events-none');
-                modal.classList.add('z-50', 'opacity-100');
-                modalCard.classList.remove('scale-90');
-                modalCard.classList.add('scale-100');
-            }
-
-            // Attempt Canvas Render in Background (Allows long-press to save image if iOS WebKit permits)
-            tryRenderCanvasCard();
+        // 5. Form submission handling & modal controls
+        function onFormSubmitted() {
+            renderAndPreviewCard();
+            
+            const form = document.getElementById('rsvpForm');
+            if (form) form.reset();
+            handleAttendanceChange();
+            submitted = false;
         }
 
         function closePreviewModal() {
             const modal = document.getElementById('imagePreviewModal');
             const modalCard = document.getElementById('previewModalCard');
-            if (modalCard) {
-                modalCard.classList.remove('scale-100');
-                modalCard.classList.add('scale-90');
-            }
+            if (modalCard) modalCard.classList.remove('scale-100'), modalCard.classList.add('scale-90');
             if (modal) {
                 modal.classList.add('opacity-0', 'pointer-events-none');
                 setTimeout(() => {
@@ -1122,18 +978,37 @@
             }
         }
 
-        function tryRenderCanvasCard() {
-            try {
-                const photoImg = getCardPhoto();
-                const width = 800;
-                const height = 1380;
-                const canvas = document.createElement('canvas');
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx.imageSmoothingEnabled = true;
-                ctx.imageSmoothingQuality = 'high';
+        function showImagePreviewModal(jpgDataUrl) {
+            const modal = document.getElementById('imagePreviewModal');
+            const modalCard = document.getElementById('previewModalCard');
+            const previewImage = document.getElementById('previewImage');
 
+            if (previewImage) previewImage.src = jpgDataUrl;
+
+            if (modal && modalCard) {
+                modal.classList.remove('hidden', '-z-50', 'opacity-0', 'pointer-events-none');
+                modal.classList.add('z-50', 'opacity-100');
+                modalCard.classList.remove('scale-90');
+                modalCard.classList.add('scale-100');
+            }
+        }
+
+        // 6. High-Design Canvas Card Generator
+        function renderAndPreviewCard() {
+            if (!lastSubmittedData) return;
+
+            const photoImg = getCardPhoto();
+
+            const width = 800;
+            const height = 1380;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            const renderCanvasContent = () => {
                 // Background Fill
                 ctx.fillStyle = '#fcfaf7';
                 ctx.fillRect(0, 0, width, height);
@@ -1147,7 +1022,7 @@
                 ctx.lineWidth = 1;
                 ctx.strokeRect(28, 28, width - 56, height - 56);
 
-                // Photo Header Box
+                // Photo Header
                 const photoX = 45;
                 const photoY = 45;
                 const photoW = width - 90;
@@ -1156,43 +1031,32 @@
 
                 ctx.save();
                 ctx.beginPath();
-                if (ctx.roundRect) ctx.roundRect(photoX, photoY, photoW, photoH, radius);
-                else ctx.rect(photoX, photoY, photoW, photoH);
+                if (ctx.roundRect) {
+                    ctx.roundRect(photoX, photoY, photoW, photoH, radius);
+                } else {
+                    ctx.rect(photoX, photoY, photoW, photoH);
+                }
                 ctx.clip();
 
-                let photoPainted = false;
-                if (photoImg && photoImg.complete && photoImg.naturalWidth > 0) {
-                    try {
-                        const nW = photoImg.naturalWidth;
-                        const nH = photoImg.naturalHeight;
-                        const containerRatio = photoW / photoH;
-                        const imgRatio = nW / nH;
-                        let sX = 0, sY = 0, sW = nW, sH = nH;
+                const nW = photoImg.naturalWidth || photoImg.width;
+                const nH = photoImg.naturalHeight || photoImg.height;
 
-                        if (imgRatio > containerRatio) {
-                            sW = nH * containerRatio;
-                            sX = (nW - sW) / 2;
-                        } else {
-                            sH = nW / containerRatio;
-                            sY = Math.max(0, (nH - sH) * 0.45);
-                        }
-                        ctx.drawImage(photoImg, sX, sY, sW, sH, photoX, photoY, photoW, photoH);
-                        photoPainted = true;
-                    } catch (drawErr) {
-                        console.warn('Direct photo draw deferred:', drawErr);
+                if (photoImg.complete && nW > 0 && nH > 0) {
+                    const imgRatio = nW / nH;
+                    const containerRatio = photoW / photoH;
+                    let sX = 0, sY = 0, sW = nW, sH = nH;
+
+                    if (imgRatio > containerRatio) {
+                        sW = nH * containerRatio;
+                        sX = (nW - sW) / 2;
+                    } else {
+                        sH = nW / containerRatio;
+                        sY = Math.max(0, (nH - sH) * 0.45);
                     }
-                }
-
-                if (!photoPainted) {
+                    ctx.drawImage(photoImg, sX, sY, sW, sH, photoX, photoY, photoW, photoH);
+                } else {
                     ctx.fillStyle = '#f5eee6';
                     ctx.fillRect(photoX, photoY, photoW, photoH);
-                    ctx.fillStyle = '#d4a373';
-                    ctx.font = 'italic 72px "Cormorant Garamond", serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('S  &  W', width / 2, photoY + 210);
-                    ctx.fillStyle = '#8da399';
-                    ctx.font = '16px "Cormorant Garamond", serif';
-                    ctx.fillText('I WANNA BE YOUR LIGHT', width / 2, photoY + 260);
                 }
                 ctx.restore();
 
@@ -1200,21 +1064,27 @@
                 ctx.strokeStyle = '#e8ded5';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
-                if (ctx.roundRect) ctx.roundRect(photoX, photoY, photoW, photoH, radius);
-                else ctx.rect(photoX, photoY, photoW, photoH);
+                if (ctx.roundRect) {
+                    ctx.roundRect(photoX, photoY, photoW, photoH, radius);
+                } else {
+                    ctx.rect(photoX, photoY, photoW, photoH);
+                }
                 ctx.stroke();
 
                 // Header Card Box
                 const headerY = photoY + photoH + 20;
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
-                if (ctx.roundRect) ctx.roundRect(45, headerY, width - 90, 125, 16);
-                else ctx.rect(45, headerY, width - 90, 125);
+                if (ctx.roundRect) {
+                    ctx.roundRect(45, headerY, width - 90, 125, 16);
+                } else {
+                    ctx.rect(45, headerY, width - 90, 125);
+                }
                 ctx.fill();
                 ctx.strokeStyle = '#e8ded5';
                 ctx.stroke();
 
-                // Title
+                // Title Section: Chinese "昇廷 & 瑋伶"
                 ctx.textAlign = 'center';
                 ctx.fillStyle = '#d4a373';
                 ctx.font = '600 24px "Noto Serif TC", serif';
@@ -1228,17 +1098,21 @@
                 ctx.font = '15px "Noto Serif TC", serif';
                 ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 104);
 
-                // Data Container
+                // Data Card Container
                 const dataY = headerY + 145;
                 const dataH = height - dataY - 65;
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
-                if (ctx.roundRect) ctx.roundRect(45, dataY, width - 90, dataH, 16);
-                else ctx.rect(45, dataY, width - 90, dataH);
+                if (ctx.roundRect) {
+                    ctx.roundRect(45, dataY, width - 90, dataH, 16);
+                } else {
+                    ctx.rect(45, dataY, width - 90, dataH);
+                }
                 ctx.fill();
                 ctx.strokeStyle = '#e8ded5';
                 ctx.stroke();
 
+                // Data List Construction
                 const isAttending = lastSubmittedData.attendance.includes('出席！');
                 const dataRows = [
                     { label: '姓名 / Name', value: lastSubmittedData.name },
@@ -1259,6 +1133,7 @@
                     }
                 }
 
+                // Render Data Rows
                 ctx.textAlign = 'left';
                 let currentY = dataY + 48;
                 const labelX = 80;
@@ -1267,11 +1142,11 @@
 
                 dataRows.forEach(row => {
                     ctx.fillStyle = '#7a726d';
-                    ctx.font = '500 17px system-ui, -apple-system, sans-serif';
+                    ctx.font = '500 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
                     ctx.fillText(row.label, labelX, currentY);
 
                     ctx.fillStyle = '#221f1e';
-                    ctx.font = '600 19px system-ui, -apple-system, sans-serif';
+                    ctx.font = '600 19px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
                     ctx.fillText(row.value, valueX, currentY);
 
                     ctx.strokeStyle = '#f5eee6';
@@ -1283,13 +1158,14 @@
                     currentY += rowGap;
                 });
 
+                // Blessings Render
                 if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
                     ctx.fillStyle = '#7a726d';
-                    ctx.font = '600 17px system-ui, -apple-system, sans-serif';
+                    ctx.font = '600 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
                     ctx.fillText('對新人的祝福', labelX, currentY + 8);
 
                     ctx.fillStyle = '#221f1e';
-                    ctx.font = 'normal 500 18px system-ui, -apple-system, sans-serif';
+                    ctx.font = 'normal 500 18px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
 
                     const words = ('"' + lastSubmittedData.blessings + '"').split('');
                     let line = '';
@@ -1316,28 +1192,28 @@
                 ctx.font = '15px "Cormorant Garamond", serif';
                 ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
 
-                // Export JPG Data URL (Safe check against Safari SecurityError)
+                // Export JPG Data URL for Preview Modal
                 const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
-                const previewImg = document.getElementById('previewImage');
-                const domCard = document.getElementById('domCardContainer');
+                showImagePreviewModal(jpgDataUrl);
+            };
 
-                if (previewImg && jpgDataUrl) {
-                    previewImg.src = jpgDataUrl;
-                    previewImg.classList.remove('hidden');
-                    if (domCard) domCard.classList.add('hidden');
+            const triggerRender = () => {
+                if ('decode' in photoImg) {
+                    photoImg.decode().then(renderCanvasContent).catch(renderCanvasContent);
+                } else {
+                    renderCanvasContent();
                 }
-            } catch (canvasErr) {
-                // If iOS 18 Safari flags tainted canvas, silently fallback to DOM card (Zero crash, 100% visible)
-                console.info('Canvas SecurityError handled smoothly; native DOM card active:', canvasErr);
-                const previewImg = document.getElementById('previewImage');
-                const domCard = document.getElementById('domCardContainer');
-                const saveTip = document.getElementById('cardSaveTip');
-                if (previewImg) previewImg.classList.add('hidden');
-                if (domCard) domCard.classList.remove('hidden');
-                if (saveTip) saveTip.innerText = '提示：您可以截圖保留此確認卡片';
+            };
+
+            if (photoImg.complete && photoImg.naturalWidth > 0) {
+                triggerRender();
+            } else {
+                photoImg.onload = triggerRender;
+                photoImg.onerror = renderCanvasContent;
             }
         }
 
+        // 7. Background Music Controller (YouTube Iframe API)
         var player;
         var isPlaying = false;
         var playerReady = false;
@@ -1371,6 +1247,7 @@
                 event.target.playVideo(); 
             } catch (e) {}
 
+            // Passive user interaction audio unlock
             const audioEvents = ['click', 'touchstart', 'pointerdown'];
             const unlockAudio = () => {
                 if (player && typeof player.playVideo === 'function') {
@@ -1384,6 +1261,7 @@
             });
         }
 
+        // Asynchronously load YouTube Iframe API
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
