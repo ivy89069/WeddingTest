@@ -22,16 +22,17 @@
     </script>
 
     <!-- Critical Network Preconnects & High-Priority Preloads -->
+    <link rel="preconnect" href="https://images.weserv.nl" crossorigin>
+    <link rel="dns-prefetch" href="https://images.weserv.nl">
     <link rel="preconnect" href="https://api.imghippo.com" crossorigin>
     <link rel="dns-prefetch" href="https://api.imghippo.com">
-    <link rel="preconnect" href="https://images.weserv.nl" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Preload Hero Banner & Confirmation Card Photo -->
-    <link rel="preload" as="image" href="https://api.imghippo.com/files/NYEd5903YqA.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://api.imghippo.com/files/mEIg4529WbI.jpg" fetchpriority="high">
+    <!-- Ultra-Fast Preloads (Optimized CDN WebP for instant render) -->
+    <link rel="preload" as="image" href="https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FNYEd5903YqA.jpg&w=1600&q=82&output=webp" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FmEIg4529WbI.jpg&w=900&q=85&output=webp" fetchpriority="high">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -98,18 +99,18 @@
             image-rendering: -webkit-optimize-contrast;
             transform: translateZ(0);
             backface-visibility: hidden;
+            transition: opacity 0.5s ease-in-out;
         }
 
-        /* Long-press touch optimization for mobile image saving */
-        #previewImage {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: high-quality;
-            touch-action: auto !important;
+        /* 100% Native Mobile Long-Press Image Saving Rule */
+        .native-save-image {
             -webkit-touch-callout: default !important;
+            touch-action: pan-y !important;
             -webkit-user-select: auto !important;
             user-select: auto !important;
             -webkit-user-drag: auto !important;
             pointer-events: auto !important;
+            cursor: pointer;
         }
 
         .glass-nav {
@@ -230,8 +231,10 @@
 
     <!-- Hero Banner -->
     <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20">
-        <div class="absolute inset-0 bg-morandi-sand transform scale-105 transition-transform duration-7000 ease-out high-res-bg"
-             style="background-image: url('https://api.imghippo.com/files/NYEd5903YqA.jpg'); background-position: center 30%;">
+        <!-- High-speed compressed CDN background with original quality -->
+        <div id="heroBackground"
+             class="absolute inset-0 bg-morandi-sand transform scale-105 transition-transform duration-7000 ease-out high-res-bg"
+             style="background-image: url('https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FNYEd5903YqA.jpg&w=1600&q=82&output=webp'); background-position: center 30%;">
             <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85"></div>
         </div>
 
@@ -727,55 +730,37 @@
     <!-- Direct Image Preview Modal (No download buttons, pure long-press saving) -->
     <div id="imagePreviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-center space-y-4 shadow-2xl transform scale-90 transition-transform duration-300 max-h-[90vh] flex flex-col" id="previewModalCard">
+            
+            <!-- Modal Header -->
             <div class="flex items-center justify-between pb-3 border-b border-morandi-border/60">
                 <div class="text-left">
                     <h3 class="text-base sm:text-lg font-serifTC font-bold text-morandi-dark flex items-center gap-2">
                         <i class="fa-solid fa-circle-check text-morandi-sage"></i> 回函已成功送出！
                     </h3>
-                    <p class="text-xs text-morandi-muted mt-0.5">感謝您的祝福！請「長按下方卡片」即可儲存到手機相簿喔！</p>
+                    <p class="text-xs text-morandi-gold font-medium mt-1">
+                        <i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i> 請「長按下方卡片」儲存至手機相簿
+                    </p>
                 </div>
-                <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-1.5 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer">
+                <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-1.5 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer" aria-label="Close modal">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <!-- Android IG / Mobile Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-2 pt-1" id="cardActionButtons">
-                <button onclick="downloadOrShareCard()" 
-                        id="saveCardBtn"
-                        type="button"
-                        class="flex-1 py-3 px-4 rounded-xl bg-morandi-gold text-white text-xs font-semibold tracking-wider hover:bg-[#c29263] transition shadow flex items-center justify-center gap-1.5 cursor-pointer active:scale-98">
-                    <i class="fa-solid fa-download"></i>
-                    <span>儲存 / 分享卡片</span>
-                </button>
-                <button onclick="openInChrome()" 
-                        id="openInChromeBtn"
-                        type="button"
-                        class="hidden flex-1 py-3 px-4 rounded-xl bg-[#4285F4] text-white text-xs font-semibold tracking-wider hover:bg-[#3367d6] transition shadow flex items-center justify-center gap-1.5 cursor-pointer active:scale-98">
-                    <i class="fa-brands fa-chrome"></i>
-                    <span>在 Chrome 開啟儲存</span>
-                </button>
-            </div>
-
-            <!-- Instagram Android In-App Notice Box -->
-            <div id="igNoticeBox" class="hidden text-[11px] text-amber-800 bg-amber-50/90 border border-amber-200 rounded-xl p-2.5 text-left leading-relaxed">
-                <div class="flex items-start gap-1.5">
-                    <i class="fa-solid fa-circle-info text-amber-600 mt-0.5 flex-shrink-0"></i>
-                    <div>
-                        <strong>IG 瀏覽器提醒：</strong>若「長按」或「儲存」無反應，請點擊上方<strong>「在 Chrome 開啟儲存」</strong>，或點選畫面右上角<strong>「⋯」選「在瀏覽器中開啟」</strong>即可順利存入相簿！
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card Display Area -->
+            <!-- Card Display Area: Optimized solely for native long-press save -->
             <div class="overflow-y-auto flex-1 my-1 rounded-2xl border border-morandi-border/50 bg-morandi-sand/20 p-2 text-left">
-                <!-- 1. Canvas Rendered Image (Long-press save supported) -->
-                <img id="previewImage" src="" alt="回函確認卡" class="w-full h-auto rounded-xl shadow-sm block mx-auto pointer-events-auto">
+                
+                <!-- 1. Real Image Output with unconstrained native touch callout for iOS/Android/IG/LINE -->
+                <div class="relative group">
+                    <img id="previewImage" 
+                         src="" 
+                         alt="回函確認卡（長按即可儲存）" 
+                         class="native-save-image w-full h-auto rounded-xl shadow-sm block mx-auto">
+                </div>
 
-                <!-- 2. High-Definition DOM Fallback Card (in case of device canvas security lock) -->
+                <!-- 2. Fallback Card in case canvas is locked -->
                 <div id="fallbackCard" class="hidden bg-[#fcfaf7] rounded-2xl p-4 border-2 border-morandi-gold/60 shadow-sm space-y-4">
                     <div class="w-full h-56 rounded-xl overflow-hidden shadow-sm relative bg-morandi-sand">
-                        <img src="https://api.imghippo.com/files/mEIg4529WbI.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
+                        <img src="https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FmEIg4529WbI.jpg&w=900&q=85&output=webp" alt="婚紗照" class="native-save-image w-full h-full object-cover object-center">
                     </div>
                     <div class="bg-white rounded-xl p-3 border border-morandi-border text-center">
                         <p class="text-morandi-gold font-serifTC text-base font-semibold">昇廷 &amp; 瑋伶</p>
@@ -808,18 +793,11 @@
         var modalShown = false;
         var lastSubmittedData = null;
 
-        /* In-App Browser & OS Detection */
-        const ua = navigator.userAgent || '';
-        const isAndroid = /Android/i.test(ua);
-        const isInstagram = /Instagram/i.test(ua);
-        const isFB = /FBAN|FBAV/i.test(ua);
+        /* High-speed CDN URLs for seamless loading */
+        const FAST_HERO_URL = 'https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FNYEd5903YqA.jpg&w=1600&q=82&output=webp';
+        const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=https%3A%2F%2Fapi.imghippo.com%2Ffiles%2FmEIg4529WbI.jpg&w=900&q=90&output=jpg';
 
-        /* Card Blob and Data URL Cache */
-        let currentCardBlob = null;
-        let currentCardDataUrl = '';
-
-        /* Confirmation Card Photo Preloader with CORS Proxy */
-        const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('api.imghippo.com/files/mEIg4529WbI.jpg') + '&output=jpg&q=100';
+        /* Confirmation Card Photo Preloader */
         let cardPhoto = null;
         function getCardPhoto() {
             if (!cardPhoto) {
@@ -1119,19 +1097,11 @@
             const modalCard = document.getElementById('previewModalCard');
             const previewImage = document.getElementById('previewImage');
             const fallbackCard = document.getElementById('fallbackCard');
-            const openInChromeBtn = document.getElementById('openInChromeBtn');
-            const igNoticeBox = document.getElementById('igNoticeBox');
 
             if (previewImage && jpgDataUrl) {
                 previewImage.src = jpgDataUrl;
                 previewImage.classList.remove('hidden');
                 if (fallbackCard) fallbackCard.classList.add('hidden');
-            }
-
-            // Display Android IG specific buttons & notice
-            if (isAndroid && (isInstagram || isFB)) {
-                if (openInChromeBtn) openInChromeBtn.classList.remove('hidden');
-                if (igNoticeBox) igNoticeBox.classList.remove('hidden');
             }
 
             if (modal && modalCard) {
@@ -1143,73 +1113,6 @@
                     modalCard.classList.add('scale-100');
                 });
             }
-        }
-
-        /* Save / Web Share API Handler */
-        async function downloadOrShareCard() {
-            const filename = (lastSubmittedData && lastSubmittedData.name ? lastSubmittedData.name + '_' : '') + '婚禮出席回函確認卡.jpg';
-
-            if (!currentCardBlob && currentCardDataUrl) {
-                try {
-                    const res = await fetch(currentCardDataUrl);
-                    currentCardBlob = await res.blob();
-                } catch (e) {
-                    console.log('Blob fetch error:', e);
-                }
-            }
-
-            // 1. Try Native Web Share API (Triggers system bottom sheet with 'Save to Gallery' on Android)
-            if (currentCardBlob && navigator.canShare) {
-                try {
-                    const file = new File([currentCardBlob], filename, { type: 'image/jpeg' });
-                    if (navigator.canShare({ files: [file] })) {
-                        await navigator.share({
-                            files: [file],
-                            title: '昇廷 & 瑋伶 婚禮出席回函確認',
-                            text: '這是我的婚禮出席回函確認卡！'
-                        });
-                        return;
-                    }
-                } catch (err) {
-                    if (err.name === 'AbortError') return;
-                    console.log('Web share aborted or unsupported, falling back to download:', err);
-                }
-            }
-
-            // 2. Direct Anchor Download Fallback
-            try {
-                const link = document.createElement('a');
-                link.download = filename;
-                link.href = currentCardDataUrl || (currentCardBlob ? URL.createObjectURL(currentCardBlob) : '');
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } catch (err) {
-                console.log('Download trigger error:', err);
-            }
-        }
-
-        /* Launch Native Android Chrome with Confirmation Data */
-        function openInChrome() {
-            if (!lastSubmittedData) return;
-            const params = new URLSearchParams({
-                viewCard: '1',
-                name: lastSubmittedData.name || '',
-                phone: lastSubmittedData.phone || '',
-                relationship: lastSubmittedData.relationship || '',
-                attendance: lastSubmittedData.attendance || '',
-                guests: lastSubmittedData.guests || '1',
-                special: lastSubmittedData.special || '0',
-                invitation: lastSubmittedData.invitation || '',
-                address: lastSubmittedData.address || '',
-                email: lastSubmittedData.email || '',
-                blessings: lastSubmittedData.blessings || ''
-            });
-            const targetUrl = window.location.origin + window.location.pathname + '?' + params.toString();
-            const cleanTarget = targetUrl.replace(/^https?:\/\//, '');
-            // Android Intent syntax to explicitly launch Chrome
-            const intentUrl = 'intent://' + cleanTarget + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(targetUrl) + ';end';
-            window.location.href = intentUrl;
         }
 
         function showFallbackDOMCard() {
@@ -1461,16 +1364,8 @@
                     ctx.font = '15px "Cormorant Garamond", serif';
                     ctx.fillText('I WANNA BE YOUR LIGHT   •   2027 WEDDING INVITATION', width / 2, height - 38);
 
-                    // Cache High-quality JPEG data URL & Blob
-                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
-                    currentCardDataUrl = jpgDataUrl;
-
-                    if (canvas.toBlob) {
-                        canvas.toBlob(blob => {
-                            currentCardBlob = blob;
-                        }, 'image/jpeg', 1.0);
-                    }
-
+                    // High-quality standard JPEG data URL for universal native long-press saving
+                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
                     showImagePreviewModal(jpgDataUrl);
                 } catch (err) {
                     console.warn('Canvas render or export failed, triggering DOM fallback:', err);
