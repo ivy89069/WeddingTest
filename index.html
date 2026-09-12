@@ -739,6 +739,34 @@
                 </button>
             </div>
 
+            <!-- Android IG / Mobile Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-2 pt-1" id="cardActionButtons">
+                <button onclick="downloadOrShareCard()" 
+                        id="saveCardBtn"
+                        type="button"
+                        class="flex-1 py-3 px-4 rounded-xl bg-morandi-gold text-white text-xs font-semibold tracking-wider hover:bg-[#c29263] transition shadow flex items-center justify-center gap-1.5 cursor-pointer active:scale-98">
+                    <i class="fa-solid fa-download"></i>
+                    <span>儲存 / 分享卡片</span>
+                </button>
+                <button onclick="openInChrome()" 
+                        id="openInChromeBtn"
+                        type="button"
+                        class="hidden flex-1 py-3 px-4 rounded-xl bg-[#4285F4] text-white text-xs font-semibold tracking-wider hover:bg-[#3367d6] transition shadow flex items-center justify-center gap-1.5 cursor-pointer active:scale-98">
+                    <i class="fa-brands fa-chrome"></i>
+                    <span>在 Chrome 開啟儲存</span>
+                </button>
+            </div>
+
+            <!-- Instagram Android In-App Notice Box -->
+            <div id="igNoticeBox" class="hidden text-[11px] text-amber-800 bg-amber-50/90 border border-amber-200 rounded-xl p-2.5 text-left leading-relaxed">
+                <div class="flex items-start gap-1.5">
+                    <i class="fa-solid fa-circle-info text-amber-600 mt-0.5 flex-shrink-0"></i>
+                    <div>
+                        <strong>IG 瀏覽器提醒：</strong>若「長按」或「儲存」無反應，請點擊上方<strong>「在 Chrome 開啟儲存」</strong>，或點選畫面右上角<strong>「⋯」選「在瀏覽器中開啟」</strong>即可順利存入相簿！
+                    </div>
+                </div>
+            </div>
+
             <!-- Card Display Area -->
             <div class="overflow-y-auto flex-1 my-1 rounded-2xl border border-morandi-border/50 bg-morandi-sand/20 p-2 text-left">
                 <!-- 1. Canvas Rendered Image (Long-press save supported) -->
@@ -779,6 +807,16 @@
         var submitted = false;
         var modalShown = false;
         var lastSubmittedData = null;
+
+        /* In-App Browser & OS Detection */
+        const ua = navigator.userAgent || '';
+        const isAndroid = /Android/i.test(ua);
+        const isInstagram = /Instagram/i.test(ua);
+        const isFB = /FBAN|FBAV/i.test(ua);
+
+        /* Card Blob and Data URL Cache */
+        let currentCardBlob = null;
+        let currentCardDataUrl = '';
 
         /* Confirmation Card Photo Preloader with CORS Proxy */
         const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('api.imghippo.com/files/mEIg4529WbI.jpg') + '&output=jpg&q=100';
@@ -998,6 +1036,30 @@
             window.addEventListener('load', () => {
                 setTimeout(getCardPhoto, 300);
             });
+
+            // Check if page was opened in Chrome with viewCard parameter
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('viewCard') === '1') {
+                    lastSubmittedData = {
+                        name: urlParams.get('name') || '',
+                        phone: urlParams.get('phone') || '',
+                        relationship: urlParams.get('relationship') || '',
+                        attendance: urlParams.get('attendance') || '',
+                        guests: urlParams.get('guests') || '1',
+                        special: urlParams.get('special') || '0',
+                        invitation: urlParams.get('invitation') || '',
+                        address: urlParams.get('address') || '',
+                        email: urlParams.get('email') || '',
+                        blessings: urlParams.get('blessings') || ''
+                    };
+                    setTimeout(() => {
+                        renderAndPreviewCard();
+                    }, 500);
+                }
+            } catch (err) {
+                console.log('Parse URL viewCard error:', err);
+            }
         });
 
         /* 5. Bulletproof Form Submission Handler: Guaranteeing POST Dispatch & Card Popup */
@@ -1057,11 +1119,19 @@
             const modalCard = document.getElementById('previewModalCard');
             const previewImage = document.getElementById('previewImage');
             const fallbackCard = document.getElementById('fallbackCard');
+            const openInChromeBtn = document.getElementById('openInChromeBtn');
+            const igNoticeBox = document.getElementById('igNoticeBox');
 
             if (previewImage && jpgDataUrl) {
                 previewImage.src = jpgDataUrl;
                 previewImage.classList.remove('hidden');
                 if (fallbackCard) fallbackCard.classList.add('hidden');
+            }
+
+            // Display Android IG specific buttons & notice
+            if (isAndroid && (isInstagram || isFB)) {
+                if (openInChromeBtn) openInChromeBtn.classList.remove('hidden');
+                if (igNoticeBox) igNoticeBox.classList.remove('hidden');
             }
 
             if (modal && modalCard) {
@@ -1073,6 +1143,73 @@
                     modalCard.classList.add('scale-100');
                 });
             }
+        }
+
+        /* Save / Web Share API Handler */
+        async function downloadOrShareCard() {
+            const filename = (lastSubmittedData && lastSubmittedData.name ? lastSubmittedData.name + '_' : '') + '婚禮出席回函確認卡.jpg';
+
+            if (!currentCardBlob && currentCardDataUrl) {
+                try {
+                    const res = await fetch(currentCardDataUrl);
+                    currentCardBlob = await res.blob();
+                } catch (e) {
+                    console.log('Blob fetch error:', e);
+                }
+            }
+
+            // 1. Try Native Web Share API (Triggers system bottom sheet with 'Save to Gallery' on Android)
+            if (currentCardBlob && navigator.canShare) {
+                try {
+                    const file = new File([currentCardBlob], filename, { type: 'image/jpeg' });
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: '昇廷 & 瑋伶 婚禮出席回函確認',
+                            text: '這是我的婚禮出席回函確認卡！'
+                        });
+                        return;
+                    }
+                } catch (err) {
+                    if (err.name === 'AbortError') return;
+                    console.log('Web share aborted or unsupported, falling back to download:', err);
+                }
+            }
+
+            // 2. Direct Anchor Download Fallback
+            try {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = currentCardDataUrl || (currentCardBlob ? URL.createObjectURL(currentCardBlob) : '');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (err) {
+                console.log('Download trigger error:', err);
+            }
+        }
+
+        /* Launch Native Android Chrome with Confirmation Data */
+        function openInChrome() {
+            if (!lastSubmittedData) return;
+            const params = new URLSearchParams({
+                viewCard: '1',
+                name: lastSubmittedData.name || '',
+                phone: lastSubmittedData.phone || '',
+                relationship: lastSubmittedData.relationship || '',
+                attendance: lastSubmittedData.attendance || '',
+                guests: lastSubmittedData.guests || '1',
+                special: lastSubmittedData.special || '0',
+                invitation: lastSubmittedData.invitation || '',
+                address: lastSubmittedData.address || '',
+                email: lastSubmittedData.email || '',
+                blessings: lastSubmittedData.blessings || ''
+            });
+            const targetUrl = window.location.origin + window.location.pathname + '?' + params.toString();
+            const cleanTarget = targetUrl.replace(/^https?:\/\//, '');
+            // Android Intent syntax to explicitly launch Chrome
+            const intentUrl = 'intent://' + cleanTarget + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(targetUrl) + ';end';
+            window.location.href = intentUrl;
         }
 
         function showFallbackDOMCard() {
@@ -1324,8 +1461,16 @@
                     ctx.font = '15px "Cormorant Garamond", serif';
                     ctx.fillText('I WANNA BE YOUR LIGHT   •   2027 WEDDING INVITATION', width / 2, height - 38);
 
-                    // High-quality JPEG output (data URL)
+                    // Cache High-quality JPEG data URL & Blob
                     const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
+                    currentCardDataUrl = jpgDataUrl;
+
+                    if (canvas.toBlob) {
+                        canvas.toBlob(blob => {
+                            currentCardBlob = blob;
+                        }, 'image/jpeg', 1.0);
+                    }
+
                     showImagePreviewModal(jpgDataUrl);
                 } catch (err) {
                     console.warn('Canvas render or export failed, triggering DOM fallback:', err);
