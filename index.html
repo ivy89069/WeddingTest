@@ -22,15 +22,16 @@
     </script>
 
     <!-- Critical Network Preconnects & High-Priority Preloads -->
-    <link rel="preconnect" href="https://i.meee.com.tw" crossorigin>
-    <link rel="dns-prefetch" href="https://i.meee.com.tw">
+    <link rel="preconnect" href="https://api.imghippo.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.imghippo.com">
+    <link rel="preconnect" href="https://images.weserv.nl" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Preload Hero Banner & Confirmation Card Photo -->
-    <link rel="preload" as="image" href="https://i.meee.com.tw/sx3BNyg.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://i.meee.com.tw/GNBHXkP.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://api.imghippo.com/files/NYEd5903YqA.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://api.imghippo.com/files/mEIg4529WbI.jpg" fetchpriority="high">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -230,7 +231,7 @@
     <!-- Hero Banner -->
     <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20">
         <div class="absolute inset-0 bg-morandi-sand transform scale-105 transition-transform duration-7000 ease-out high-res-bg"
-             style="background-image: url('https://i.meee.com.tw/sx3BNyg.jpg'); background-position: center 30%;">
+             style="background-image: url('https://api.imghippo.com/files/NYEd5903YqA.jpg'); background-position: center 30%;">
             <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85"></div>
         </div>
 
@@ -746,7 +747,7 @@
                 <!-- 2. High-Definition DOM Fallback Card (in case of device canvas security lock) -->
                 <div id="fallbackCard" class="hidden bg-[#fcfaf7] rounded-2xl p-4 border-2 border-morandi-gold/60 shadow-sm space-y-4">
                     <div class="w-full h-56 rounded-xl overflow-hidden shadow-sm relative bg-morandi-sand">
-                        <img src="https://i.meee.com.tw/GNBHXkP.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
+                        <img src="https://api.imghippo.com/files/mEIg4529WbI.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
                     </div>
                     <div class="bg-white rounded-xl p-3 border border-morandi-border text-center">
                         <p class="text-morandi-gold font-serifTC text-base font-semibold">昇廷 &amp; 瑋伶</p>
@@ -779,8 +780,8 @@
         var modalShown = false;
         var lastSubmittedData = null;
 
-        /* Confirmation Card Photo Preloader */
-        const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('i.meee.com.tw/GNBHXkP.jpg') + '&output=jpg&q=100';
+        /* Confirmation Card Photo Preloader with CORS Proxy */
+        const CORS_PHOTO_URL = 'https://images.weserv.nl/?url=' + encodeURIComponent('api.imghippo.com/files/mEIg4529WbI.jpg') + '&output=jpg&q=100';
         let cardPhoto = null;
         function getCardPhoto() {
             if (!cardPhoto) {
@@ -1005,13 +1006,11 @@
             submitted = true;
             modalShown = false;
 
-            // Give user immediate visual response without disabling button (disabling button synchronously aborts form POST)
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnIcon = document.getElementById('submitBtnIcon');
             if (submitBtnText) submitBtnText.innerText = '處理中，請稍候...';
             if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
 
-            // Guaranteed Fallback Trigger: If iframe cross-domain onload is blocked by browser, trigger modal reliably
             setTimeout(() => {
                 if (submitted && !modalShown) {
                     onFormSubmitted();
@@ -1046,7 +1045,6 @@
                 }, 300);
             }
             
-            // Cleanly reset form after guest closes confirmation card
             const form = document.getElementById('rsvpForm');
             if (form) form.reset();
             handleAttendanceChange();
@@ -1222,7 +1220,7 @@
                     ctx.textAlign = 'center';
                     ctx.fillStyle = '#d4a373';
                     ctx.font = '600 24px "Noto Serif TC", serif';
-                    ctx.fillText('昇廷  &  瑋伶', width / 2, headerY + 38);
+                    ctx.fillText('昇廷   &   瑋伶', width / 2, headerY + 38);
 
                     ctx.fillStyle = '#3d3835';
                     ctx.font = 'bold 26px "Noto Serif TC", serif';
@@ -1324,7 +1322,7 @@
                     ctx.textAlign = 'center';
                     ctx.fillStyle = '#8da399';
                     ctx.font = '15px "Cormorant Garamond", serif';
-                    ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
+                    ctx.fillText('I WANNA BE YOUR LIGHT   •   2027 WEDDING INVITATION', width / 2, height - 38);
 
                     // High-quality JPEG output (data URL)
                     const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0);
