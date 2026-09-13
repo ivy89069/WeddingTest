@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
     
-    <!-- LINE Android In-App Browser Auto Redirect Guard -->
+    <!-- Android In-App Browser Auto Redirect Guard (LINE, Instagram, Facebook) -->
     <script>
         (function() {
-            var ua = navigator.userAgent || '';
-            var isLine = /Line\//i.test(ua) || /Line/i.test(ua);
+            var ua = navigator.userAgent || navigator.vendor || window.opera || '';
             var isAndroid = /Android/i.test(ua);
-            // Android LINE WebView suppresses long-press save menu on dynamic images.
-            // Redirecting with ?openExternalBrowser=1 opens native Android Chrome where long-press save is 100% supported.
+            var isLine = /Line/i.test(ua);
+            var isInstagram = /Instagram/i.test(ua);
+            var isFB = /FB_IAB|FB4A|FBAV/i.test(ua);
+
+            // Android LINE WebView redirect
             if (isAndroid && isLine && !window.location.search.includes('openExternalBrowser=1')) {
                 var currentUrl = window.location.href;
                 var separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
                 window.location.replace(currentUrl + separator + 'openExternalBrowser=1');
+                return;
+            }
+
+            // Android Instagram / FB WebView strictly suppresses long-press save menu on dynamic images.
+            // Automatically breakout to Native Chrome using Android Intent
+            if (isAndroid && (isInstagram || isFB) && !window.location.search.includes('noredirect=1')) {
+                var cleanUrl = window.location.href.replace(/https?:\/\//, '');
+                var chromeIntent = 'intent://' + cleanUrl + '#Intent;scheme=https;package=com.android.chrome;end';
+                window.location.href = chromeIntent;
             }
         })();
     </script>
@@ -738,12 +749,22 @@
                         <i class="fa-solid fa-circle-check text-morandi-sage"></i> 回函已成功送出！
                     </h3>
                     <p class="text-xs text-morandi-gold font-medium mt-1">
-                        <i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i> 請「長按下方卡片」儲存至手機相簿
+                        <i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i> 感謝您的祝福！請「長按下方卡片」即可儲存到手機相簿喔！
                     </p>
                 </div>
                 <button onclick="closePreviewModal()" class="text-morandi-muted hover:text-morandi-dark p-1.5 focus:outline-none rounded-full hover:bg-morandi-sand/50 transition cursor-pointer" aria-label="Close modal">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
+            </div>
+
+            <!-- In-App Browser (Instagram) Warning Tip (Hidden on Chrome/Safari) -->
+            <div id="igTipBanner" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-2.5 text-left text-xs text-amber-800">
+                <p class="font-medium flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-info text-amber-500"></i> IG 提示：若長按無反應
+                </p>
+                <p class="text-[11px] text-amber-700/90 mt-0.5 leading-relaxed">
+                    請點右上角「<span class="font-bold">⋯</span>」或「<span class="font-bold">⋮</span>」選「<span class="font-bold underline">在系統瀏覽器 / Chrome 開啟</span>」即可長按儲存。
+                </p>
             </div>
 
             <!-- Card Display Area: Optimized solely for native long-press save -->
@@ -1097,6 +1118,18 @@
             const modalCard = document.getElementById('previewModalCard');
             const previewImage = document.getElementById('previewImage');
             const fallbackCard = document.getElementById('fallbackCard');
+            const igTipBanner = document.getElementById('igTipBanner');
+
+            // Detect if still inside Instagram / FB in-app browser
+            const ua = navigator.userAgent || '';
+            const isInstagramOrFB = /Instagram|FB_IAB|FB4A|FBAV/i.test(ua);
+            if (igTipBanner) {
+                if (isInstagramOrFB) {
+                    igTipBanner.classList.remove('hidden');
+                } else {
+                    igTipBanner.classList.add('hidden');
+                }
+            }
 
             if (previewImage && jpgDataUrl) {
                 previewImage.src = jpgDataUrl;
