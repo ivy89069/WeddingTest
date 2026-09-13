@@ -90,16 +90,14 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* High-Definition Banner Styling */
-        .high-res-bg {
-            background-size: cover;
-            background-repeat: no-repeat;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: high-quality;
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-            backface-visibility: hidden;
+        /* High-Definition Smooth Anti-Aliasing Rendering */
+        .smooth-render {
+            image-rendering: auto;
+            image-rendering: smooth;
+            -ms-interpolation-mode: bicubic;
+            -webkit-font-smoothing: antialiased;
             -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         /* 100% Native Mobile Long-Press Image Saving Rule */
@@ -232,12 +230,17 @@
         </nav>
 
         <!-- Hero Banner -->
-        <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20">
-            <!-- Native full-res background -->
-            <div id="heroBackground"
-                 class="absolute inset-0 bg-morandi-sand high-res-bg"
-                 style="background-image: url('https://api.imghippo.com/files/NYEd5903YqA.jpg'); background-position: center 30%;">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85"></div>
+        <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
+            <!-- Native full-res image with smooth bicubic anti-aliasing -->
+            <div class="absolute inset-0 overflow-hidden bg-morandi-sand">
+                <img id="heroImage"
+                     src="https://api.imghippo.com/files/NYEd5903YqA.jpg"
+                     alt="昇廷 & 瑋伶 婚紗封面照"
+                     fetchpriority="high"
+                     decoding="async"
+                     class="w-full h-full object-cover object-[center_30%] smooth-render transition-opacity duration-700 opacity-0"
+                     onload="this.classList.remove('opacity-0')">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85 pointer-events-none"></div>
             </div>
 
             <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8">
@@ -997,6 +1000,12 @@
             }
 
             handleAttendanceChange();
+
+            // Ensure cached hero image fades in immediately
+            const heroImg = document.getElementById('heroImage');
+            if (heroImg && heroImg.complete) {
+                heroImg.classList.remove('opacity-0');
+            }
 
             // Preload card photo after load
             window.addEventListener('load', () => {
