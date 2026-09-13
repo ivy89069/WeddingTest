@@ -5,41 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
     
-    <!-- Android In-App Browser Auto Redirect Guard (LINE, Instagram, Facebook) -->
+    <!-- LINE Android In-App Browser Auto Redirect Guard (Safe Query Param Only) -->
     <script>
         (function() {
             var ua = navigator.userAgent || navigator.vendor || window.opera || '';
             var isAndroid = /Android/i.test(ua);
             var isLine = /Line/i.test(ua);
-            var isInstagram = /Instagram/i.test(ua);
-            var isFB = /FB_IAB|FB4A|FBAV/i.test(ua);
 
-            // Android LINE WebView redirect
+            // LINE Android external browser redirect (safe URL query trigger)
             if (isAndroid && isLine && !window.location.search.includes('openExternalBrowser=1')) {
                 var currentUrl = window.location.href;
                 var separator = currentUrl.indexOf('?') > -1 ? '&' : '?';
                 window.location.replace(currentUrl + separator + 'openExternalBrowser=1');
-                return;
-            }
-
-            // Android Instagram / FB WebView strictly suppresses long-press save menu on dynamic images.
-            // Automatically breakout to Native Chrome using Android Intent
-            if (isAndroid && (isInstagram || isFB) && !window.location.search.includes('noredirect=1')) {
-                var cleanUrl = window.location.href.replace(/https?:\/\//, '');
-                var chromeIntent = 'intent://' + cleanUrl + '#Intent;scheme=https;package=com.android.chrome;end';
-                window.location.href = chromeIntent;
             }
         })();
     </script>
 
-    <!-- Critical Network Preconnects & High-Priority Preloads -->
+    <!-- Critical Network Preconnects -->
     <link rel="preconnect" href="https://api.imghippo.com" crossorigin>
     <link rel="dns-prefetch" href="https://api.imghippo.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Ultra-Fast Preloads (Native High-Resolution Images for Retina / High-DPI screens) -->
+    <!-- Direct High-Resolution Preloads (Original Stable URLs) -->
     <link rel="preload" as="image" href="https://api.imghippo.com/files/NYEd5903YqA.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="https://api.imghippo.com/files/mEIg4529WbI.jpg" fetchpriority="high">
 
@@ -106,9 +95,11 @@
             background-size: cover;
             background-repeat: no-repeat;
             image-rendering: -webkit-optimize-contrast;
+            image-rendering: high-quality;
             transform: translateZ(0);
+            -webkit-transform: translateZ(0);
             backface-visibility: hidden;
-            transition: opacity 0.5s ease-in-out;
+            -webkit-backface-visibility: hidden;
         }
 
         /* 100% Native Mobile Long-Press Image Saving Rule */
@@ -242,9 +233,9 @@
 
         <!-- Hero Banner -->
         <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20">
-            <!-- Native full-res background without quality loss -->
+            <!-- Native full-res background -->
             <div id="heroBackground"
-                 class="absolute inset-0 bg-morandi-sand transform scale-105 transition-transform duration-7000 ease-out high-res-bg"
+                 class="absolute inset-0 bg-morandi-sand high-res-bg"
                  style="background-image: url('https://api.imghippo.com/files/NYEd5903YqA.jpg'); background-position: center 30%;">
                 <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85"></div>
             </div>
@@ -762,7 +753,7 @@
                 </div>
             </div>
 
-            <!-- Standalone Fullscreen Native Image Area (100% Native Mobile Long-Press Image Saving) -->
+            <!-- Standalone Fullscreen Native Image Area -->
             <div class="rounded-3xl overflow-hidden shadow-card border-2 border-morandi-gold/40 bg-white p-2">
                 <img id="confirmationCardImage" 
                      src="" 
@@ -790,7 +781,7 @@
         var navigatedToCard = false;
         var lastSubmittedData = null;
 
-        /* Native high-res URLs without secondary lossy compression */
+        /* Direct image URLs */
         const FAST_HERO_URL = 'https://api.imghippo.com/files/NYEd5903YqA.jpg';
         const CORS_PHOTO_URL = 'https://api.imghippo.com/files/mEIg4529WbI.jpg';
 
@@ -1100,7 +1091,12 @@
             navigatedToCard = false;
 
             try {
-        /* 7. Canvas Confirmation Card Generator (Ultra-HD Retina Optimized) */
+                history.pushState({ page: 'invitation' }, '', window.location.pathname);
+            } catch(e) {}
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* 7. Canvas Confirmation Card Generator */
         function generateCardDataUrl(callback) {
             if (!lastSubmittedData) {
                 callback(null);
@@ -1108,9 +1104,8 @@
             }
 
             const photoImg = getCardPhoto();
-            // Upgraded to 1200x2070 Ultra-HD canvas for razor-sharp rendering on Retina/3x mobile screens
-            const width = 1200;
-            const height = 2070;
+            const width = 1080;
+            const height = 1860;
             const canvas = document.createElement('canvas');
             canvas.width = width;
             canvas.height = height;
@@ -1128,18 +1123,18 @@
                     // Double Border Frame
                     ctx.strokeStyle = '#d4a373';
                     ctx.lineWidth = 3;
-                    ctx.strokeRect(30, 30, width - 60, height - 60);
+                    ctx.strokeRect(25, 25, width - 50, height - 50);
 
                     ctx.strokeStyle = '#e8ded5';
                     ctx.lineWidth = 1.5;
-                    ctx.strokeRect(42, 42, width - 84, height - 84);
+                    ctx.strokeRect(36, 36, width - 72, height - 72);
 
                     // Photo Header
-                    const photoX = 65;
-                    const photoY = 65;
-                    const photoW = width - 130;
-                    const photoH = 600;
-                    const radius = 24;
+                    const photoX = 55;
+                    const photoY = 55;
+                    const photoW = width - 110;
+                    const photoH = 540;
+                    const radius = 20;
 
                     ctx.save();
                     ctx.beginPath();
@@ -1184,14 +1179,14 @@
                     ctx.stroke();
 
                     // Header Card Box
-                    const headerY = photoY + photoH + 30;
-                    const headerH = 185;
+                    const headerY = photoY + photoH + 25;
+                    const headerH = 165;
                     ctx.fillStyle = '#ffffff';
                     ctx.beginPath();
                     if (ctx.roundRect) {
-                        ctx.roundRect(65, headerY, width - 130, headerH, 24);
+                        ctx.roundRect(55, headerY, width - 110, headerH, 20);
                     } else {
-                        ctx.rect(65, headerY, width - 130, headerH);
+                        ctx.rect(55, headerY, width - 110, headerH);
                     }
                     ctx.fill();
                     ctx.strokeStyle = '#e8ded5';
@@ -1201,26 +1196,26 @@
                     // Title Section
                     ctx.textAlign = 'center';
                     ctx.fillStyle = '#d4a373';
-                    ctx.font = '600 36px "Noto Serif TC", serif';
-                    ctx.fillText('昇廷   &   瑋伶', width / 2, headerY + 56);
+                    ctx.font = '600 32px "Noto Serif TC", serif';
+                    ctx.fillText('昇廷   &   瑋伶', width / 2, headerY + 50);
 
                     ctx.fillStyle = '#3d3835';
-                    ctx.font = 'bold 38px "Noto Serif TC", serif';
-                    ctx.fillText('婚禮出席回函確認', width / 2, headerY + 110);
+                    ctx.font = 'bold 34px "Noto Serif TC", serif';
+                    ctx.fillText('婚禮出席回函確認', width / 2, headerY + 98);
 
                     ctx.fillStyle = '#7a726d';
-                    ctx.font = '22px "Noto Serif TC", serif';
-                    ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 155);
+                    ctx.font = '20px "Noto Serif TC", serif';
+                    ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 138);
 
                     // Data Card Container
-                    const dataY = headerY + 215;
-                    const dataH = height - dataY - 95;
+                    const dataY = headerY + 190;
+                    const dataH = height - dataY - 80;
                     ctx.fillStyle = '#ffffff';
                     ctx.beginPath();
                     if (ctx.roundRect) {
-                        ctx.roundRect(65, dataY, width - 130, dataH, 24);
+                        ctx.roundRect(55, dataY, width - 110, dataH, 20);
                     } else {
-                        ctx.rect(65, dataY, width - 130, dataH);
+                        ctx.rect(55, dataY, width - 110, dataH);
                     }
                     ctx.fill();
                     ctx.strokeStyle = '#e8ded5';
@@ -1250,25 +1245,25 @@
 
                     // Render Data Rows
                     ctx.textAlign = 'left';
-                    let currentY = dataY + 70;
-                    const labelX = 115;
-                    const valueX = 390;
-                    const rowGap = 72;
+                    let currentY = dataY + 62;
+                    const labelX = 100;
+                    const valueX = 350;
+                    const rowGap = 64;
 
                     dataRows.forEach(row => {
                         ctx.fillStyle = '#7a726d';
-                        ctx.font = '500 25px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.font = '500 23px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
                         ctx.fillText(row.label, labelX, currentY);
 
                         ctx.fillStyle = '#221f1e';
-                        ctx.font = '600 28px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.font = '600 25px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
                         ctx.fillText(row.value, valueX, currentY);
 
                         ctx.strokeStyle = '#f5eee6';
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
-                        ctx.moveTo(labelX, currentY + 20);
-                        ctx.lineTo(width - 115, currentY + 20);
+                        ctx.moveTo(labelX, currentY + 18);
+                        ctx.lineTo(width - 100, currentY + 18);
                         ctx.stroke();
 
                         currentY += rowGap;
@@ -1277,16 +1272,16 @@
                     // Blessings Render
                     if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
                         ctx.fillStyle = '#7a726d';
-                        ctx.font = '600 25px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
-                        ctx.fillText('對新人的祝福', labelX, currentY + 12);
+                        ctx.font = '600 23px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.fillText('對新人的祝福', labelX, currentY + 10);
 
                         ctx.fillStyle = '#221f1e';
-                        ctx.font = 'normal 500 26px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.font = 'normal 500 23px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
 
                         const words = ('"' + lastSubmittedData.blessings + '"').split('');
                         let line = '';
-                        let textY = currentY + 54;
-                        const maxWidth = width - labelX - 120;
+                        let textY = currentY + 48;
+                        const maxWidth = width - labelX - 105;
 
                         for (let n = 0; n < words.length; n++) {
                             let testLine = line + words[n];
@@ -1294,7 +1289,7 @@
                             if (metrics.width > maxWidth && n > 0) {
                                 ctx.fillText(line, labelX, textY);
                                 line = words[n];
-                                textY += 40;
+                                textY += 36;
                             } else {
                                 line = testLine;
                             }
@@ -1305,11 +1300,10 @@
                     // Footer Watermark
                     ctx.textAlign = 'center';
                     ctx.fillStyle = '#8da399';
-                    ctx.font = '22px "Cormorant Garamond", serif';
-                    ctx.fillText('I WANNA BE YOUR LIGHT   •   2027 WEDDING INVITATION', width / 2, height - 55);
+                    ctx.font = '20px "Cormorant Garamond", serif';
+                    ctx.fillText('I WANNA BE YOUR LIGHT   •   2027 WEDDING INVITATION', width / 2, height - 48);
 
-                    // Output at full uncompromised quality
-                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.98);
+                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
                     callback(jpgDataUrl);
                 } catch(e) {
                     console.error('Canvas error:', e);
