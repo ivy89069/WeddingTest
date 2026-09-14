@@ -866,10 +866,16 @@
 
                 if (!isAttending) {
                     if (addressGroup) addressGroup.classList.add('hidden');
-                    if (addressInput) addressInput.required = false;
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = '';
+                    }
 
                     if (emailGroup) emailGroup.classList.add('hidden');
-                    if (emailInput) emailInput.required = false;
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = '';
+                    }
                     return;
                 }
 
@@ -880,19 +886,31 @@
                     if (addressInput) addressInput.required = true;
 
                     if (emailGroup) emailGroup.classList.add('hidden');
-                    if (emailInput) emailInput.required = false;
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = ''; // 清空可能殘留的無效 Email 格式，避免隱藏欄位阻擋表單校驗
+                    }
                 } else if (val === '我要電子喜帖！') {
                     if (emailGroup) emailGroup.classList.remove('hidden');
                     if (emailInput) emailInput.required = true;
 
                     if (addressGroup) addressGroup.classList.add('hidden');
-                    if (addressInput) addressInput.required = false;
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = ''; // 清空地址欄位，保持資料乾淨
+                    }
                 } else {
                     if (addressGroup) addressGroup.classList.add('hidden');
-                    if (addressInput) addressInput.required = false;
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = '';
+                    }
 
                     if (emailGroup) emailGroup.classList.add('hidden');
-                    if (emailInput) emailInput.required = false;
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = '';
+                    }
                 }
             } catch (e) {
                 console.log('Handle invitation change error:', e);
