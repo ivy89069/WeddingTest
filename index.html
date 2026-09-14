@@ -428,7 +428,7 @@
 
                     <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
                         
-                        <!-- Hidden Iframe Target for reliable Form POST -->
+                        <!-- Hidden Iframe Target for reliable Form POST (Single Pipeline) -->
                         <iframe name="hidden_iframe" id="hidden_iframe" style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" onload="if(submitted && !submissionHandled){onFormSubmitted();}"></iframe>
 
                         <form id="rsvpForm" 
@@ -701,7 +701,7 @@
                             <div class="pt-4">
                                 <button type="submit" 
                                         id="submitBtn" 
-                                        class="w-full py-4 rounded-full bg-morandi-gold text-white font-medium text-sm tracking-widest hover:bg-[#c29263] transition duration-300 shadow-md focus:outline-none flex items-center justify-center space-x-2 cursor-pointer min-h-[50px]">
+                                        class="w-full py-4 rounded-full bg-morandi-gold text-white font-medium text-sm tracking-widest hover:bg-[#c29263] transition duration-300 shadow-md focus:outline-none flex items-center justify-center space-x-2 cursor-pointer min-h-[50px] disabled:opacity-60 disabled:cursor-not-allowed">
                                     <span id="submitBtnText">送出回函 SUBMIT</span>
                                     <i id="submitBtnIcon" class="fa-solid fa-paper-plane text-xs"></i>
                                 </button>
@@ -733,11 +733,11 @@
                 <h2 class="text-2xl font-serifTC font-bold text-morandi-dark">回函已成功送出！</h2>
                 <div class="text-xs sm:text-sm text-morandi-gold font-medium space-y-1">
                     <p><i class="fa-solid fa-heart mr-1 text-rose-400"></i>感謝您的祝福！以下是您的回函內容！</p>
-                    <p><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>歡迎截圖或下載留存喔！</p>
+                    <p><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>歡迎長按圖片儲存或截圖留存喔！</p>
                 </div>
             </div>
 
-            <!-- Card Display Frame (Pure native long-press save without download buttons) -->
+            <!-- Card Display Frame -->
             <div class="rounded-2xl border-2 border-morandi-gold/40 shadow-2xl p-2 sm:p-3 bg-white/80 backdrop-blur-sm">
                 <!-- 1. Canvas Rendered Image Element -->
                 <img id="confirmationImage" 
@@ -880,7 +880,7 @@
                     if (addressInput) addressInput.required = true;
 
                     if (emailGroup) emailGroup.classList.add('hidden');
-                    if (emailInput) addressInput.required = false;
+                    if (emailInput) emailInput.required = false;
                 } else if (val === '我要電子喜帖！') {
                     if (emailGroup) emailGroup.classList.remove('hidden');
                     if (emailInput) emailInput.required = true;
@@ -985,29 +985,22 @@
             });
         });
 
-        /* 5. Bulletproof Dual-Pipeline Submission: Guaranteed Google Form Entry & Instant View Transition */
+        /* 5. Fixed Form Submission: Native single POST via hidden_iframe without duplicate fetch */
         function handleFormSubmit(event) {
             captureFormData();
             submitted = true;
             submissionHandled = false;
 
+            const submitBtn = document.getElementById('submitBtn');
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnIcon = document.getElementById('submitBtnIcon');
+
+            if (submitBtn) submitBtn.disabled = true;
             if (submitBtnText) submitBtnText.innerText = '處理中，請稍候...';
             if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
 
-            // Pipeline 1: Async Fetch POST with no-cors
-            try {
-                const form = document.getElementById('rsvpForm');
-                const formData = new FormData(form);
-                fetch(form.action, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: formData
-                }).catch(err => console.log('Fetch no-cors sent'));
-            } catch(e) {}
-
-            // Pipeline 2: Fallback timer to transition smoothly
+            // 【已修復重複發送問題】：原生表單會直接 POST 至 target="hidden_iframe"，故此處不再執行 fetch()。
+            // 保留平滑備用計時器：萬一隱藏 iframe 的 onload 延遲或未觸發，650ms 後平滑切換至確認頁。
             setTimeout(() => {
                 if (submitted && !submissionHandled) {
                     onFormSubmitted();
@@ -1019,8 +1012,11 @@
             if (submissionHandled) return;
             submissionHandled = true;
 
+            const submitBtn = document.getElementById('submitBtn');
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnIcon = document.getElementById('submitBtnIcon');
+
+            if (submitBtn) submitBtn.disabled = false;
             if (submitBtnText) submitBtnText.innerText = '送出回函 SUBMIT';
             if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-paper-plane text-xs';
 
@@ -1054,7 +1050,7 @@
             submissionHandled = false;
         }
 
-        /* 6. High-Definition Canvas Confirmation Card Generator (Classic Format) */
+        /* 6. High-Definition Canvas Confirmation Card Generator */
         function renderConfirmationCard() {
             if (!lastSubmittedData) return;
 
