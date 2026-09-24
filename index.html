@@ -1,1478 +1,1481 @@
-<!-- Critical Network Preconnects for Ultra-Fast Asset Delivery -->
-<link rel="preconnect" href="https://api.imghippo.com" crossorigin>
-<link rel="dns-prefetch" href="https://api.imghippo.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>昇廷 & 瑋伶 婚禮邀請函 | Wedding Invitation</title>
+    
+    <!-- Critical Network Preconnects for Ultra-Fast Asset Delivery -->
+    <link rel="preconnect" href="https://api.imghippo.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.imghippo.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-<!-- High-Priority Preload for Hero Banner and Card Image -->
-<link rel="preload" as="image" href="https://api.imghippo.com/files/NYEd5903YqA.jpg" fetchpriority="high">
-<link rel="preload" as="image" href="https://api.imghippo.com/files/mEIg4529WbI.jpg" fetchpriority="high">
+    <!-- High-Priority Preload for Hero Banner and Card Image -->
+    <link rel="preload" as="image" href="https://api.imghippo.com/files/NYEd5903YqA.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://api.imghippo.com/files/mEIg4529WbI.jpg" fetchpriority="high">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    morandi: {
-                        gold: '#d4a373',
-                        sage: '#8da399',
-                        cream: '#fcfaf7',
-                        sand: '#f5eee6',
-                        card: '#faf7f2',
-                        dark: '#3d3835',
-                        muted: '#7a726d',
-                        border: '#e8ded5'
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        morandi: {
+                            gold: '#d4a373',
+                            sage: '#8da399',
+                            cream: '#fcfaf7',
+                            sand: '#f5eee6',
+                            card: '#faf7f2',
+                            dark: '#3d3835',
+                            muted: '#7a726d',
+                            border: '#e8ded5'
+                        }
+                    },
+                    fontFamily: {
+                        garamond: ['"Cormorant Garamond"', 'serif'],
+                        serifTC: ['"Noto Serif TC"', 'serif']
+                    },
+                    boxShadow: {
+                        'glow': '0 10px 30px -5px rgba(212, 163, 115, 0.25)',
+                        'card': '0 20px 40px -15px rgba(61, 56, 53, 0.08)',
+                        'soft': '0 8px 25px rgba(0, 0, 0, 0.04)'
                     }
-                },
-                fontFamily: {
-                    garamond: ['"Cormorant Garamond"', 'serif'],
-                    serifTC: ['"Noto Serif TC"', 'serif']
-                },
-                boxShadow: {
-                    'glow': '0 10px 30px -5px rgba(212, 163, 115, 0.25)',
-                    'card': '0 20px 40px -15px rgba(61, 56, 53, 0.08)',
-                    'soft': '0 8px 25px rgba(0, 0, 0, 0.04)'
                 }
             }
         }
-    }
-</script>
+    </script>
 
-<style>
-    input, textarea, select, label, button {
-        font-size: 16px !important;
-        -webkit-text-size-adjust: 100%;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
-    }
+    <style>
+        input, textarea, select, label, button {
+            font-size: 16px !important;
+            -webkit-text-size-adjust: 100%;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    body {
-        font-family: 'Noto Serif TC', serif;
-        color: #3d3835;
-        background-color: #fcfaf7;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+        body {
+            font-family: 'Noto Serif TC', serif;
+            color: #3d3835;
+            background-color: #fcfaf7;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .font-en {
-        font-family: 'Cormorant Garamond', serif;
-    }
+        .font-en {
+            font-family: 'Cormorant Garamond', serif;
+        }
 
-    /* Native Smooth Antialiased Image Rendering */
-    .smooth-image {
-        image-rendering: auto;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-    }
+        /* Native Smooth Antialiased Image Rendering */
+        .smooth-image {
+            image-rendering: auto;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
 
-    /* Long-press touch optimization for mobile image saving */
-    .native-save-image {
-        touch-action: auto !important;
-        -webkit-touch-callout: default !important;
-        -webkit-user-select: auto !important;
-        user-select: auto !important;
-        -webkit-user-drag: auto !important;
-        pointer-events: auto !important;
-    }
+        /* Long-press touch optimization for mobile image saving */
+        .native-save-image {
+            touch-action: auto !important;
+            -webkit-touch-callout: default !important;
+            -webkit-user-select: auto !important;
+            user-select: auto !important;
+            -webkit-user-drag: auto !important;
+            pointer-events: auto !important;
+        }
 
-    .glass-nav {
-        background: rgba(252, 250, 247, 0.90);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-    }
+        .glass-nav {
+            background: rgba(252, 250, 247, 0.90);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 12px 32px -5px rgba(212, 163, 115, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 12px 32px -5px rgba(212, 163, 115, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
 
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    .accordion-content.active {
-        max-height: 1000px;
-    }
+        .accordion-content.active {
+            max-height: 1000px;
+        }
 
-    .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        will-change: opacity, transform;
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
 
-    .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .no-wrap {
-        white-space: nowrap !important;
-    }
+        .no-wrap {
+            white-space: nowrap !important;
+        }
 
-    @keyframes spinSlow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    .animate-spin-slow {
-        animation: spinSlow 8s linear infinite;
-    }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spinSlow 8s linear infinite;
+        }
 
-    /* Radio Heart State Transitions */
-    input[type="radio"] + label .heart-solid,
-    .peer + label .heart-solid {
-        display: none !important;
-    }
+        /* Radio Heart State Transitions */
+        input[type="radio"] + label .heart-solid,
+        .peer + label .heart-solid {
+            display: none !important;
+        }
 
-    input[type="radio"] + label .heart-empty,
-    .peer + label .heart-empty {
-        display: inline-block !important;
-    }
+        input[type="radio"] + label .heart-empty,
+        .peer + label .heart-empty {
+            display: inline-block !important;
+        }
 
-    input[type="radio"]:checked + label .heart-empty,
-    .peer:checked + label .heart-empty {
-        display: none !important;
-    }
+        input[type="radio"]:checked + label .heart-empty,
+        .peer:checked + label .heart-empty {
+            display: none !important;
+        }
 
-    input[type="radio"]:checked + label .heart-solid,
-    .peer:checked + label .heart-solid {
-        display: inline-block !important;
-        animation: heartPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+        input[type="radio"]:checked + label .heart-solid,
+        .peer:checked + label .heart-solid {
+            display: inline-block !important;
+            animation: heartPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    @keyframes heartPop {
-        0% { transform: scale(0.6); }
-        70% { transform: scale(1.25); }
-        100% { transform: scale(1); }
-    }
-</style>
+        @keyframes heartPop {
+            0% { transform: scale(0.6); }
+            70% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="selection:bg-morandi-gold selection:text-white overflow-x-hidden">
 
+    <!-- Main Invitation Page View -->
+    <div id="invitationPageView" class="min-h-screen flex flex-col justify-between">
+        <div>
+            <!-- Off-screen YouTube Background Music Player -->
+            <div id="youtube-player" class="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none -z-50"></div>
 
-<!-- Main Invitation Page View -->
-<div id="invitationPageView" class="min-h-screen flex flex-col justify-between">
-    <div>
-        <!-- Off-screen YouTube Background Music Player -->
-        <div id="youtube-player" class="fixed -top-full -left-full w-1 h-1 opacity-0 pointer-events-none -z-50"></div>
+            <!-- Floating Music Toggle Button -->
+            <button id="musicToggleBtn" 
+                    onclick="toggleMusic()" 
+                    aria-label="Toggle Background Music"
+                    class="fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-morandi-gold text-white shadow-glow flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none">
+                <i id="musicIcon" class="fa-solid fa-music text-base sm:text-lg"></i>
+            </button>
 
-        <!-- Floating Music Toggle Button -->
-        <button id="musicToggleBtn" 
-                onclick="toggleMusic()" 
-                aria-label="Toggle Background Music"
-                class="fixed bottom-6 right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-morandi-gold text-white shadow-glow flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none">
-            <i id="musicIcon" class="fa-solid fa-music text-base sm:text-lg"></i>
-        </button>
+            <!-- Navigation Header -->
+            <nav class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-morandi-gold/20 transition-all duration-300" id="navbar">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16 sm:h-20">
+                        <a href="#" class="font-en text-2xl sm:text-3xl font-semibold tracking-wider text-morandi-dark hover:text-morandi-gold transition">
+                            S <span class="text-morandi-gold font-light">&amp;</span> W
+                        </a>
 
-        <!-- Navigation Header -->
-        <nav class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-morandi-gold/20 transition-all duration-300" id="navbar">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 sm:h-20">
-                    <a href="#" class="font-en text-2xl sm:text-3xl font-semibold tracking-wider text-morandi-dark hover:text-morandi-gold transition">
-                        S <span class="text-morandi-gold font-light">&amp;</span> W
-                    </a>
-
-                    <div class="hidden md:flex items-center space-x-8 text-sm tracking-widest">
-                        <a href="#about" class="text-morandi-dark hover:text-morandi-gold transition duration-300 py-1 border-b-2 border-transparent hover:border-morandi-gold">關於我們</a>
-                        <a href="#details" class="text-morandi-dark hover:text-morandi-gold transition duration-300 py-1 border-b-2 border-transparent hover:border-morandi-gold">婚禮詳情</a>
-                        <a href="#rsvp" class="px-5 py-2 rounded-full bg-morandi-gold text-white shadow-md hover:bg-[#c29263] transition duration-300 tracking-wider text-xs">出席回函</a>
-                    </div>
-
-                    <button id="menuBtn" class="md:hidden text-morandi-dark focus:outline-none p-2" aria-label="Toggle Menu">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobileMenu" class="hidden md:hidden glass-nav border-b border-morandi-border px-6 py-6 space-y-4 text-center transition-all duration-300">
-                <a href="#about" class="block text-morandi-dark text-base tracking-widest py-2 hover:text-morandi-gold mobile-link">關於我們</a>
-                <a href="#details" class="block text-morandi-dark text-base tracking-widest py-2 hover:text-morandi-gold mobile-link">婚禮詳情</a>
-                <a href="#rsvp" class="block w-full text-center py-3 mt-2 rounded-full bg-morandi-gold text-white font-medium shadow-md hover:bg-[#c29263] tracking-widest text-sm mobile-link">出席回函</a>
-            </div>
-        </nav>
-
-        <!-- Hero Banner -->
-        <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
-            <img id="heroImage" 
-                 src="https://api.imghippo.com/files/NYEd5903YqA.jpg" 
-                 alt="昇廷與瑋伶 婚紗封面照" 
-                 fetchpriority="high"
-                 loading="eager"
-                 decoding="sync"
-                 class="absolute inset-0 w-full h-full object-cover object-[center_30%] smooth-image transition-opacity duration-500 will-change-transform">
-            
-            <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85 pointer-events-none"></div>
-
-            <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8">
-                <p class="font-en text-lg sm:text-2xl md:text-3xl italic tracking-widest font-light text-morandi-sand/90">
-                    I wanna be your light
-                </p>
-                
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-wider my-2 leading-tight font-serifTC drop-shadow-md">
-                    昇廷 <span class="text-morandi-gold font-en font-light italic px-1 sm:px-2">&amp;</span> 瑋伶
-                </h1>
-
-                <div class="w-12 sm:w-16 h-[1px] bg-morandi-gold/80 mx-auto my-3"></div>
-
-                <p class="font-en text-base sm:text-xl tracking-[0.3em] font-light text-morandi-sand">
-                    2027 . 01 . 31
-                </p>
-
-                <div class="pt-3 sm:pt-5">
-                    <a href="#rsvp" class="inline-block px-7 py-3 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-white font-light tracking-widest text-xs sm:text-sm hover:bg-white hover:text-morandi-dark transition duration-300 shadow-lg">
-                        填寫出席回函
-                    </a>
-                </div>
-            </div>
-
-            <a href="#countdown-section" class="absolute bottom-3 sm:bottom-5 left-1/2 transform -translate-x-1/2 z-10 text-white/70 hover:text-white transition animate-bounce">
-                <i class="fa-solid fa-chevron-down text-base"></i>
-            </a>
-        </section>
-
-        <!-- Countdown Section -->
-        <section id="countdown-section" class="py-20 px-4 bg-morandi-cream border-b border-morandi-border/50 relative">
-            <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest mb-2">COUNTDOWN</h2>
-                <p class="text-xs sm:text-sm text-morandi-muted tracking-widest uppercase mb-12">期待與您一同見證美好時刻</p>
-
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
-                    <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
-                        <span id="days" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
-                        <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
-                        <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Days</span>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
-                        <span id="hours" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
-                        <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
-                        <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Hours</span>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
-                        <span id="minutes" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
-                        <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
-                        <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Minutes</span>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
-                        <span id="seconds" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-gold tracking-tight">00</span>
-                        <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
-                        <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Seconds</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
-            <div class="max-w-3xl mx-auto text-center space-y-8 reveal">
-                <span class="font-en text-sm tracking-[0.3em] text-morandi-sage uppercase">Our Story</span>
-                <h2 class="text-3xl sm:text-4xl font-serifTC text-morandi-dark font-medium leading-relaxed">
-                    「在漫長的時光裡，<br class="sm:hidden" />成為彼此溫柔的光。」
-                </h2>
-                
-                <p class="text-morandi-muted leading-loose text-sm sm:text-base max-w-2xl mx-auto font-light">
-                    因為相遇，世界有了色彩；因為相知，未來有了歸宿。<br />
-                    誠摯邀請您參與我們的婚禮宴會，<br />
-                    分享這份專屬我們的喜悅與幸福。
-                </p>
-
-                <div class="pt-6 flex justify-center items-center space-x-6">
-                    <div class="text-center">
-                        <p class="font-serifTC text-xl text-morandi-dark font-semibold">昇廷</p>
-                        <p class="font-en text-xs text-morandi-gold tracking-widest mt-0.5">GROOM</p>
-                    </div>
-                    <div class="w-10 h-10 rounded-full bg-morandi-sand flex items-center justify-center text-morandi-gold">
-                        <i class="fa-solid fa-heart text-xs"></i>
-                    </div>
-                    <div class="text-center">
-                        <p class="font-serifTC text-xl text-morandi-dark font-semibold">瑋伶</p>
-                        <p class="font-en text-xs text-morandi-gold tracking-widest mt-0.5">BRIDE</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Wedding Details Section -->
-        <section id="details" class="py-24 px-4 bg-morandi-sand/40 relative">
-            <div class="max-w-3xl mx-auto reveal">
-                <div class="text-center mb-12">
-                    <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest">WEDDING DETAILS</h2>
-                    <p class="text-xs sm:text-sm text-morandi-muted tracking-widest uppercase mt-1">宴會資訊與時間</p>
-                </div>
-
-                <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white shadow-card space-y-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-morandi-gold via-morandi-sage to-morandi-gold"></div>
-
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-morandi-border/60 gap-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-morandi-gold/10 flex items-center justify-center text-morandi-gold text-xl flex-shrink-0">
-                                <i class="fa-regular fa-calendar-check"></i>
-                            </div>
-                            <div>
-                                <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Date</p>
-                                <p class="text-lg sm:text-xl font-semibold text-morandi-dark font-serifTC mt-0.5">2027 年 01 月 31 日 (星期日)</p>
-                            </div>
+                        <div class="hidden md:flex items-center space-x-8 text-sm tracking-widest">
+                            <a href="#about" class="text-morandi-dark hover:text-morandi-gold transition duration-300 py-1 border-b-2 border-transparent hover:border-morandi-gold">關於我們</a>
+                            <a href="#details" class="text-morandi-dark hover:text-morandi-gold transition duration-300 py-1 border-b-2 border-transparent hover:border-morandi-gold">婚禮詳情</a>
+                            <a href="#rsvp" class="px-5 py-2 rounded-full bg-morandi-gold text-white shadow-md hover:bg-[#c29263] transition duration-300 tracking-wider text-xs">出席回函</a>
                         </div>
-                        <div class="bg-morandi-cream px-4 py-2 rounded-xl text-xs sm:text-sm text-morandi-dark font-medium border border-morandi-border">
-                            午宴 Luncheon
-                        </div>
-                    </div>
 
-                    <div class="flex items-start space-x-4 pb-8 border-b border-morandi-border/60">
-                        <div class="w-12 h-12 rounded-2xl bg-morandi-sage/10 flex items-center justify-center text-morandi-sage text-xl flex-shrink-0">
-                            <i class="fa-regular fa-clock"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Schedule</p>
-                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm sm:text-base text-morandi-dark">
-                                <p><span class="font-semibold text-morandi-gold">11 : 30</span> 賓客入場</p>
-                                <p><span class="font-semibold text-morandi-gold">12 : 00</span> 宴會開始</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-4 pb-2">
-                        <div class="w-12 h-12 rounded-2xl bg-morandi-gold/10 flex items-center justify-center text-morandi-gold text-xl flex-shrink-0">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="space-y-2 w-full">
-                            <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Venue</p>
-                            <h3 class="text-xl sm:text-2xl font-bold text-morandi-dark font-serifTC">
-                                <span class="no-wrap">萬華格萊天漾大飯店</span>
-                            </h3>
-                            <p class="text-sm text-morandi-gold font-medium">
-                                <span class="no-wrap">15F 天嵐廳</span>
-                            </p>
-                            <p class="text-sm text-morandi-muted leading-relaxed pt-1">
-                                地址：<span class="no-wrap">台北市萬華區艋舺大道101號15樓</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="pt-4">
-                        <button id="accordionToggle" class="w-full py-3.5 px-5 rounded-2xl bg-morandi-cream border border-morandi-border text-morandi-dark flex items-center justify-between hover:bg-morandi-sand/50 transition duration-300 focus:outline-none cursor-pointer">
-                            <span class="text-sm font-medium flex items-center gap-2">
-                                <i class="fa-solid fa-bus text-morandi-sage"></i> 交通指引與停車資訊
-                            </span>
-                            <i id="accordionIcon" class="fa-solid fa-chevron-down text-xs text-morandi-muted transition-transform duration-300"></i>
+                        <button id="menuBtn" class="md:hidden text-morandi-dark focus:outline-none p-2" aria-label="Toggle Menu">
+                            <i class="fa-solid fa-bars text-xl"></i>
                         </button>
+                    </div>
+                </div>
 
-                        <div id="accordionContent" class="accordion-content bg-white/60 rounded-2xl mt-2 border border-morandi-border/50">
-                            <div class="p-5 space-y-4 text-xs sm:text-sm text-morandi-muted leading-relaxed">
-                                <div class="space-y-1">
-                                    <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
-                                        <i class="fa-solid fa-train-subway text-morandi-gold text-xs"></i> 捷運資訊
-                                    </p>
-                                    <p>搭乘捷運板南線至 <span class="no-wrap font-medium text-morandi-dark">龍山寺站 2 號出口</span>，步行約 3-5 分鐘即可抵達。</p>
-                                </div>
+                <div id="mobileMenu" class="hidden md:hidden glass-nav border-b border-morandi-border px-6 py-6 space-y-4 text-center transition-all duration-300">
+                    <a href="#about" class="block text-morandi-dark text-base tracking-widest py-2 hover:text-morandi-gold mobile-link">關於我們</a>
+                    <a href="#details" class="block text-morandi-dark text-base tracking-widest py-2 hover:text-morandi-gold mobile-link">婚禮詳情</a>
+                    <a href="#rsvp" class="block w-full text-center py-3 mt-2 rounded-full bg-morandi-gold text-white font-medium shadow-md hover:bg-[#c29263] tracking-widest text-sm mobile-link">出席回函</a>
+                </div>
+            </nav>
 
-                                <div class="space-y-1">
-                                    <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
-                                        <i class="fa-solid fa-train text-morandi-gold text-xs"></i> 台鐵 / 火車資訊
-                                    </p>
-                                    <p>搭乘台鐵至 <span class="no-wrap font-medium text-morandi-dark">萬華火車站</span>，出站即可直通飯店大樓。</p>
-                                </div>
+            <!-- Hero Banner -->
+            <section class="relative h-screen w-full flex items-end justify-center text-center overflow-hidden pb-12 sm:pb-20 bg-morandi-sand">
+                <img id="heroImage" 
+                     src="https://api.imghippo.com/files/NYEd5903YqA.jpg" 
+                     alt="昇廷與瑋伶 婚紗封面照" 
+                     fetchpriority="high"
+                     loading="eager"
+                     decoding="sync"
+                     class="absolute inset-0 w-full h-full object-cover object-[center_30%] smooth-image transition-opacity duration-500 will-change-transform">
+                
+                <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-morandi-dark/85 pointer-events-none"></div>
 
-                                <div class="space-y-1">
-                                    <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
-                                        <i class="fa-solid fa-square-parking text-morandi-gold text-xs"></i> 停車資訊
-                                    </p>
-                                    <p>飯店設有地下專屬停車場，賓客可免費停放（車位有限，建議提早前往或搭乘大眾運輸工具）。</p>
-                                </div>
+                <div class="relative z-10 px-4 max-w-4xl mx-auto text-white space-y-3 sm:space-y-4 reveal mb-4 sm:mb-8">
+                    <p class="font-en text-lg sm:text-2xl md:text-3xl italic tracking-widest font-light text-morandi-sand/90">
+                        I wanna be your light
+                    </p>
+                    
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-wider my-2 leading-tight font-serifTC drop-shadow-md">
+                        昇廷 <span class="text-morandi-gold font-en font-light italic px-1 sm:px-2">&amp;</span> 瑋伶
+                    </h1>
 
-                                <div class="pt-2">
-                                    <a href="https://www.g-skyview.com/traffic.php" 
-                                       target="_blank" 
-                                       rel="noopener noreferrer" 
-                                       class="inline-flex items-center gap-1.5 text-xs text-morandi-gold font-medium hover:underline">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> 開啟飯店完整交通指引網頁
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="w-12 sm:w-16 h-[1px] bg-morandi-gold/80 mx-auto my-3"></div>
+
+                    <p class="font-en text-base sm:text-xl tracking-[0.3em] font-light text-morandi-sand">
+                        2027 . 01 . 31
+                    </p>
+
+                    <div class="pt-3 sm:pt-5">
+                        <a href="#rsvp" class="inline-block px-7 py-3 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-white font-light tracking-widest text-xs sm:text-sm hover:bg-white hover:text-morandi-dark transition duration-300 shadow-lg">
+                            填寫出席回函
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#countdown-section" class="absolute bottom-3 sm:bottom-5 left-1/2 transform -translate-x-1/2 z-10 text-white/70 hover:text-white transition animate-bounce">
+                    <i class="fa-solid fa-chevron-down text-base"></i>
+                </a>
+            </section>
+
+            <!-- Countdown Section -->
+            <section id="countdown-section" class="py-20 px-4 bg-morandi-cream border-b border-morandi-border/50 relative">
+                <div class="max-w-4xl mx-auto text-center reveal">
+                    <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest mb-2">COUNTDOWN</h2>
+                    <p class="text-xs sm:text-sm text-morandi-muted tracking-widest uppercase mb-12">期待與您一同見證美好時刻</p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
+                        <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
+                            <span id="days" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
+                            <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
+                            <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Days</span>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
+                            <span id="hours" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
+                            <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
+                            <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Hours</span>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
+                            <span id="minutes" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-dark tracking-tight">00</span>
+                            <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
+                            <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Minutes</span>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/80 shadow-soft flex flex-col items-center justify-center relative group hover:shadow-glow transition duration-300">
+                            <span id="seconds" class="font-en text-4xl sm:text-5xl md:text-6xl font-bold text-morandi-gold tracking-tight">00</span>
+                            <div class="w-8 h-[1px] bg-morandi-gold/40 my-3"></div>
+                            <span class="font-en text-xs sm:text-sm tracking-widest text-morandi-muted uppercase">Seconds</span>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- RSVP Section -->
-        <section id="rsvp" class="py-24 px-4 bg-morandi-cream relative z-10">
-            <div class="max-w-2xl mx-auto reveal">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl sm:text-4xl font-serifTC text-morandi-gold font-medium tracking-wider">出席回函與祝福</h2>
-                    <div class="w-12 h-[1px] bg-morandi-gold/50 mx-auto mt-4"></div>
-                </div>
-
-                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
+            <!-- About Section -->
+            <section id="about" class="py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
+                <div class="max-w-3xl mx-auto text-center space-y-8 reveal">
+                    <span class="font-en text-sm tracking-[0.3em] text-morandi-sage uppercase">Our Story</span>
+                    <h2 class="text-3xl sm:text-4xl font-serifTC text-morandi-dark font-medium leading-relaxed">
+                        「在漫長的時光裡，<br class="sm:hidden" />成為彼此溫柔的光。」
+                    </h2>
                     
-                    <!-- Hidden Iframe Target for reliable Form POST (Single Pipeline) -->
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" onload="if(submitted && !submissionHandled){onFormSubmitted();}"></iframe>
+                    <p class="text-morandi-muted leading-loose text-sm sm:text-base max-w-2xl mx-auto font-light">
+                        因為相遇，世界有了色彩；因為相知，未來有了歸宿。<br />
+                        誠摯邀請您參與我們的婚禮宴會，<br />
+                        分享這份專屬我們的喜悅與幸福。
+                    </p>
 
-                    <form id="rsvpForm" 
-                          action="https://docs.google.com/forms/d/e/1FAIpQLSd7n5Nb2WA-le41Y4iJV-tQyYJBa047lWtEi7lPsF9y0icP0A/formResponse" 
-                          method="POST" 
-                          target="hidden_iframe" 
-                          onsubmit="handleFormSubmit(event)" 
-                          class="space-y-6">
-
-                        <!-- Field 1: Name -->
-                        <div>
-                            <label for="entry_name" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
-                                姓名 <span class="font-en font-normal text-morandi-muted text-xs">/ NAME</span> <span class="text-rose-400">*</span>
-                            </label>
-                            <input type="text" 
-                                   id="entry_name" 
-                                   name="entry.1160678701" 
-                                   required 
-                                   placeholder="請輸入您的姓名" 
-                                   class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
+                    <div class="pt-6 flex justify-center items-center space-x-6">
+                        <div class="text-center">
+                            <p class="font-serifTC text-xl text-morandi-dark font-semibold">昇廷</p>
+                            <p class="font-en text-xs text-morandi-gold tracking-widest mt-0.5">GROOM</p>
                         </div>
-
-                        <!-- Field 2: Phone -->
-                        <div>
-                            <label for="entry_phone" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
-                                電話 <span class="font-en font-normal text-morandi-muted text-xs">/ PHONE</span> <span class="text-rose-400">*</span>
-                            </label>
-                            <input type="tel" 
-                                   id="entry_phone" 
-                                   name="entry.1121277011" 
-                                   required 
-                                   placeholder="請輸入您的聯絡電話" 
-                                   class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
+                        <div class="w-10 h-10 rounded-full bg-morandi-sand flex items-center justify-center text-morandi-gold">
+                            <i class="fa-solid fa-heart text-xs"></i>
                         </div>
+                        <div class="text-center">
+                            <p class="font-serifTC text-xl text-morandi-dark font-semibold">瑋伶</p>
+                            <p class="font-en text-xs text-morandi-gold tracking-widest mt-0.5">BRIDE</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        <!-- Field 3: Relationship -->
-                        <div>
-                            <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
-                                親友關係 <span class="font-en font-normal text-morandi-muted text-xs">/ RELATIONSHIP</span> <span class="text-rose-400">*</span>
-                            </span>
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="relative min-h-[50px]">
-                                    <input type="radio" 
-                                           id="rel_male" 
-                                           name="entry.669993689" 
-                                           value="男方親友" 
-                                           required 
-                                           class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="rel_male" 
-                                           class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
-                                        <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                        <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                        <span>男方親友</span>
-                                    </label>
+            <!-- Wedding Details Section -->
+            <section id="details" class="py-24 px-4 bg-morandi-sand/40 relative">
+                <div class="max-w-3xl mx-auto reveal">
+                    <div class="text-center mb-12">
+                        <h2 class="font-en text-3xl sm:text-4xl text-morandi-gold font-light tracking-widest">WEDDING DETAILS</h2>
+                        <p class="text-xs sm:text-sm text-morandi-muted tracking-widest uppercase mt-1">宴會資訊與時間</p>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white shadow-card space-y-8 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-morandi-gold via-morandi-sage to-morandi-gold"></div>
+
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-8 border-b border-morandi-border/60 gap-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-2xl bg-morandi-gold/10 flex items-center justify-center text-morandi-gold text-xl flex-shrink-0">
+                                    <i class="fa-regular fa-calendar-check"></i>
                                 </div>
+                                <div>
+                                    <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Date</p>
+                                    <p class="text-lg sm:text-xl font-semibold text-morandi-dark font-serifTC mt-0.5">2027 年 01 月 31 日 (星期日)</p>
+                                </div>
+                            </div>
+                            <div class="bg-morandi-cream px-4 py-2 rounded-xl text-xs sm:text-sm text-morandi-dark font-medium border border-morandi-border">
+                                午宴 Luncheon
+                            </div>
+                        </div>
 
-                                <div class="relative min-h-[50px]">
-                                    <input type="radio" 
-                                           id="rel_female" 
-                                           name="entry.669993689" 
-                                           value="女方親友" 
-                                           required 
-                                           class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="rel_female" 
-                                           class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
-                                        <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                        <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                        <span>女方親友</span>
-                                    </label>
+                        <div class="flex items-start space-x-4 pb-8 border-b border-morandi-border/60">
+                            <div class="w-12 h-12 rounded-2xl bg-morandi-sage/10 flex items-center justify-center text-morandi-sage text-xl flex-shrink-0">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Schedule</p>
+                                <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm sm:text-base text-morandi-dark">
+                                    <p><span class="font-semibold text-morandi-gold">11 : 30</span> 賓客入場</p>
+                                    <p><span class="font-semibold text-morandi-gold">12 : 00</span> 宴會開始</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Field 4: Attendance -->
-                        <div>
-                            <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
-                                出席意願 <span class="font-en font-normal text-morandi-muted text-xs">/ ATTENDANCE</span> <span class="text-rose-400">*</span>
-                            </span>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div class="relative min-h-[50px]">
-                                    <input type="radio" 
-                                           id="att_yes" 
-                                           name="entry.1541676002" 
-                                           value="出席！怎麼能少了我！" 
-                                           required 
-                                           onchange="handleAttendanceChange()" 
-                                           class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="att_yes" 
-                                           class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
-                                        <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                        <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                        <span>出席！怎麼能少了我！</span>
-                                    </label>
-                                </div>
-
-                                <div class="relative min-h-[50px]">
-                                    <input type="radio" 
-                                           id="att_no" 
-                                           name="entry.1541676002" 
-                                           value="可惜無法出席，送上滿滿祝福～" 
-                                           required 
-                                           onchange="handleAttendanceChange()" 
-                                           class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="att_no" 
-                                           class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
-                                        <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                        <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                        <span>可惜無法出席，送上滿滿祝福～</span>
-                                    </label>
-                                </div>
+                        <div class="flex items-start space-x-4 pb-2">
+                            <div class="w-12 h-12 rounded-2xl bg-morandi-gold/10 flex items-center justify-center text-morandi-gold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="space-y-2 w-full">
+                                <p class="font-en text-xs tracking-widest text-morandi-muted uppercase">Venue</p>
+                                <h3 class="text-xl sm:text-2xl font-bold text-morandi-dark font-serifTC">
+                                    <span class="no-wrap">萬華格萊天漾大飯店</span>
+                                </h3>
+                                <p class="text-sm text-morandi-gold font-medium">
+                                    <span class="no-wrap">15F 天嵐廳</span>
+                                </p>
+                                <p class="text-sm text-morandi-muted leading-relaxed pt-1">
+                                    地址：<span class="no-wrap">台北市萬華區艋舺大道101號15樓</span>
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Field 5: Guests Count -->
-                        <div id="guestCountGroup" class="hidden transition-all duration-300">
-                            <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
-                                參加午宴人數（含本人） <span class="font-en font-normal text-morandi-muted text-xs">/ GUESTS</span> <span class="text-rose-400">*</span>
-                            </span>
-                            <div class="grid grid-cols-5 gap-2">
-                                <div class="relative min-h-[48px]">
-                                    <input type="radio" id="gst_1" name="entry.159916419" value="1" checked class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="gst_1" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">1</label>
-                                </div>
-                                <div class="relative min-h-[48px]">
-                                    <input type="radio" id="gst_2" name="entry.159916419" value="2" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="gst_2" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">2</label>
-                                </div>
-                                <div class="relative min-h-[48px]">
-                                    <input type="radio" id="gst_3" name="entry.159916419" value="3" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="gst_3" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">3</label>
-                                </div>
-                                <div class="relative min-h-[48px]">
-                                    <input type="radio" id="gst_4" name="entry.159916419" value="4" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="gst_4" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">4</label>
-                                </div>
-                                <div class="relative min-h-[48px]">
-                                    <input type="radio" id="gst_5" name="entry.159916419" value="5" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                    <label for="gst_5" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">5</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dynamic Fields Section -->
-                        <div id="dynamicFields" class="space-y-6 hidden border-t border-b border-morandi-border/60 py-6 my-2 transition-all duration-300">
-                            <!-- Field 6: Vegetarian Meals -->
-                            <div>
-                                <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
-                                    若需準備素食需要幾份？ <span class="font-en font-normal text-morandi-muted text-xs">/ VEGETARIAN MEALS</span>
+                        <div class="pt-4">
+                            <button id="accordionToggle" class="w-full py-3.5 px-5 rounded-2xl bg-morandi-cream border border-morandi-border text-morandi-dark flex items-center justify-between hover:bg-morandi-sand/50 transition duration-300 focus:outline-none cursor-pointer">
+                                <span class="text-sm font-medium flex items-center gap-2">
+                                    <i class="fa-solid fa-bus text-morandi-sage"></i> 交通指引與停車資訊
                                 </span>
-                                <div class="grid grid-cols-6 gap-2">
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_0" name="entry.756788500" value="0" checked class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_0" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">0</label>
+                                <i id="accordionIcon" class="fa-solid fa-chevron-down text-xs text-morandi-muted transition-transform duration-300"></i>
+                            </button>
+
+                            <div id="accordionContent" class="accordion-content bg-white/60 rounded-2xl mt-2 border border-morandi-border/50">
+                                <div class="p-5 space-y-4 text-xs sm:text-sm text-morandi-muted leading-relaxed">
+                                    <div class="space-y-1">
+                                        <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
+                                            <i class="fa-solid fa-train-subway text-morandi-gold text-xs"></i> 捷運資訊
+                                        </p>
+                                        <p>搭乘捷運板南線至 <span class="no-wrap font-medium text-morandi-dark">龍山寺站 2 號出口</span>，步行約 3-5 分鐘即可抵達。</p>
                                     </div>
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_1" name="entry.756788500" value="1" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_1" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">1</label>
+
+                                    <div class="space-y-1">
+                                        <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
+                                            <i class="fa-solid fa-train text-morandi-gold text-xs"></i> 台鐵 / 火車資訊
+                                        </p>
+                                        <p>搭乘台鐵至 <span class="no-wrap font-medium text-morandi-dark">萬華火車站</span>，出站即可直通飯店大樓。</p>
                                     </div>
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_2" name="entry.756788500" value="2" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_2" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">2</label>
+
+                                    <div class="space-y-1">
+                                        <p class="font-semibold text-morandi-dark flex items-center gap-1.5">
+                                            <i class="fa-solid fa-square-parking text-morandi-gold text-xs"></i> 停車資訊
+                                        </p>
+                                        <p>飯店設有地下專屬停車場，賓客可免費停放（車位有限，建議提早前往或搭乘大眾運輸工具）。</p>
                                     </div>
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_3" name="entry.756788500" value="3" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_3" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">3</label>
-                                    </div>
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_4" name="entry.756788500" value="4" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_4" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">4</label>
-                                    </div>
-                                    <div class="relative min-h-[44px]">
-                                        <input type="radio" id="veg_5" name="entry.756788500" value="5" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="veg_5" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">5</label>
+
+                                    <div class="pt-2">
+                                        <a href="https://www.g-skyview.com/traffic.php" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer" 
+                                           class="inline-flex items-center gap-1.5 text-xs text-morandi-gold font-medium hover:underline">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i> 開啟飯店完整交通指引網頁
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Field 7: Invitation Preferences -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Section -->
+            <section id="rsvp" class="py-24 px-4 bg-morandi-cream relative z-10">
+                <div class="max-w-2xl mx-auto reveal">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl sm:text-4xl font-serifTC text-morandi-gold font-medium tracking-wider">出席回函與祝福</h2>
+                        <div class="w-12 h-[1px] bg-morandi-gold/50 mx-auto mt-4"></div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
+                        
+                        <!-- Hidden Iframe Target for reliable Form POST (Single Pipeline) -->
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" onload="if(submitted && !submissionHandled){onFormSubmitted();}"></iframe>
+
+                        <form id="rsvpForm" 
+                              action="https://docs.google.com/forms/d/e/1FAIpQLSd7n5Nb2WA-le41Y4iJV-tQyYJBa047lWtEi7lPsF9y0icP0A/formResponse" 
+                              method="POST" 
+                              target="hidden_iframe" 
+                              onsubmit="handleFormSubmit(event)" 
+                              class="space-y-6">
+
+                            <!-- Field 1: Name -->
                             <div>
-                                <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
-                                    喜帖索取 <span class="font-en font-normal text-morandi-muted text-xs">/ INVITATION</span>
-                                </span>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                    <div class="relative min-h-[48px]">
-                                        <input type="radio" 
-                                               id="inv_elec" 
-                                               name="entry.1164108255" 
-                                               value="我要電子喜帖！" 
-                                               checked 
-                                               onchange="handleInvitationChange()" 
-                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="inv_elec" 
-                                               class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
-                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                            <span>我要電子喜帖！</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="relative min-h-[48px]">
-                                        <input type="radio" 
-                                               id="inv_paper" 
-                                               name="entry.1164108255" 
-                                               value="我要紙本喜帖！" 
-                                               onchange="handleInvitationChange()" 
-                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="inv_paper" 
-                                               class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
-                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                            <span>我要紙本喜帖！</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="relative min-h-[48px]">
-                                        <input type="radio" 
-                                               id="inv_none" 
-                                               name="entry.1164108255" 
-                                               value="我不用喜帖～" 
-                                               onchange="handleInvitationChange()" 
-                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
-                                        <label for="inv_none" 
-                                               class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
-                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
-                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
-                                            <span>我不用喜帖～</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Field 8: Paper Address -->
-                            <div id="addressGroup" class="hidden transition-all duration-300">
-                                <label for="entry_address" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
-                                    紙本喜帖寄件地址（記得加上郵遞區號喔） <span class="font-en font-normal text-morandi-muted text-xs">/ MAILING ADDRESS</span> <span class="text-rose-400">*</span>
+                                <label for="entry_name" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
+                                    姓名 <span class="font-en font-normal text-morandi-muted text-xs">/ NAME</span> <span class="text-rose-400">*</span>
                                 </label>
                                 <input type="text" 
-                                       id="entry_address" 
-                                       name="entry.707135055" 
-                                       placeholder="請輸入喜帖寄送地址" 
+                                       id="entry_name" 
+                                       name="entry.1160678701" 
+                                       required 
+                                       placeholder="請輸入您的姓名" 
                                        class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                             </div>
 
-                            <!-- Field 9: Electronic Email -->
-                            <div id="emailGroup" class="hidden transition-all duration-300">
-                                <label for="entry_email" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
-                                    電子喜帖寄件信箱 <span class="font-en font-normal text-morandi-muted text-xs">/ EMAIL ADDRESS</span> <span class="text-rose-400">*</span>
+                            <!-- Field 2: Phone -->
+                            <div>
+                                <label for="entry_phone" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
+                                    電話 <span class="font-en font-normal text-morandi-muted text-xs">/ PHONE</span> <span class="text-rose-400">*</span>
                                 </label>
-                                <input type="email" 
-                                       id="entry_email" 
-                                       name="entry.1040384663" 
-                                       placeholder="請輸入您的 Email 信箱（例：name@example.com）" 
+                                <input type="tel" 
+                                       id="entry_phone" 
+                                       name="entry.1121277011" 
+                                       required 
+                                       placeholder="請輸入您的聯絡電話" 
                                        class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                             </div>
-                        </div>
 
-                        <!-- Field 10: Blessings -->
-                        <div>
-                            <label for="entry_blessings" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
-                                對新人的祝福 <span class="font-en font-normal text-morandi-muted text-xs">/ BLESSINGS</span>
-                            </label>
-                            <textarea id="entry_blessings" 
-                                      name="entry.193833875" 
-                                      rows="3" 
-                                      placeholder="請留下給昇廷與瑋伶的祝福的話..." 
-                                      class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark resize-none"></textarea>
-                        </div>
+                            <!-- Field 3: Relationship -->
+                            <div>
+                                <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
+                                    親友關係 <span class="font-en font-normal text-morandi-muted text-xs">/ RELATIONSHIP</span> <span class="text-rose-400">*</span>
+                                </span>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="relative min-h-[50px]">
+                                        <input type="radio" 
+                                               id="rel_male" 
+                                               name="entry.669993689" 
+                                               value="男方親友" 
+                                               required 
+                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="rel_male" 
+                                               class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
+                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                            <span>男方親友</span>
+                                        </label>
+                                    </div>
 
-                        <!-- Submit Button -->
-                        <div class="pt-4">
-                            <button type="submit" 
-                                    id="submitBtn" 
-                                    class="w-full py-4 rounded-full bg-morandi-gold text-white font-medium text-sm tracking-widest hover:bg-[#c29263] transition duration-300 shadow-md focus:outline-none flex items-center justify-center space-x-2 cursor-pointer min-h-[50px] disabled:opacity-60 disabled:cursor-not-allowed">
-                                <span id="submitBtnText">送出回函 SUBMIT</span>
-                                <i id="submitBtnIcon" class="fa-solid fa-paper-plane text-xs"></i>
-                            </button>
-                        </div>
+                                    <div class="relative min-h-[50px]">
+                                        <input type="radio" 
+                                               id="rel_female" 
+                                               name="entry.669993689" 
+                                               value="女方親友" 
+                                               required 
+                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="rel_female" 
+                                               class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
+                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                            <span>女方親友</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </form>
+                            <!-- Field 4: Attendance -->
+                            <div>
+                                <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
+                                    出席意願 <span class="font-en font-normal text-morandi-muted text-xs">/ ATTENDANCE</span> <span class="text-rose-400">*</span>
+                                </span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div class="relative min-h-[50px]">
+                                        <input type="radio" 
+                                               id="att_yes" 
+                                               name="entry.1541676002" 
+                                               value="出席！怎麼能少了我！" 
+                                               required 
+                                               onchange="handleAttendanceChange()" 
+                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="att_yes" 
+                                               class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
+                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                            <span>出席！怎麼能少了我！</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="relative min-h-[50px]">
+                                        <input type="radio" 
+                                               id="att_no" 
+                                               name="entry.1541676002" 
+                                               value="可惜無法出席，送上滿滿祝福～" 
+                                               required 
+                                               onchange="handleAttendanceChange()" 
+                                               class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="att_no" 
+                                               class="w-full h-full p-3.5 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-sm sm:text-base font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-2 select-none pointer-events-none">
+                                            <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                            <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                            <span>可惜無法出席，送上滿滿祝福～</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Field 5: Guests Count -->
+                            <div id="guestCountGroup" class="hidden transition-all duration-300">
+                                <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
+                                    參加午宴人數（含本人） <span class="font-en font-normal text-morandi-muted text-xs">/ GUESTS</span> <span class="text-rose-400">*</span>
+                                </span>
+                                <div class="grid grid-cols-5 gap-2">
+                                    <div class="relative min-h-[48px]">
+                                        <input type="radio" id="gst_1" name="entry.159916419" value="1" checked class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="gst_1" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">1</label>
+                                    </div>
+                                    <div class="relative min-h-[48px]">
+                                        <input type="radio" id="gst_2" name="entry.159916419" value="2" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="gst_2" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">2</label>
+                                    </div>
+                                    <div class="relative min-h-[48px]">
+                                        <input type="radio" id="gst_3" name="entry.159916419" value="3" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="gst_3" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">3</label>
+                                    </div>
+                                    <div class="relative min-h-[48px]">
+                                        <input type="radio" id="gst_4" name="entry.159916419" value="4" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="gst_4" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">4</label>
+                                    </div>
+                                    <div class="relative min-h-[48px]">
+                                        <input type="radio" id="gst_5" name="entry.159916419" value="5" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                        <label for="gst_5" class="w-full h-full py-3 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">5</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Fields Section -->
+                            <div id="dynamicFields" class="space-y-6 hidden border-t border-b border-morandi-border/60 py-6 my-2 transition-all duration-300">
+                                <!-- Field 6: Vegetarian Meals -->
+                                <div>
+                                    <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
+                                        若需準備素食需要幾份？ <span class="font-en font-normal text-morandi-muted text-xs">/ VEGETARIAN MEALS</span>
+                                    </span>
+                                    <div class="grid grid-cols-6 gap-2">
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_0" name="entry.756788500" value="0" checked class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_0" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">0</label>
+                                        </div>
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_1" name="entry.756788500" value="1" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_1" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">1</label>
+                                        </div>
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_2" name="entry.756788500" value="2" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_2" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">2</label>
+                                        </div>
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_3" name="entry.756788500" value="3" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_3" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">3</label>
+                                        </div>
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_4" name="entry.756788500" value="4" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_4" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">4</label>
+                                        </div>
+                                        <div class="relative min-h-[44px]">
+                                            <input type="radio" id="veg_5" name="entry.756788500" value="5" class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="veg_5" class="w-full h-full py-2.5 flex items-center justify-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark font-medium text-sm transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold peer-checked:text-white peer-checked:font-bold select-none pointer-events-none">5</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Field 7: Invitation Preferences -->
+                                <div>
+                                    <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
+                                        喜帖索取 <span class="font-en font-normal text-morandi-muted text-xs">/ INVITATION</span>
+                                    </span>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                        <div class="relative min-h-[48px]">
+                                            <input type="radio" 
+                                                   id="inv_elec" 
+                                                   name="entry.1164108255" 
+                                                   value="我要電子喜帖！" 
+                                                   checked 
+                                                   onchange="handleInvitationChange()" 
+                                                   class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="inv_elec" 
+                                                   class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
+                                                <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                                <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                                <span>我要電子喜帖！</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="relative min-h-[48px]">
+                                            <input type="radio" 
+                                                   id="inv_paper" 
+                                                   name="entry.1164108255" 
+                                                   value="我要紙本喜帖！" 
+                                                   onchange="handleInvitationChange()" 
+                                                   class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="inv_paper" 
+                                                   class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
+                                                <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                                <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                                <span>我要紙本喜帖！</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="relative min-h-[48px]">
+                                            <input type="radio" 
+                                                   id="inv_none" 
+                                                   name="entry.1164108255" 
+                                                   value="我不用喜帖～" 
+                                                   onchange="handleInvitationChange()" 
+                                                   class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
+                                            <label for="inv_none" 
+                                                   class="w-full h-full p-3 text-center rounded-xl border border-morandi-border bg-morandi-cream/30 text-morandi-dark text-xs sm:text-sm font-medium transition-all peer-checked:border-morandi-gold peer-checked:bg-morandi-gold/15 peer-checked:text-morandi-dark peer-checked:font-semibold flex items-center justify-center gap-1.5 select-none pointer-events-none">
+                                                <i class="fa-regular fa-heart heart-empty text-morandi-muted text-xs"></i>
+                                                <i class="fa-solid fa-heart heart-solid text-morandi-gold text-xs"></i>
+                                                <span>我不用喜帖～</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Field 8: Paper Address -->
+                                <div id="addressGroup" class="hidden transition-all duration-300">
+                                    <label for="entry_address" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
+                                        紙本喜帖寄件地址（記得加上郵遞區號喔） <span class="font-en font-normal text-morandi-muted text-xs">/ MAILING ADDRESS</span> <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="text" 
+                                           id="entry_address" 
+                                           name="entry.707135055" 
+                                           placeholder="請輸入喜帖寄送地址" 
+                                           class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
+                                </div>
+
+                                <!-- Field 9: Electronic Email -->
+                                <div id="emailGroup" class="hidden transition-all duration-300">
+                                    <label for="entry_email" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
+                                        電子喜帖寄件信箱 <span class="font-en font-normal text-morandi-muted text-xs">/ EMAIL ADDRESS</span> <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="email" 
+                                           id="entry_email" 
+                                           name="entry.1040384663" 
+                                           placeholder="請輸入您的 Email 信箱（例：name@example.com）" 
+                                           class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
+                                </div>
+                            </div>
+
+                            <!-- Field 10: Blessings -->
+                            <div>
+                                <label for="entry_blessings" class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2 cursor-pointer">
+                                    對新人的祝福 <span class="font-en font-normal text-morandi-muted text-xs">/ BLESSINGS</span>
+                                </label>
+                                <textarea id="entry_blessings" 
+                                          name="entry.193833875" 
+                                          rows="3" 
+                                          placeholder="請留下給昇廷與瑋伶的祝福的話..." 
+                                          class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark resize-none"></textarea>
+                            </div>
+
+                            <!-- Submission Error Notice Box -->
+                            <div id="submitErrorBox" class="hidden rounded-2xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm flex items-start gap-3 transition-all duration-300">
+                                <i class="fa-solid fa-circle-exclamation text-rose-500 mt-0.5 text-base flex-shrink-0"></i>
+                                <div class="space-y-1">
+                                    <p class="font-semibold text-rose-800" id="submitErrorTitle">回函送出失敗</p>
+                                    <p class="text-xs text-rose-600 leading-relaxed" id="submitErrorMessage">未能成功將回覆傳送至伺服器，請檢查網路連線或稍後再試一次。</p>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                                <button type="submit" 
+                                        id="submitBtn" 
+                                        class="w-full py-4 rounded-full bg-morandi-gold text-white font-medium text-sm tracking-widest hover:bg-[#c29263] transition duration-300 shadow-md focus:outline-none flex items-center justify-center space-x-2 cursor-pointer min-h-[50px] disabled:opacity-60 disabled:cursor-not-allowed">
+                                    <span id="submitBtnText">送出回函 SUBMIT</span>
+                                    <i id="submitBtnIcon" class="fa-solid fa-paper-plane text-xs"></i>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="py-12 bg-morandi-dark text-white/80 text-center text-xs tracking-widest space-y-3">
+            <p class="font-en text-lg text-morandi-sand font-light">Sheng-Ting &amp; Wei-Ling</p>
+            <p class="text-morandi-muted">I WANNA BE YOUR LIGHT . 2027</p>
+            <p class="text-[10px] text-morandi-muted/60 pt-4">&copy; 2027 Wedding Invitation. All rights reserved.</p>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-morandi-dark text-white/80 text-center text-xs tracking-widest space-y-3">
-        <p class="font-en text-lg text-morandi-sand font-light">Sheng-Ting &amp; Wei-Ling</p>
-        <p class="text-morandi-muted">I WANNA BE YOUR LIGHT . 2027</p>
-        <p class="text-[10px] text-morandi-muted/60 pt-4">&copy; 2027 Wedding Invitation. All rights reserved.</p>
-    </footer>
-</div>
-
-<!-- DEDICATED CONFIRMATION CARD PAGE (Direct Page View) -->
-<div id="confirmationPageView" class="hidden min-h-screen w-full bg-morandi-cream py-10 px-4 flex flex-col items-center justify-center">
-    <div class="max-w-md w-full space-y-5 text-center">
-        
-        <!-- Success Status Header -->
-        <div class="bg-white rounded-3xl p-6 shadow-card border border-morandi-border space-y-2">
-            <div class="w-12 h-12 rounded-full bg-morandi-gold/15 text-morandi-gold flex items-center justify-center mx-auto text-xl">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h2 class="text-2xl font-serifTC font-bold text-morandi-dark">回函已成功送出！</h2>
-            <div class="text-xs sm:text-sm text-morandi-gold font-medium space-y-1">
-                <p><i class="fa-solid fa-heart mr-1 text-rose-400"></i>感謝您的祝福！以下是您的回函內容！</p>
-                <p><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>歡迎長按圖片儲存或截圖留存喔！</p>
-            </div>
-        </div>
-
-        <!-- Card Display Frame -->
-        <div class="rounded-2xl border-2 border-morandi-gold/40 shadow-2xl p-2 sm:p-3 bg-white/80 backdrop-blur-sm">
-            <!-- 1. Canvas Rendered Image Element -->
-            <img id="confirmationImage" 
-                 src="" 
-                 alt="婚禮回函確認卡" 
-                 class="w-full h-auto rounded-xl shadow-sm block mx-auto native-save-image">
-
-            <!-- 2. Fallback DOM Element in case of device canvas security sandbox -->
-            <div id="fallbackCard" class="hidden bg-[#fcfaf7] rounded-2xl p-4 border-2 border-morandi-gold/60 shadow-sm space-y-4 text-left">
-                <div class="w-full h-56 rounded-xl overflow-hidden shadow-sm relative bg-morandi-sand">
-                    <img src="https://api.imghippo.com/files/mEIg4529WbI.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
+    <!-- DEDICATED CONFIRMATION CARD PAGE (Direct Page View) -->
+    <div id="confirmationPageView" class="hidden min-h-screen w-full bg-morandi-cream py-10 px-4 flex flex-col items-center justify-center">
+        <div class="max-w-md w-full space-y-5 text-center">
+            
+            <!-- Success Status Header -->
+            <div class="bg-white rounded-3xl p-6 shadow-card border border-morandi-border space-y-2">
+                <div class="w-12 h-12 rounded-full bg-morandi-gold/15 text-morandi-gold flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-check"></i>
                 </div>
-                <div class="bg-white rounded-xl p-3 border border-morandi-border text-center">
-                    <p class="text-morandi-gold font-serifTC text-base font-semibold">昇廷 &amp; 瑋伶</p>
-                    <h4 class="text-morandi-dark font-serifTC text-lg font-bold">婚禮出席回函確認</h4>
-                    <p class="text-xs text-morandi-muted mt-0.5">2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳</p>
+                <h2 class="text-2xl font-serifTC font-bold text-morandi-dark">回函已成功送出！</h2>
+                <div class="text-xs sm:text-sm text-morandi-gold font-medium space-y-1">
+                    <p><i class="fa-solid fa-heart mr-1 text-rose-400"></i>感謝您的祝福！以下是您的回函內容！</p>
+                    <p><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>歡迎長按圖片儲存或截圖留存喔！</p>
                 </div>
-                <div id="fallbackDataList" class="bg-white rounded-xl p-3 border border-morandi-border space-y-2 text-xs sm:text-sm"></div>
-                <p class="text-center text-[11px] text-morandi-sage font-en tracking-wider pt-1">I WANNA BE YOUR LIGHT • 2027 WEDDING INVITATION</p>
             </div>
-        </div>
 
-        <!-- Return to Invitation Button -->
-        <div class="pt-2">
-            <button onclick="backToInvitation()" 
-                    class="px-8 py-3 rounded-full bg-morandi-gold text-white text-xs sm:text-sm font-medium tracking-widest hover:bg-[#c29263] transition shadow-md cursor-pointer active:scale-95 flex items-center justify-center mx-auto gap-2">
-                <i class="fa-solid fa-arrow-left text-xs"></i>
-                <span>返回邀請函首頁</span>
-            </button>
-        </div>
+            <!-- Card Display Frame -->
+            <div class="rounded-2xl border-2 border-morandi-gold/40 shadow-2xl p-2 sm:p-3 bg-white/80 backdrop-blur-sm">
+                <!-- 1. Canvas Rendered Image Element -->
+                <img id="confirmationImage" 
+                     src="" 
+                     alt="婚禮回函確認卡" 
+                     class="w-full h-auto rounded-xl shadow-sm block mx-auto native-save-image">
 
+                <!-- 2. Fallback DOM Element in case of device canvas security sandbox -->
+                <div id="fallbackCard" class="hidden bg-[#fcfaf7] rounded-2xl p-4 border-2 border-morandi-gold/60 shadow-sm space-y-4 text-left">
+                    <div class="w-full h-56 rounded-xl overflow-hidden shadow-sm relative bg-morandi-sand">
+                        <img src="https://api.imghippo.com/files/mEIg4529WbI.jpg" alt="婚紗照" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-morandi-border text-center">
+                        <p class="text-morandi-gold font-serifTC text-base font-semibold">昇廷 &amp; 瑋伶</p>
+                        <h4 class="text-morandi-dark font-serifTC text-lg font-bold">婚禮出席回函確認</h4>
+                        <p class="text-xs text-morandi-muted mt-0.5">2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳</p>
+                    </div>
+                    <div id="fallbackDataList" class="bg-white rounded-xl p-3 border border-morandi-border space-y-2 text-xs sm:text-sm"></div>
+                    <p class="text-center text-[11px] text-morandi-sage font-en tracking-wider pt-1">I WANNA BE YOUR LIGHT • 2027 WEDDING INVITATION</p>
+                </div>
+            </div>
+
+            <!-- Return to Invitation Button -->
+            <div class="pt-2">
+                <button onclick="backToInvitation()" 
+                        class="px-8 py-3 rounded-full bg-morandi-gold text-white text-xs sm:text-sm font-medium tracking-widest hover:bg-[#c29263] transition shadow-md cursor-pointer active:scale-95 flex items-center justify-center mx-auto gap-2">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>返回邀請函首頁</span>
+                </button>
+            </div>
+
+        </div>
     </div>
-</div>
 
-<script>
-    var submitted = false;
-    var submissionHandled = false;
-    var lastSubmittedData = null;
-    var submissionTimeoutId = null;
+    <script>
+        var submitted = false;
+        var submissionHandled = false;
+        var lastSubmittedData = null;
 
-    /* Confirmation Card Photo Loader */
-    const CONFIRMATION_PHOTO_URL = 'https://api.imghippo.com/files/mEIg4529WbI.jpg';
-    let cardPhoto = null;
-    function getCardPhoto() {
-        if (!cardPhoto) {
-            cardPhoto = new Image();
-            cardPhoto.crossOrigin = 'anonymous';
-            cardPhoto.src = CONFIRMATION_PHOTO_URL;
+        /* Confirmation Card Photo Loader */
+        const CONFIRMATION_PHOTO_URL = 'https://api.imghippo.com/files/mEIg4529WbI.jpg';
+        let cardPhoto = null;
+        function getCardPhoto() {
+            if (!cardPhoto) {
+                cardPhoto = new Image();
+                cardPhoto.crossOrigin = 'anonymous';
+                cardPhoto.src = CONFIRMATION_PHOTO_URL;
+            }
+            return cardPhoto;
         }
-        return cardPhoto;
-    }
 
-    /* 1. Countdown Timer (Target: 2027-01-31 12:00 PM) */
-    const targetDate = new Date('2027-01-31T12:00:00').getTime();
+        /* 1. Countdown Timer (Target: 2027-01-31 12:00 PM) */
+        const targetDate = new Date('2027-01-31T12:00:00').getTime();
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
 
-        const dEl = document.getElementById('days');
-        const hEl = document.getElementById('hours');
-        const mEl = document.getElementById('minutes');
-        const sEl = document.getElementById('seconds');
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('minutes');
+            const sEl = document.getElementById('seconds');
 
-        if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            if (dEl) dEl.innerText = String(days).padStart(2, '0');
-            if (hEl) hEl.innerText = String(hours).padStart(2, '0');
-            if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
-            if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
-        } else {
-            if (dEl) dEl.innerText = '00';
-            if (hEl) hEl.innerText = '00';
-            if (mEl) mEl.innerText = '00';
-            if (sEl) sEl.innerText = '00';
+                if (dEl) dEl.innerText = String(days).padStart(2, '0');
+                if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+                if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+                if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
+            } else {
+                if (dEl) dEl.innerText = '00';
+                if (hEl) hEl.innerText = '00';
+                if (mEl) mEl.innerText = '00';
+                if (sEl) sEl.innerText = '00';
+            }
         }
-    }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-    /* 2. Form Data Capture */
-    function captureFormData() {
-        try {
-            const relEl = document.querySelector('input[name="entry.669993689"]:checked');
-            const attEl = document.querySelector('input[name="entry.1541676002"]:checked');
-            const gstEl = document.querySelector('input[name="entry.159916419"]:checked');
-            const vegEl = document.querySelector('input[name="entry.756788500"]:checked');
-            const invEl = document.querySelector('input[name="entry.1164108255"]:checked');
+        /* 2. Form Data Capture */
+        function captureFormData() {
+            try {
+                const relEl = document.querySelector('input[name="entry.669993689"]:checked');
+                const attEl = document.querySelector('input[name="entry.1541676002"]:checked');
+                const gstEl = document.querySelector('input[name="entry.159916419"]:checked');
+                const vegEl = document.querySelector('input[name="entry.756788500"]:checked');
+                const invEl = document.querySelector('input[name="entry.1164108255"]:checked');
 
-            const isAttending = attEl && attEl.value.includes('出席！');
+                lastSubmittedData = {
+                    name: (document.getElementById('entry_name').value || '').trim(),
+                    phone: (document.getElementById('entry_phone').value || '').trim(),
+                    relationship: relEl ? relEl.value : '',
+                    attendance: attEl ? attEl.value : '',
+                    guests: gstEl ? gstEl.value : '1',
+                    special: vegEl ? vegEl.value : '0',
+                    invitation: invEl ? invEl.value : '',
+                    address: (document.getElementById('entry_address').value || '').trim(),
+                    email: (document.getElementById('entry_email').value || '').trim(),
+                    blessings: (document.getElementById('entry_blessings').value || '').trim()
+                };
 
-            lastSubmittedData = {
-                name: (document.getElementById('entry_name').value || '').trim(),
-                phone: (document.getElementById('entry_phone').value || '').trim(),
-                relationship: relEl ? relEl.value : '',
-                attendance: attEl ? attEl.value : '',
-                guests: isAttending ? (gstEl ? gstEl.value : '1') : '0',
-                special: isAttending ? (vegEl ? vegEl.value : '0') : '0',
-                invitation: isAttending ? (invEl ? invEl.value : '我不用喜帖～') : '我不用喜帖～',
-                address: (document.getElementById('entry_address').value || '').trim(),
-                email: (document.getElementById('entry_email').value || '').trim(),
-                blessings: (document.getElementById('entry_blessings').value || '').trim()
-            };
+                try {
+                    sessionStorage.setItem('wedding_rsvp_data', JSON.stringify(lastSubmittedData));
+                } catch(e){}
+            } catch (e) {
+                console.log('Capture form data error:', e);
+            }
+        }
+
+        /* 3. Form Interactivity & Dynamic Field Logic */
+        function handleInvitationChange() {
+            try {
+                const invRadio = document.querySelector('input[name="entry.1164108255"]:checked');
+                const addressGroup = document.getElementById('addressGroup');
+                const addressInput = document.getElementById('entry_address');
+                const emailGroup = document.getElementById('emailGroup');
+                const emailInput = document.getElementById('entry_email');
+                const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
+
+                const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
+
+                if (!isAttending) {
+                    if (addressGroup) addressGroup.classList.add('hidden');
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = '';
+                    }
+
+                    if (emailGroup) emailGroup.classList.add('hidden');
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = '';
+                    }
+                    return;
+                }
+
+                const val = invRadio ? invRadio.value : '';
+
+                if (val === '我要紙本喜帖！') {
+                    if (addressGroup) addressGroup.classList.remove('hidden');
+                    if (addressInput) addressInput.required = true;
+
+                    if (emailGroup) emailGroup.classList.add('hidden');
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = ''; // 清空可能殘留的無效 Email 格式，避免隱藏欄位阻擋表單校驗
+                    }
+                } else if (val === '我要電子喜帖！') {
+                    if (emailGroup) emailGroup.classList.remove('hidden');
+                    if (emailInput) emailInput.required = true;
+
+                    if (addressGroup) addressGroup.classList.add('hidden');
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = ''; // 清空地址欄位，保持資料乾淨
+                    }
+                } else {
+                    if (addressGroup) addressGroup.classList.add('hidden');
+                    if (addressInput) {
+                        addressInput.required = false;
+                        addressInput.value = '';
+                    }
+
+                    if (emailGroup) emailGroup.classList.add('hidden');
+                    if (emailInput) {
+                        emailInput.required = false;
+                        emailInput.value = '';
+                    }
+                }
+            } catch (e) {
+                console.log('Handle invitation change error:', e);
+            }
+        }
+
+        function handleAttendanceChange() {
+            try {
+                const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
+                const guestCountGroup = document.getElementById('guestCountGroup');
+                const dynamicFields = document.getElementById('dynamicFields');
+                const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
+
+                if (isAttending) {
+                    if (guestCountGroup) guestCountGroup.classList.remove('hidden');
+                    if (dynamicFields) dynamicFields.classList.remove('hidden');
+
+                    const invChecked = document.querySelector('input[name="entry.1164108255"]:checked');
+                    if (!invChecked || invChecked.value === '我不用喜帖～') {
+                        const elecOpt = document.getElementById('inv_elec');
+                        if (elecOpt) elecOpt.checked = true;
+                    }
+                    handleInvitationChange();
+                } else {
+                    if (guestCountGroup) guestCountGroup.classList.add('hidden');
+                    if (dynamicFields) dynamicFields.classList.add('hidden');
+
+                    const noneOpt = document.getElementById('inv_none');
+                    if (noneOpt) noneOpt.checked = true;
+
+                    handleInvitationChange();
+                }
+            } catch (e) {
+                console.log('Handle attendance change error:', e);
+            }
+        }
+
+        /* 4. DOM Ready & Event Setup */
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.05 });
+
+                revealElements.forEach(el => observer.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('visible'));
+            }
+
+            // Accordion Toggle
+            const accordionToggle = document.getElementById('accordionToggle');
+            const accordionContent = document.getElementById('accordionContent');
+            const accordionIcon = document.getElementById('accordionIcon');
+
+            if (accordionToggle && accordionContent && accordionIcon) {
+                accordionToggle.addEventListener('click', () => {
+                    accordionContent.classList.toggle('active');
+                    accordionIcon.style.transform = accordionContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+            }
+
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            handleAttendanceChange();
+
+            // Preload card photo after load
+            window.addEventListener('load', () => {
+                setTimeout(getCardPhoto, 300);
+            });
+        });
+
+        function showSubmitError(title, message) {
+            const errorBox = document.getElementById('submitErrorBox');
+            const titleEl = document.getElementById('submitErrorTitle');
+            const msgEl = document.getElementById('submitErrorMessage');
+            if (errorBox) {
+                if (titleEl && title) titleEl.innerText = title;
+                if (msgEl && message) msgEl.innerText = message;
+                errorBox.classList.remove('hidden');
+                errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function hideSubmitError() {
+            const errorBox = document.getElementById('submitErrorBox');
+            if (errorBox) {
+                errorBox.classList.add('hidden');
+            }
+        }
+
+        /* 5. Verified Form Submission with Active Error Handling */
+        async function handleFormSubmit(event) {
+            if (event) event.preventDefault();
+            hideSubmitError();
+
+            // 1. 檢測網路連線狀態，斷線時立即攔截並提示
+            if (!navigator.onLine) {
+                showSubmitError('網路連線已中斷', '目前設備似乎沒有網路連線，無法將回覆送至表單，請確認網路後重新送出。');
+                return;
+            }
+
+            captureFormData();
+
+            const form = document.getElementById('rsvpForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            const submitBtnIcon = document.getElementById('submitBtnIcon');
+
+            if (submitBtn) submitBtn.disabled = true;
+            if (submitBtnText) submitBtnText.innerText = '處理中，請稍候...';
+            if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
 
             try {
-                sessionStorage.setItem('wedding_rsvp_data', JSON.stringify(lastSubmittedData));
-            } catch(e){}
-        } catch (e) {
-            console.log('Capture form data error:', e);
-        }
-    }
-
-    /* 3. Form Interactivity & Dynamic Field Logic */
-    function handleInvitationChange() {
-        try {
-            const invRadio = document.querySelector('input[name="entry.1164108255"]:checked');
-            const addressGroup = document.getElementById('addressGroup');
-            const addressInput = document.getElementById('entry_address');
-            const emailGroup = document.getElementById('emailGroup');
-            const emailInput = document.getElementById('entry_email');
-            const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
-
-            const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
-
-            if (!isAttending) {
-                if (addressGroup) addressGroup.classList.add('hidden');
-                if (addressInput) {
-                    addressInput.required = false;
-                    addressInput.value = '';
+                const formData = new FormData(form);
+                const searchParams = new URLSearchParams();
+                for (const [key, value] of formData.entries()) {
+                    searchParams.append(key, value);
                 }
 
-                if (emailGroup) emailGroup.classList.add('hidden');
-                if (emailInput) {
-                    emailInput.required = false;
-                    emailInput.value = '';
-                }
-                return;
-            }
+                // 設定 9 秒超時監控
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 9000);
 
-            const val = invRadio ? invRadio.value : '';
-
-            if (val === '我要紙本喜帖！') {
-                if (addressGroup) addressGroup.classList.remove('hidden');
-                if (addressInput) addressInput.required = true;
-
-                if (emailGroup) emailGroup.classList.add('hidden');
-                if (emailInput) {
-                    emailInput.required = false;
-                    emailInput.value = '';
-                }
-            } else if (val === '我要電子喜帖！') {
-                if (emailGroup) emailGroup.classList.remove('hidden');
-                if (emailInput) emailInput.required = true;
-
-                if (addressGroup) addressGroup.classList.add('hidden');
-                if (addressInput) {
-                    addressInput.required = false;
-                    addressInput.value = '';
-                }
-            } else {
-                if (addressGroup) addressGroup.classList.add('hidden');
-                if (addressInput) {
-                    addressInput.required = false;
-                    addressInput.value = '';
-                }
-
-                if (emailGroup) emailGroup.classList.add('hidden');
-                if (emailInput) {
-                    emailInput.required = false;
-                    emailInput.value = '';
-                }
-            }
-        } catch (e) {
-            console.log('Handle invitation change error:', e);
-        }
-    }
-
-    function handleAttendanceChange() {
-        try {
-            const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
-            const guestCountGroup = document.getElementById('guestCountGroup');
-            const dynamicFields = document.getElementById('dynamicFields');
-            const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
-
-            if (isAttending) {
-                if (guestCountGroup) guestCountGroup.classList.remove('hidden');
-                if (dynamicFields) dynamicFields.classList.remove('hidden');
-
-                const invChecked = document.querySelector('input[name="entry.1164108255"]:checked');
-                if (!invChecked || invChecked.value === '我不用喜帖～') {
-                    const elecOpt = document.getElementById('inv_elec');
-                    if (elecOpt) elecOpt.checked = true;
-                }
-                handleInvitationChange();
-            } else {
-                if (guestCountGroup) guestCountGroup.classList.add('hidden');
-                if (dynamicFields) dynamicFields.classList.add('hidden');
-
-                const noneOpt = document.getElementById('inv_none');
-                if (noneOpt) noneOpt.checked = true;
-
-                handleInvitationChange();
-            }
-        } catch (e) {
-            console.log('Handle attendance change error:', e);
-        }
-    }
-
-    /* 4. DOM Ready & Event Setup */
-    document.addEventListener('DOMContentLoaded', function() {
-        const revealElements = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
+                await fetch(form.action, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: searchParams.toString(),
+                    signal: controller.signal
                 });
-            }, { threshold: 0.05 });
 
-            revealElements.forEach(el => observer.observe(el));
-        } else {
-            revealElements.forEach(el => el.classList.add('visible'));
-        }
+                clearTimeout(timeoutId);
+                // 成功將回覆傳送至 Google 表單後台，始切換至確認卡片頁
+                onFormSubmitted();
+            } catch (error) {
+                console.error('RSVP submission error:', error);
 
-        // Accordion Toggle
-        const accordionToggle = document.getElementById('accordionToggle');
-        const accordionContent = document.getElementById('accordionContent');
-        const accordionIcon = document.getElementById('accordionIcon');
-
-        if (accordionToggle && accordionContent && accordionIcon) {
-            accordionToggle.addEventListener('click', () => {
-                accordionContent.classList.toggle('active');
-                accordionIcon.style.transform = accordionContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-            });
-        }
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        if (menuBtn && mobileMenu) {
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-        }
-
-        handleAttendanceChange();
-
-        // Preload card photo after load
-        window.addEventListener('load', () => {
-            setTimeout(getCardPhoto, 300);
-        });
-    });
-
-    /* 5. 嚴格送單校驗與防假成功機制 */
-    function handleFormSubmit(event) {
-        // 1. 防重複送出
-        if (submitted) {
-            event.preventDefault();
-            return;
-        }
-
-        // 2. 檢測裝置連線狀態
-        if (!navigator.onLine) {
-            event.preventDefault();
-            alert('偵測到您的裝置目前處於離線狀態，請檢查網路連線後再試一次！');
-            return;
-        }
-
-        // 3. 電話號碼防呆與自動淨化（去除橫槓/空格，防止 Google 表單後台資料驗證報錯拒收）
-        const phoneInput = document.getElementById('entry_phone');
-        if (phoneInput) {
-            const rawPhone = phoneInput.value.trim();
-            const cleanPhone = rawPhone.replace(/[-\s()]/g, '');
-            if (!/^\d{8,12}$/.test(cleanPhone)) {
-                event.preventDefault();
-                alert('請填寫正確的聯絡電話號碼（8-12 碼純數字，請勿包含英文字母或符號）');
-                phoneInput.focus();
-                return;
-            }
-            phoneInput.value = cleanPhone; // 自動填補純數字發送
-        }
-
-        // 4. 出席細項格式檢驗
-        const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
-        const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
-
-        if (isAttending) {
-            const invRadio = document.querySelector('input[name="entry.1164108255"]:checked');
-            const invVal = invRadio ? invRadio.value : '';
-
-            if (invVal === '我要電子喜帖！') {
-                const emailInput = document.getElementById('entry_email');
-                const emailVal = emailInput ? emailInput.value.trim() : '';
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-                    event.preventDefault();
-                    alert('請輸入格式正確的電子信箱 Email（例：name@example.com）');
-                    if (emailInput) emailInput.focus();
-                    return;
-                }
-            } else if (invVal === '我要紙本喜帖！') {
-                const addressInput = document.getElementById('entry_address');
-                const addressVal = addressInput ? addressInput.value.trim() : '';
-                if (addressVal.length < 5) {
-                    event.preventDefault();
-                    alert('請填寫完整的喜帖收件地址（包含縣市、區與詳細路段）');
-                    if (addressInput) addressInput.focus();
-                    return;
-                }
-            }
-        }
-
-        // 5. 正式送單流程啟動
-        captureFormData();
-        submitted = true;
-        submissionHandled = false;
-
-        const submitBtn = document.getElementById('submitBtn');
-        const submitBtnText = document.getElementById('submitBtnText');
-        const submitBtnIcon = document.getElementById('submitBtnIcon');
-
-        if (submitBtn) submitBtn.disabled = true;
-        if (submitBtnText) submitBtnText.innerText = '傳送至 Google 表單中...';
-        if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
-
-        // 【徹底移除 650ms 盲目放行計時器】
-        // 設置 10 秒逾時保護：若 Google 伺服器在 10 秒內完全沒有回應（如斷線、封鎖或拒收），絕不切換畫面，並退回按鈕讓使用者重試
-        if (submissionTimeoutId) clearTimeout(submissionTimeoutId);
-        submissionTimeoutId = setTimeout(() => {
-            if (submitted && !submissionHandled) {
-                submitted = false;
-                submissionHandled = false;
-
+                // 傳送失敗：不跳出確認卡片，並恢復按鈕與提示賓客重試
                 if (submitBtn) submitBtn.disabled = false;
                 if (submitBtnText) submitBtnText.innerText = '重新送出回函 RETRY';
                 if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-rotate-right text-xs';
 
-                alert('⚠️ 連線逾時或 Google 表單伺服器無回應，回函可能未成功儲存！請確認網路順暢後再次點擊送出。');
+                const errorMsg = (error.name === 'AbortError')
+                    ? '伺服器連線超時未回應，請檢查行動網路或 Wi-Fi 收訊後再次點擊送出。'
+                    : '傳送失敗，未能成功將回覆送達後台表單。請確認連線正常或稍後再試。';
+
+                showSubmitError('回函送出失敗', errorMsg);
             }
-        }, 10000);
-    }
-
-    // 唯有 hidden_iframe 確實載入 Google 伺服器響應時才執行切換
-    function onFormSubmitted() {
-        if (submissionHandled) return;
-        submissionHandled = true;
-
-        if (submissionTimeoutId) {
-            clearTimeout(submissionTimeoutId);
-            submissionTimeoutId = null;
         }
 
-        const submitBtn = document.getElementById('submitBtn');
-        const submitBtnText = document.getElementById('submitBtnText');
-        const submitBtnIcon = document.getElementById('submitBtnIcon');
+        function onFormSubmitted() {
+            hideSubmitError();
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            const submitBtnIcon = document.getElementById('submitBtnIcon');
 
-        if (submitBtn) submitBtn.disabled = false;
-        if (submitBtnText) submitBtnText.innerText = '送出回函 SUBMIT';
-        if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-paper-plane text-xs';
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitBtnText) submitBtnText.innerText = '送出回函 SUBMIT';
+            if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-paper-plane text-xs';
 
-        // 切換至卡片確認頁面
-        const invitationView = document.getElementById('invitationPageView');
-        const confirmationView = document.getElementById('confirmationPageView');
+            // Smooth View Transition to Confirmation Card Page
+            const invitationView = document.getElementById('invitationPageView');
+            const confirmationView = document.getElementById('confirmationPageView');
 
-        if (invitationView && confirmationView) {
-            invitationView.classList.add('hidden');
-            confirmationView.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (invitationView && confirmationView) {
+                invitationView.classList.add('hidden');
+                confirmationView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            renderConfirmationCard();
         }
 
-        renderConfirmationCard();
-    }
+        function backToInvitation() {
+            hideSubmitError();
+            const invitationView = document.getElementById('invitationPageView');
+            const confirmationView = document.getElementById('confirmationPageView');
 
-    function backToInvitation() {
-        if (submissionTimeoutId) {
-            clearTimeout(submissionTimeoutId);
-            submissionTimeoutId = null;
+            if (invitationView && confirmationView) {
+                confirmationView.classList.add('hidden');
+                invitationView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const form = document.getElementById('rsvpForm');
+            if (form) form.reset();
+
+            const submitBtnText = document.getElementById('submitBtnText');
+            const submitBtnIcon = document.getElementById('submitBtnIcon');
+            if (submitBtnText) submitBtnText.innerText = '送出回函 SUBMIT';
+            if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-paper-plane text-xs';
+
+            handleAttendanceChange();
+            submitted = false;
+            submissionHandled = false;
         }
 
-        const invitationView = document.getElementById('invitationPageView');
-        const confirmationView = document.getElementById('confirmationPageView');
+        /* 6. High-Definition Canvas Confirmation Card Generator */
+        function renderConfirmationCard() {
+            if (!lastSubmittedData) return;
 
-        if (invitationView && confirmationView) {
-            confirmationView.classList.add('hidden');
-            invitationView.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+            const photoImg = getCardPhoto();
+            const width = 800;
+            const height = 1380;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
 
-        const form = document.getElementById('rsvpForm');
-        if (form) form.reset();
-        handleAttendanceChange();
-        submitted = false;
-        submissionHandled = false;
-    }
+            const renderCanvasContent = () => {
+                try {
+                    // Background Fill
+                    ctx.fillStyle = '#fcfaf7';
+                    ctx.fillRect(0, 0, width, height);
 
-    /* 6. High-Definition Canvas Confirmation Card Generator */
-    function renderConfirmationCard() {
-        if (!lastSubmittedData) return;
+                    // Double Border Frame
+                    ctx.strokeStyle = '#d4a373';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(20, 20, width - 40, height - 40);
 
-        const photoImg = getCardPhoto();
-        const width = 800;
-        const height = 1380;
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
+                    ctx.strokeStyle = '#e8ded5';
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(28, 28, width - 56, height - 56);
 
-        const renderCanvasContent = () => {
-            try {
-                // Background Fill
-                ctx.fillStyle = '#fcfaf7';
-                ctx.fillRect(0, 0, width, height);
+                    // Photo Header Frame
+                    const photoX = 45;
+                    const photoY = 45;
+                    const photoW = width - 90;
+                    const photoH = 400;
+                    const radius = 16;
 
-                // Double Border Frame
-                ctx.strokeStyle = '#d4a373';
-                ctx.lineWidth = 2;
-                ctx.strokeRect(20, 20, width - 40, height - 40);
-
-                ctx.strokeStyle = '#e8ded5';
-                ctx.lineWidth = 1;
-                ctx.strokeRect(28, 28, width - 56, height - 56);
-
-                // Photo Header Frame
-                const photoX = 45;
-                const photoY = 45;
-                const photoW = width - 90;
-                const photoH = 400;
-                const radius = 16;
-
-                ctx.save();
-                ctx.beginPath();
-                if (ctx.roundRect) {
-                    ctx.roundRect(photoX, photoY, photoW, photoH, radius);
-                } else {
-                    ctx.rect(photoX, photoY, photoW, photoH);
-                }
-                ctx.clip();
-
-                const nW = photoImg.naturalWidth || photoImg.width;
-                const nH = photoImg.naturalHeight || photoImg.height;
-
-                if (photoImg.complete && nW > 0 && nH > 0) {
-                    const imgRatio = nW / nH;
-                    const containerRatio = photoW / photoH;
-                    let sX = 0, sY = 0, sW = nW, sH = nH;
-
-                    if (imgRatio > containerRatio) {
-                        sW = nH * containerRatio;
-                        sX = (nW - sW) / 2;
+                    ctx.save();
+                    ctx.beginPath();
+                    if (ctx.roundRect) {
+                        ctx.roundRect(photoX, photoY, photoW, photoH, radius);
                     } else {
-                        sH = nW / containerRatio;
-                        sY = Math.max(0, (nH - sH) * 0.40);
+                        ctx.rect(photoX, photoY, photoW, photoH);
                     }
-                    ctx.drawImage(photoImg, sX, sY, sW, sH, photoX, photoY, photoW, photoH);
-                } else {
-                    ctx.fillStyle = '#f5eee6';
-                    ctx.fillRect(photoX, photoY, photoW, photoH);
-                }
-                ctx.restore();
+                    ctx.clip();
 
-                // Subtle Border around Photo
-                ctx.strokeStyle = '#e8ded5';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                if (ctx.roundRect) {
-                    ctx.roundRect(photoX, photoY, photoW, photoH, radius);
-                } else {
-                    ctx.rect(photoX, photoY, photoW, photoH);
-                }
-                ctx.stroke();
+                    const nW = photoImg.naturalWidth || photoImg.width;
+                    const nH = photoImg.naturalHeight || photoImg.height;
 
-                // Header Card Box
-                const headerY = photoY + photoH + 20;
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                if (ctx.roundRect) {
-                    ctx.roundRect(45, headerY, width - 90, 125, 16);
-                } else {
-                    ctx.rect(45, headerY, width - 90, 125);
-                }
-                ctx.fill();
-                ctx.strokeStyle = '#e8ded5';
-                ctx.stroke();
+                    if (photoImg.complete && nW > 0 && nH > 0) {
+                        const imgRatio = nW / nH;
+                        const containerRatio = photoW / photoH;
+                        let sX = 0, sY = 0, sW = nW, sH = nH;
 
-                // Title Section
-                ctx.textAlign = 'center';
-                ctx.fillStyle = '#d4a373';
-                ctx.font = '600 24px "Noto Serif TC", serif';
-                ctx.fillText('昇廷   &   瑋伶', width / 2, headerY + 38);
-
-                ctx.fillStyle = '#3d3835';
-                ctx.font = 'bold 26px "Noto Serif TC", serif';
-                ctx.fillText('婚禮出席回函確認', width / 2, headerY + 74);
-
-                ctx.fillStyle = '#7a726d';
-                ctx.font = '15px "Noto Serif TC", serif';
-                ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 104);
-
-                // Data Card Container
-                const dataY = headerY + 145;
-                const dataH = height - dataY - 65;
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                if (ctx.roundRect) {
-                    ctx.roundRect(45, dataY, width - 90, dataH, 16);
-                } else {
-                    ctx.rect(45, dataY, width - 90, dataH);
-                }
-                ctx.fill();
-                ctx.strokeStyle = '#e8ded5';
-                ctx.stroke();
-
-                // Form Data Rows
-                const isAttending = lastSubmittedData.attendance.includes('出席！');
-                const dataRows = [
-                    { label: '姓名 / Name', value: lastSubmittedData.name },
-                    { label: '電話 / Phone', value: lastSubmittedData.phone },
-                    { label: '親友關係', value: lastSubmittedData.relationship },
-                    { label: '出席意願', value: lastSubmittedData.attendance }
-                ];
-
-                if (isAttending) {
-                    dataRows.push({ label: '參加人數', value: lastSubmittedData.guests + ' 人' });
-                    dataRows.push({ label: '素食需求', value: lastSubmittedData.special + ' 份' });
-                    dataRows.push({ label: '喜帖索取', value: lastSubmittedData.invitation });
-
-                    if (lastSubmittedData.invitation === '我要紙本喜帖！' && lastSubmittedData.address) {
-                        dataRows.push({ label: '寄件地址', value: lastSubmittedData.address });
-                    } else if (lastSubmittedData.invitation === '我要電子喜帖！' && lastSubmittedData.email) {
-                        dataRows.push({ label: '寄件信箱', value: lastSubmittedData.email });
+                        if (imgRatio > containerRatio) {
+                            sW = nH * containerRatio;
+                            sX = (nW - sW) / 2;
+                        } else {
+                            sH = nW / containerRatio;
+                            sY = Math.max(0, (nH - sH) * 0.40);
+                        }
+                        ctx.drawImage(photoImg, sX, sY, sW, sH, photoX, photoY, photoW, photoH);
+                    } else {
+                        ctx.fillStyle = '#f5eee6';
+                        ctx.fillRect(photoX, photoY, photoW, photoH);
                     }
-                }
+                    ctx.restore();
 
-                // Render Data Rows
-                ctx.textAlign = 'left';
-                let currentY = dataY + 48;
-                const labelX = 80;
-                const valueX = 270;
-                const rowGap = 48;
-
-                dataRows.forEach(row => {
-                    ctx.fillStyle = '#7a726d';
-                    ctx.font = '500 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
-                    ctx.fillText(row.label, labelX, currentY);
-
-                    ctx.fillStyle = '#221f1e';
-                    ctx.font = '600 19px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
-                    ctx.fillText(row.value, valueX, currentY);
-
-                    ctx.strokeStyle = '#f5eee6';
+                    // Subtle Border around Photo
+                    ctx.strokeStyle = '#e8ded5';
                     ctx.lineWidth = 1;
                     ctx.beginPath();
-                    ctx.moveTo(labelX, currentY + 14);
-                    ctx.lineTo(width - 80, currentY + 14);
+                    if (ctx.roundRect) {
+                        ctx.roundRect(photoX, photoY, photoW, photoH, radius);
+                    } else {
+                        ctx.rect(photoX, photoY, photoW, photoH);
+                    }
                     ctx.stroke();
 
-                    currentY += rowGap;
-                });
+                    // Header Card Box
+                    const headerY = photoY + photoH + 20;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    if (ctx.roundRect) {
+                        ctx.roundRect(45, headerY, width - 90, 125, 16);
+                    } else {
+                        ctx.rect(45, headerY, width - 90, 125);
+                    }
+                    ctx.fill();
+                    ctx.strokeStyle = '#e8ded5';
+                    ctx.stroke();
 
-                // Blessings Render
-                if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
+                    // Title Section
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = '#d4a373';
+                    ctx.font = '600 24px "Noto Serif TC", serif';
+                    ctx.fillText('昇廷   &   瑋伶', width / 2, headerY + 38);
+
+                    ctx.fillStyle = '#3d3835';
+                    ctx.font = 'bold 26px "Noto Serif TC", serif';
+                    ctx.fillText('婚禮出席回函確認', width / 2, headerY + 74);
+
                     ctx.fillStyle = '#7a726d';
-                    ctx.font = '600 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
-                    ctx.fillText('對新人的祝福', labelX, currentY + 8);
+                    ctx.font = '15px "Noto Serif TC", serif';
+                    ctx.fillText('2027.01.31 午宴 | 萬華格萊天漾大飯店 15F 天嵐廳', width / 2, headerY + 104);
 
-                    ctx.fillStyle = '#221f1e';
-                    ctx.font = 'normal 500 18px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                    // Data Card Container
+                    const dataY = headerY + 145;
+                    const dataH = height - dataY - 65;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    if (ctx.roundRect) {
+                        ctx.roundRect(45, dataY, width - 90, dataH, 16);
+                    } else {
+                        ctx.rect(45, dataY, width - 90, dataH);
+                    }
+                    ctx.fill();
+                    ctx.strokeStyle = '#e8ded5';
+                    ctx.stroke();
 
-                    const words = ('"' + lastSubmittedData.blessings + '"').split('');
-                    let line = '';
-                    let textY = currentY + 36;
-                    const maxWidth = width - labelX - 85;
+                    // Form Data Rows
+                    const isAttending = lastSubmittedData.attendance.includes('出席！');
+                    const dataRows = [
+                        { label: '姓名 / Name', value: lastSubmittedData.name },
+                        { label: '電話 / Phone', value: lastSubmittedData.phone },
+                        { label: '親友關係', value: lastSubmittedData.relationship },
+                        { label: '出席意願', value: lastSubmittedData.attendance }
+                    ];
 
-                    for (let n = 0; n < words.length; n++) {
-                        let testLine = line + words[n];
-                        let metrics = ctx.measureText(testLine);
-                        if (metrics.width > maxWidth && n > 0) {
-                            ctx.fillText(line, labelX, textY);
-                            line = words[n];
-                            textY += 28;
-                        } else {
-                            line = testLine;
+                    if (isAttending) {
+                        dataRows.push({ label: '參加人數', value: lastSubmittedData.guests + ' 人' });
+                        dataRows.push({ label: '素食需求', value: lastSubmittedData.special + ' 份' });
+                        dataRows.push({ label: '喜帖索取', value: lastSubmittedData.invitation });
+
+                        if (lastSubmittedData.invitation === '我要紙本喜帖！' && lastSubmittedData.address) {
+                            dataRows.push({ label: '寄件地址', value: lastSubmittedData.address });
+                        } else if (lastSubmittedData.invitation === '我要電子喜帖！' && lastSubmittedData.email) {
+                            dataRows.push({ label: '寄件信箱', value: lastSubmittedData.email });
                         }
                     }
-                    ctx.fillText(line, labelX, textY);
+
+                    // Render Data Rows
+                    ctx.textAlign = 'left';
+                    let currentY = dataY + 48;
+                    const labelX = 80;
+                    const valueX = 270;
+                    const rowGap = 48;
+
+                    dataRows.forEach(row => {
+                        ctx.fillStyle = '#7a726d';
+                        ctx.font = '500 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.fillText(row.label, labelX, currentY);
+
+                        ctx.fillStyle = '#221f1e';
+                        ctx.font = '600 19px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.fillText(row.value, valueX, currentY);
+
+                        ctx.strokeStyle = '#f5eee6';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(labelX, currentY + 14);
+                        ctx.lineTo(width - 80, currentY + 14);
+                        ctx.stroke();
+
+                        currentY += rowGap;
+                    });
+
+                    // Blessings Render
+                    if (lastSubmittedData.blessings && lastSubmittedData.blessings.trim() !== '') {
+                        ctx.fillStyle = '#7a726d';
+                        ctx.font = '600 17px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+                        ctx.fillText('對新人的祝福', labelX, currentY + 8);
+
+                        ctx.fillStyle = '#221f1e';
+                        ctx.font = 'normal 500 18px system-ui, -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif';
+
+                        const words = ('"' + lastSubmittedData.blessings + '"').split('');
+                        let line = '';
+                        let textY = currentY + 36;
+                        const maxWidth = width - labelX - 85;
+
+                        for (let n = 0; n < words.length; n++) {
+                            let testLine = line + words[n];
+                            let metrics = ctx.measureText(testLine);
+                            if (metrics.width > maxWidth && n > 0) {
+                                ctx.fillText(line, labelX, textY);
+                                line = words[n];
+                                textY += 28;
+                            } else {
+                                line = testLine;
+                            }
+                        }
+                        ctx.fillText(line, labelX, textY);
+                    }
+
+                    // Footer Watermark
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = '#8da399';
+                    ctx.font = '15px "Cormorant Garamond", serif';
+                    ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
+
+                    const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
+                    const confirmationImage = document.getElementById('confirmationImage');
+                    const fallbackCard = document.getElementById('fallbackCard');
+
+                    if (confirmationImage) {
+                        confirmationImage.src = jpgDataUrl;
+                        confirmationImage.classList.remove('hidden');
+                        if (fallbackCard) fallbackCard.classList.add('hidden');
+                    }
+                } catch (err) {
+                    console.warn('Canvas render error, showing DOM fallback card:', err);
+                    showFallbackDOMCard();
                 }
+            };
 
-                // Footer Watermark
-                ctx.textAlign = 'center';
-                ctx.fillStyle = '#8da399';
-                ctx.font = '15px "Cormorant Garamond", serif';
-                ctx.fillText('I WANNA BE YOUR LIGHT  •  2027 WEDDING INVITATION', width / 2, height - 38);
-
-                const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.95);
-                const confirmationImage = document.getElementById('confirmationImage');
-                const fallbackCard = document.getElementById('fallbackCard');
-
-                if (confirmationImage) {
-                    confirmationImage.src = jpgDataUrl;
-                    confirmationImage.classList.remove('hidden');
-                    if (fallbackCard) fallbackCard.classList.add('hidden');
-                }
-            } catch (err) {
-                console.warn('Canvas render error, showing DOM fallback card:', err);
-                showFallbackDOMCard();
+            if (photoImg.complete && photoImg.naturalWidth > 0) {
+                renderCanvasContent();
+            } else {
+                photoImg.onload = renderCanvasContent;
+                photoImg.onerror = renderCanvasContent;
+                setTimeout(renderCanvasContent, 500);
             }
+        }
+
+        function showFallbackDOMCard() {
+            if (!lastSubmittedData) return;
+            const confirmationImage = document.getElementById('confirmationImage');
+            const fallbackCard = document.getElementById('fallbackCard');
+            const fallbackList = document.getElementById('fallbackDataList');
+
+            if (confirmationImage) confirmationImage.classList.add('hidden');
+            if (fallbackCard) fallbackCard.classList.remove('hidden');
+
+            if (fallbackList) {
+                const isAttending = lastSubmittedData.attendance.includes('出席！');
+                const items = [
+                    ['姓名', lastSubmittedData.name],
+                    ['電話', lastSubmittedData.phone],
+                    ['親友關係', lastSubmittedData.relationship],
+                    ['出席意願', lastSubmittedData.attendance]
+                ];
+                if (isAttending) {
+                    items.push(['參加人數', lastSubmittedData.guests + ' 人']);
+                    items.push(['素食需求', lastSubmittedData.special + ' 份']);
+                    items.push(['喜帖索取', lastSubmittedData.invitation]);
+                    if (lastSubmittedData.address) items.push(['寄件地址', lastSubmittedData.address]);
+                    if (lastSubmittedData.email) items.push(['寄件信箱', lastSubmittedData.email]);
+                }
+                if (lastSubmittedData.blessings) {
+                    items.push(['新人祝福', '「' + lastSubmittedData.blessings + '」']);
+                }
+
+                fallbackList.innerHTML = items.map(([label, val]) => `
+                    <div class="flex justify-between py-1.5 border-b border-morandi-border/40 gap-2">
+                        <span class="text-morandi-muted font-medium">${label}</span>
+                        <span class="text-morandi-dark font-semibold text-right">${val}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* 7. Background Music Controller (YouTube IFrame API) */
+        var player;
+        var isPlaying = false;
+        var playerReady = false;
+
+        window.onYouTubeIframeAPIReady = function() {
+            player = new YT.Player('youtube-player', {
+                height: '1',
+                width: '1',
+                videoId: '1dUovynAYxs',
+                playerVars: {
+                    'autoplay': 1,
+                    'loop': 1,
+                    'playlist': '1dUovynAYxs',
+                    'controls': 0,
+                    'showinfo': 0,
+                    'autohide': 1,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'enablejsapi': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
         };
 
-        if (photoImg.complete && photoImg.naturalWidth > 0) {
-            renderCanvasContent();
-        } else {
-            photoImg.onload = renderCanvasContent;
-            photoImg.onerror = renderCanvasContent;
-            setTimeout(renderCanvasContent, 500);
+        function onPlayerReady(event) {
+            playerReady = true;
+            try { 
+                event.target.playVideo(); 
+            } catch (e) {}
+
+            const audioEvents = ['click', 'touchstart', 'pointerdown'];
+            const unlockAudio = () => {
+                if (player && typeof player.playVideo === 'function') {
+                    player.playVideo();
+                }
+                audioEvents.forEach(evt => document.removeEventListener(evt, unlockAudio));
+            };
+
+            audioEvents.forEach(evt => {
+                document.addEventListener(evt, unlockAudio, { once: true, passive: true });
+            });
         }
-    }
 
-    function showFallbackDOMCard() {
-        if (!lastSubmittedData) return;
-        const confirmationImage = document.getElementById('confirmationImage');
-        const fallbackCard = document.getElementById('fallbackCard');
-        const fallbackList = document.getElementById('fallbackDataList');
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        if (confirmationImage) confirmationImage.classList.add('hidden');
-        if (fallbackCard) fallbackCard.classList.remove('hidden');
-
-        if (fallbackList) {
-            const isAttending = lastSubmittedData.attendance.includes('出席！');
-            const items = [
-                ['姓名', lastSubmittedData.name],
-                ['電話', lastSubmittedData.phone],
-                ['親友關係', lastSubmittedData.relationship],
-                ['出席意願', lastSubmittedData.attendance]
-            ];
-            if (isAttending) {
-                items.push(['參加人數', lastSubmittedData.guests + ' 人']);
-                items.push(['素食需求', lastSubmittedData.special + ' 份']);
-                items.push(['喜帖索取', lastSubmittedData.invitation]);
-                if (lastSubmittedData.address) items.push(['寄件地址', lastSubmittedData.address]);
-                if (lastSubmittedData.email) items.push(['寄件信箱', lastSubmittedData.email]);
+        function onPlayerStateChange(event) {
+            const musicBtn = document.getElementById('musicToggleBtn');
+            const musicIcon = document.getElementById('musicIcon');
+            if (event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                if (musicIcon) musicIcon.classList.add('animate-spin-slow');
+                if (musicBtn) musicBtn.classList.add('ring-4', 'ring-morandi-gold/30');
+            } else {
+                isPlaying = false;
+                if (musicIcon) musicIcon.classList.remove('animate-spin-slow');
+                if (musicBtn) musicBtn.classList.remove('ring-4', 'ring-morandi-gold/30');
             }
-            if (lastSubmittedData.blessings) {
-                items.push(['新人祝福', '「' + lastSubmittedData.blessings + '」']);
-            }
-
-            fallbackList.innerHTML = items.map(([label, val]) => `
-                <div class="flex justify-between py-1.5 border-b border-morandi-border/40 gap-2">
-                    <span class="text-morandi-muted font-medium">${label}</span>
-                    <span class="text-morandi-dark font-semibold text-right">${val}</span>
-                </div>
-            `).join('');
         }
-    }
 
-    /* 7. Background Music Controller (YouTube IFrame API) */
-    var player;
-    var isPlaying = false;
-    var playerReady = false;
-
-    window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player('youtube-player', {
-            height: '1',
-            width: '1',
-            videoId: '1dUovynAYxs',
-            playerVars: {
-                'autoplay': 1,
-                'loop': 1,
-                'playlist': '1dUovynAYxs',
-                'controls': 0,
-                'showinfo': 0,
-                'autohide': 1,
-                'modestbranding': 1,
-                'playsinline': 1,
-                'enablejsapi': 1
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    };
-
-    function onPlayerReady(event) {
-        playerReady = true;
-        try { 
-            event.target.playVideo(); 
-        } catch (e) {}
-
-        const audioEvents = ['click', 'touchstart', 'pointerdown'];
-        const unlockAudio = () => {
-            if (player && typeof player.playVideo === 'function') {
+        function toggleMusic() {
+            if (!player || !playerReady || typeof player.getPlayerState !== 'function') return;
+            if (isPlaying) {
+                player.pauseVideo();
+            } else {
                 player.playVideo();
             }
-            audioEvents.forEach(evt => document.removeEventListener(evt, unlockAudio));
-        };
-
-        audioEvents.forEach(evt => {
-            document.addEventListener(evt, unlockAudio, { once: true, passive: true });
-        });
-    }
-
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    function onPlayerStateChange(event) {
-        const musicBtn = document.getElementById('musicToggleBtn');
-        const musicIcon = document.getElementById('musicIcon');
-        if (event.data === YT.PlayerState.PLAYING) {
-            isPlaying = true;
-            if (musicIcon) musicIcon.classList.add('animate-spin-slow');
-            if (musicBtn) musicBtn.classList.add('ring-4', 'ring-morandi-gold/30');
-        } else {
-            isPlaying = false;
-            if (musicIcon) musicIcon.classList.remove('animate-spin-slow');
-            if (musicBtn) musicBtn.classList.remove('ring-4', 'ring-morandi-gold/30');
         }
-    }
-
-    function toggleMusic() {
-        if (!player || !playerReady || typeof player.getPlayerState !== 'function') return;
-        if (isPlaying) {
-            player.pauseVideo();
-        } else {
-            player.playVideo();
-        }
-    }
-</script>
+    </script>
+</body>
+</html>
