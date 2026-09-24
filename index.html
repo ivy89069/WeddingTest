@@ -68,12 +68,14 @@
         font-family: 'Cormorant Garamond', serif;
     }
 
+    /* Native Smooth Antialiased Image Rendering */
     .smooth-image {
         image-rendering: auto;
         transform: translateZ(0);
         backface-visibility: hidden;
     }
 
+    /* Long-press touch optimization for mobile image saving */
     .native-save-image {
         touch-action: auto !important;
         -webkit-touch-callout: default !important;
@@ -130,6 +132,7 @@
         animation: spinSlow 8s linear infinite;
     }
 
+    /* Radio Heart State Transitions */
     input[type="radio"] + label .heart-solid,
     .peer + label .heart-solid {
         display: none !important;
@@ -417,11 +420,8 @@
 
                 <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-morandi-border/80 relative">
                     
-                    <!-- Hidden Iframe Target: Only calls onFormSubmitted when Google successfully answers back -->
-                    <iframe name="hidden_iframe" 
-                            id="hidden_iframe" 
-                            style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" 
-                            onload="if(submitted && !submissionHandled){ onFormSubmitted(); }"></iframe>
+                    <!-- Hidden Iframe Target for reliable Form POST (Single Pipeline) -->
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="position:absolute; width:1px; height:1px; top:-9999px; left:-9999px; opacity:0; pointer-events:none;" onload="if(submitted && !submissionHandled){onFormSubmitted();}"></iframe>
 
                     <form id="rsvpForm" 
                           action="https://docs.google.com/forms/d/e/1FAIpQLSd7n5Nb2WA-le41Y4iJV-tQyYJBa047lWtEi7lPsF9y0icP0A/formResponse" 
@@ -452,7 +452,7 @@
                                    id="entry_phone" 
                                    name="entry.1121277011" 
                                    required 
-                                   placeholder="請輸入您的聯絡電話（例：0912345678）" 
+                                   placeholder="請輸入您的聯絡電話" 
                                    class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark min-h-[48px]">
                         </div>
 
@@ -534,12 +534,11 @@
                             </div>
                         </div>
 
-                        <!-- Field 5: Guests Count (Hidden radio for 0 ensures Google Forms required fields pass) -->
+                        <!-- Field 5: Guests Count -->
                         <div id="guestCountGroup" class="hidden transition-all duration-300">
                             <span class="block text-sm font-semibold tracking-wider text-morandi-dark uppercase mb-2">
                                 參加午宴人數（含本人） <span class="font-en font-normal text-morandi-muted text-xs">/ GUESTS</span> <span class="text-rose-400">*</span>
                             </span>
-                            <input type="radio" id="gst_0" name="entry.159916419" value="0" class="hidden">
                             <div class="grid grid-cols-5 gap-2">
                                 <div class="relative min-h-[48px]">
                                     <input type="radio" id="gst_1" name="entry.159916419" value="1" checked class="peer absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer">
@@ -688,12 +687,6 @@
                                       rows="3" 
                                       placeholder="請留下給昇廷與瑋伶的祝福的話..." 
                                       class="w-full block px-4 py-3.5 rounded-xl border border-morandi-border focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold outline-none text-base transition bg-morandi-cream/30 text-morandi-dark resize-none"></textarea>
-                        </div>
-
-                        <!-- Form Status Feedback Banner -->
-                        <div id="formErrorMsg" class="hidden p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm leading-relaxed">
-                            <i class="fa-solid fa-triangle-exclamation mr-1.5"></i>
-                            <span id="formErrorText">連線異常，資料未能成功傳遞。</span>
                         </div>
 
                         <!-- Submit Button -->
@@ -870,14 +863,12 @@
                 if (addressGroup) addressGroup.classList.add('hidden');
                 if (addressInput) {
                     addressInput.required = false;
-                    addressInput.disabled = true;
                     addressInput.value = '';
                 }
 
                 if (emailGroup) emailGroup.classList.add('hidden');
                 if (emailInput) {
                     emailInput.required = false;
-                    emailInput.disabled = true;
                     emailInput.value = '';
                 }
                 return;
@@ -887,42 +878,32 @@
 
             if (val === '我要紙本喜帖！') {
                 if (addressGroup) addressGroup.classList.remove('hidden');
-                if (addressInput) {
-                    addressInput.disabled = false;
-                    addressInput.required = true;
-                }
+                if (addressInput) addressInput.required = true;
 
                 if (emailGroup) emailGroup.classList.add('hidden');
                 if (emailInput) {
                     emailInput.required = false;
-                    emailInput.disabled = true;
                     emailInput.value = '';
                 }
             } else if (val === '我要電子喜帖！') {
                 if (emailGroup) emailGroup.classList.remove('hidden');
-                if (emailInput) {
-                    emailInput.disabled = false;
-                    emailInput.required = true;
-                }
+                if (emailInput) emailInput.required = true;
 
                 if (addressGroup) addressGroup.classList.add('hidden');
                 if (addressInput) {
                     addressInput.required = false;
-                    addressInput.disabled = true;
                     addressInput.value = '';
                 }
             } else {
                 if (addressGroup) addressGroup.classList.add('hidden');
                 if (addressInput) {
                     addressInput.required = false;
-                    addressInput.disabled = true;
                     addressInput.value = '';
                 }
 
                 if (emailGroup) emailGroup.classList.add('hidden');
                 if (emailInput) {
                     emailInput.required = false;
-                    emailInput.disabled = true;
                     emailInput.value = '';
                 }
             }
@@ -942,12 +923,6 @@
                 if (guestCountGroup) guestCountGroup.classList.remove('hidden');
                 if (dynamicFields) dynamicFields.classList.remove('hidden');
 
-                const gst0 = document.getElementById('gst_0');
-                if (gst0 && gst0.checked) {
-                    const gst1 = document.getElementById('gst_1');
-                    if (gst1) gst1.checked = true;
-                }
-
                 const invChecked = document.querySelector('input[name="entry.1164108255"]:checked');
                 if (!invChecked || invChecked.value === '我不用喜帖～') {
                     const elecOpt = document.getElementById('inv_elec');
@@ -957,10 +932,6 @@
             } else {
                 if (guestCountGroup) guestCountGroup.classList.add('hidden');
                 if (dynamicFields) dynamicFields.classList.add('hidden');
-
-                // 不出席時自動填補合理預設值，避免 Google 表單後台必填校驗擋單
-                const gst0 = document.getElementById('gst_0');
-                if (gst0) gst0.checked = true;
 
                 const noneOpt = document.getElementById('inv_none');
                 if (noneOpt) noneOpt.checked = true;
@@ -1027,52 +998,36 @@
         });
     });
 
-    /* 5. 嚴格送單校驗與拒收防護機制 */
-    function showError(msg) {
-        const errBox = document.getElementById('formErrorMsg');
-        const errText = document.getElementById('formErrorText');
-        if (errBox && errText) {
-            errText.innerText = msg;
-            errBox.classList.remove('hidden');
-            errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            alert(msg);
-        }
-    }
-
-    function clearError() {
-        const errBox = document.getElementById('formErrorMsg');
-        if (errBox) errBox.classList.add('hidden');
-    }
-
+    /* 5. 嚴格送單校驗與防假成功機制 */
     function handleFormSubmit(event) {
-        clearError();
-
         // 1. 防重複送出
         if (submitted) {
             event.preventDefault();
             return;
         }
 
-        // 2. 檢測網路離線狀態
+        // 2. 檢測裝置連線狀態
         if (!navigator.onLine) {
             event.preventDefault();
-            showError('偵測到您的裝置目前處於離線狀態，請檢查網路連線後再試一次！');
+            alert('偵測到您的裝置目前處於離線狀態，請檢查網路連線後再試一次！');
             return;
         }
 
-        // 3. 嚴格電話格式檢驗（避免 Google 後台格式驗證退件）
+        // 3. 電話號碼防呆與自動淨化（去除橫槓/空格，防止 Google 表單後台資料驗證報錯拒收）
         const phoneInput = document.getElementById('entry_phone');
-        const phoneVal = phoneInput ? phoneInput.value.trim() : '';
-        const cleanedDigits = phoneVal.replace(/[-\s]/g, '');
-        if (!/^\d{8,12}$/.test(cleanedDigits)) {
-            event.preventDefault();
-            showError('請填寫正確的電話號碼（8-12 碼純數字，不含英文字母或特殊符號）');
-            if (phoneInput) phoneInput.focus();
-            return;
+        if (phoneInput) {
+            const rawPhone = phoneInput.value.trim();
+            const cleanPhone = rawPhone.replace(/[-\s()]/g, '');
+            if (!/^\d{8,12}$/.test(cleanPhone)) {
+                event.preventDefault();
+                alert('請填寫正確的聯絡電話號碼（8-12 碼純數字，請勿包含英文字母或符號）');
+                phoneInput.focus();
+                return;
+            }
+            phoneInput.value = cleanPhone; // 自動填補純數字發送
         }
 
-        // 4. 出席時的細項檢驗
+        // 4. 出席細項格式檢驗
         const attendanceRadio = document.querySelector('input[name="entry.1541676002"]:checked');
         const isAttending = attendanceRadio && attendanceRadio.value.includes('出席！');
 
@@ -1085,7 +1040,7 @@
                 const emailVal = emailInput ? emailInput.value.trim() : '';
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
                     event.preventDefault();
-                    showError('請輸入格式正確的電子信箱 Email（例：name@example.com）');
+                    alert('請輸入格式正確的電子信箱 Email（例：name@example.com）');
                     if (emailInput) emailInput.focus();
                     return;
                 }
@@ -1094,14 +1049,14 @@
                 const addressVal = addressInput ? addressInput.value.trim() : '';
                 if (addressVal.length < 5) {
                     event.preventDefault();
-                    showError('請填寫完整的喜帖收件地址（包含縣市、區與詳細路段）');
+                    alert('請填寫完整的喜帖收件地址（包含縣市、區與詳細路段）');
                     if (addressInput) addressInput.focus();
                     return;
                 }
             }
         }
 
-        // 5. 通過嚴格檢驗，啟動送出流程
+        // 5. 正式送單流程啟動
         captureFormData();
         submitted = true;
         submissionHandled = false;
@@ -1114,12 +1069,11 @@
         if (submitBtnText) submitBtnText.innerText = '傳送至 Google 表單中...';
         if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
 
-        // 【核心防護：徹底移除 650ms 盲目放行】
-        // 設置 8 秒逾時防護：若 Google 伺服器 8 秒內毫無回應，代表被拒收、被阻擋或斷線，絕不切換成功畫面！
+        // 【徹底移除 650ms 盲目放行計時器】
+        // 設置 10 秒逾時保護：若 Google 伺服器在 10 秒內完全沒有回應（如斷線、封鎖或拒收），絕不切換畫面，並退回按鈕讓使用者重試
         if (submissionTimeoutId) clearTimeout(submissionTimeoutId);
         submissionTimeoutId = setTimeout(() => {
             if (submitted && !submissionHandled) {
-                // 還原按鈕並提示使用者
                 submitted = false;
                 submissionHandled = false;
 
@@ -1127,12 +1081,12 @@
                 if (submitBtnText) submitBtnText.innerText = '重新送出回函 RETRY';
                 if (submitBtnIcon) submitBtnIcon.className = 'fa-solid fa-rotate-right text-xs';
 
-                showError('⚠️ 連線逾時或 Google 表單伺服器無回應，回函可能未成功儲存！請確認網路順暢後再次點擊按鈕送出。');
+                alert('⚠️ 連線逾時或 Google 表單伺服器無回應，回函可能未成功儲存！請確認網路順暢後再次點擊送出。');
             }
-        }, 8000);
+        }, 10000);
     }
 
-    // 唯有 Google 伺服器確實回傳頁面至 hidden_iframe 時才執行切換
+    // 唯有 hidden_iframe 確實載入 Google 伺服器響應時才執行切換
     function onFormSubmitted() {
         if (submissionHandled) return;
         submissionHandled = true;
@@ -1164,6 +1118,11 @@
     }
 
     function backToInvitation() {
+        if (submissionTimeoutId) {
+            clearTimeout(submissionTimeoutId);
+            submissionTimeoutId = null;
+        }
+
         const invitationView = document.getElementById('invitationPageView');
         const confirmationView = document.getElementById('confirmationPageView');
 
@@ -1176,7 +1135,6 @@
         const form = document.getElementById('rsvpForm');
         if (form) form.reset();
         handleAttendanceChange();
-        clearError();
         submitted = false;
         submissionHandled = false;
     }
